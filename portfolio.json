@@ -1,0 +1,221 @@
+{
+  "name": "Prasad Raju G",
+  "label": "ML Engineer",
+  "image_path": "img/profile.png",
+  "contact": {
+    "email": "jobs.iamprasadraju@gmail.com",
+    "location": "Palakol, Andhra Pradesh, India"
+  },
+  "summary": "I am a Graduate Student in Artificial Intelligence and Data science. I Love to Build 🤖",
+  "base_url": "127.0.0.1:5500",
+  "social_links": [
+    {
+      "label": "Portfolio",
+      "url": "https://iamprasadraju.github.io/iamprasadraju",
+      "svg_path": "img/globe.svg"
+    },
+    {
+      "label": "Linkedin",
+      "url": "https://www.linkedin.com/in/iamprasadraju",
+      "svg_path": "img/linkedin.svg"
+    },
+    {
+      "label": "Github",
+      "url": "https://github.com/iamprasadraju",
+      "svg_path": "img/github.svg"
+    },
+    {
+      "label": "Medium",
+      "url": "https://medium.com/@iamprasadraju",
+      "svg_path": "img/medium.svg"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Phonebook",
+      "summary": "The Flask-based Phonebook Web App enables users to efficiently manage contacts with full CRUD functionality, user authentication, password reset, and real-time input validation for a seamless experience.",
+      "url": "https://github.com/iamprasadraju/Phonebook",
+      "highlights": [
+        "User Authentication: Secure user login and registration.",
+        "Contact Management: Create, read, update, and delete contacts.",
+        "Password Reset: Easily reset passwords with expiration for security.",
+        "Real-time Validation: Validate user inputs in real-time with instant feedback."
+      ],
+      "images": [
+        {
+          "img_path": "https://media.licdn.com/dms/image/v2/D5622AQGq0-mnipUIWQ/feedshare-shrink_1280/feedshare-shrink_1280/0/1728570921569?e=1744848000&v=beta&t=GANrAGO_p0A0-QhYIv1aOqCXHoER0rR1ZItEHUPG6Xo",
+          "caption": "Email Authentication"
+        },
+        {
+          "img_path": "https://media.licdn.com/dms/image/v2/D5622AQF15t5E6gjHTQ/feedshare-shrink_1280/feedshare-shrink_1280/0/1728570927735?e=1744848000&v=beta&t=rKZ-9PZgv24Mzc_MbIIE1vpVfFv31XVdEHUmNTZb12I",
+          "caption": "Save Contact by just Scanning QRs"
+        },
+        {
+          "img_path": "https://media.licdn.com/dms/image/v2/D5622AQGm9Q2k8ghiKw/feedshare-shrink_1280/feedshare-shrink_1280/0/1728570916130?e=1744848000&v=beta&t=qO_jqltyaDEf803j56Pphr0xl0BoEykPgfgpkiRPzPk",
+          "caption": "Reset Password"
+        }
+      ]
+    },
+    {
+      "title": "Music Genre Classification Using Convolution Neural Networks",
+      "summary": "Music genre classification is the task of automatically identifying the genre of a song based on its audio features. Convolutional Neural Networks (CNNs) are well-suited for this task because they can learn hierarchical features from spectrograms—visual representations of audio signals.",
+      "url": "https://sample.com",
+      "highlights": [
+        "Spectrogram-Based Learning: Converts audio signals into spectrogram images, allowing CNNs to extract frequency and temporal patterns.",
+        "Deep Feature Extraction: Uses convolutional layers to automatically learn genre-specific characteristics from spectrograms without manual feature engineering.",
+        "Automated Classification: Trains on labeled datasets (e.g., GTZAN, FMA) and predicts the genre of new audio inputs with high accuracy."
+      ],
+      "images": [
+        {
+          "img_path": "https://figures.semanticscholar.org/58ff0aa7937f069c3ce510d883972194b040df44/250px/2-Figure1-1.png",
+          "caption": "Architecture"
+        },
+        {
+          "img_path": "https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/54779685b293a5afa2cd3107f479bf4503a99e82/2-Figure2-1.png",
+          "caption": "Feature Extraction"
+        },
+        {
+          "img_path": "https://miro.medium.com/v2/resize:fit:1400/1*y68ztClLF6ae7P53ayyFzQ.png",
+          "caption": "Convolutional Neural Networks"
+        }
+      ]
+    }
+  ],
+  "certifications_and_courses": [
+    {
+      "organization": "Certification by Harvard University",
+      "title": "Introduction to Computer Science",
+      "certificate_url": "https://sample.com"
+    },
+    {
+      "organization": "Certification by Harvard University",
+      "title": "Introduction to Python Programming",
+      "certificate_url": "https://sample.com"
+    },
+    {
+      "organization": "Certification by Google",
+      "title": "Introduction to Version Control (Git)",
+      "certificate_url": "https://sample.com"
+    },
+    {
+      "organization": "Certification by Meta",
+      "title": "Introduction to Frontend Development",
+      "certificate_url": "https://sample.com"
+    },
+    {
+      "organization": "Course by Stanford University",
+      "title": "CS231n Computer Vision",
+      "certificate_url": "https://sample.com"
+    }
+    
+  ],
+  "blogs": [
+    {
+      "title": "What is an Image and How Computers see Images?",
+      "blog_url": "https://iamprasadraju.medium.com/what-is-an-image-387a154de105",
+      "author": "on Medium (Mar 2025)",
+      "reference": "An image is a visual representation. An image can be two-dimensional, such as a drawing, painting, or photograph, or three-dimensional, such as a carving or sculpture.",
+      "image": "https://miro.medium.com/v2/resize:fit:786/format:webp/1*DfuSyEZ472tMaFnQNI21xA.jpeg"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Python",
+      "proficiency": 80,
+      "proficiency_label": "Proficiency Level"
+    },
+    {
+      "name": "Git",
+      "proficiency": 80,
+      "proficiency_label": "Proficiency Level"
+    },
+    {
+      "name": "PostgreSQL",
+      "proficiency": 60,
+      "proficiency_label": "Proficiency Level"
+    },
+    {
+      "name": "MongoDB",
+      "proficiency": 60,
+      "proficiency_label": "Proficiency Level"
+    },
+    {
+      "name": "Docker",
+      "proficiency": 60,
+      "proficiency_label": "Proficiency Level"
+    },
+    {
+      "name": "Numpy",
+      "proficiency": 50,
+      "proficiency_label": "Proficiency Level"
+    },
+    {
+      "name": "Pandas",
+      "proficiency": 50,
+      "proficiency_label": "Proficiency Level"
+    },
+    {
+      "name": "AWS",
+      "proficiency": 50,
+      "proficiency_label": "Proficiency Level"
+    },
+    {
+      "name": "Linux",
+      "proficiency": 70,
+      "proficiency_label": "Proficiency Level"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Badminton",
+      "summary": "I just love this game, i really enjoy it while playing.",
+      "images": [
+        {
+          "img_path": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Heads_of_badminton_raquets.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Programming",
+      "summary": "I am very curious to learn New Technologies",
+      "images": [
+        {
+          "img_path": "https://media.assettype.com/analyticsinsight%2F2024-07%2Ff5553ea7-5dbd-435a-8743-5072b2557c65%2F10_Facts_About_Coding_and_programming_languages.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Video & Photo Editing",
+      "summary": "I do video editing and photo editing in my free time.",
+      "images": [
+        {
+          "img_path": "https://dhruvinjain.com/wp-content/uploads/2024/03/videography-images.jpeg",
+          "caption": "Premiere Pro"
+        },
+        {
+          "img_path": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1t2-RcyVtn46dOVWcIBpwhaBIvUxLsVaHyQ&s",
+          "caption": "Photoshop"
+        }
+      ]
+    },
+    {
+      "name": "Blogging",
+      "summary": "I Write Tech blogs on Medium.",
+      "images": [
+        {
+          "img_path": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTadPAJcUO4zfOONrfAdzu4WW81D2_t7wVpig&s"
+        }
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Intermediate - Proficiency"
+    },
+    {
+      "language": "Telugu",
+      "fluency": "Native Language"
+    }
+  ]
+}
