@@ -30,6 +30,19 @@
   </head>
 
   <body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+      <div class="container">
+        <ul class="nav-list">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="notes.html">Notes</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <header class="page-header">
       <div class="container">
         <div class="header-top flex-responsive">
@@ -77,155 +90,83 @@
     <div class="page-content">
       <div class="container">
         <main>
-          {% if work_experience %}
+          {% if skill_tags %}
             <section>
-              <h2 class="section-heading">Work Experience</h2>
-              {% for job in work_experience %}
-                <section>
-                  <h3>
-                    {% if job.url %}
-                      {{ job.position }} at <a href="{{ job.url }}">{{ job.company }}</a>
-                    {% else %}
-                      {{ job.position }} at {{ job.company }}
-                    {% endif %}
-                  </h3>
-                  {% if job.start_date and job.end_date %}
-                    <p class="section-label">{{ job.start_date }} - {{ job.end_date }}</p>
-                  {% endif %}
-                  {% if job.summary %}<p>{{ job.summary }}</p>{% endif %}
-                  {% if job.highlights %}
-                    <ul>
-                      {% for highlight in job.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                </section>
-              {% endfor %}
+              <h2 class="section-heading">Skills</h2>
+              <div class="skill-tags-container">
+                {% for skill in skill_tags %}<span class="skill-tag">{{ skill }}</span>{% endfor %}
+              </div>
             </section>
           {% endif %}
 
-          {% if projects %}
+          {% if interests_tags %}
             <section>
-              <h2 class="section-heading">Projects</h2>
-              {% for project in projects %}
-                <section>
-                  <h3>
-                    {% if project.url %}
-                      <a href="{{ project.url }}">{{ project.title }}</a>
-                    {% else %}
-                      {{ project.title }}
-                    {% endif %}
-                  </h3>
-                  {% if project.summary %}<p>{{ project.summary }}</p>{% endif %}
-                  {% if project.highlights %}
-                    <ul>
-                      {% for highlight in project.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                  {% if project.images %}
-                    <div class="gallery main-gallery">
-                      {% for img in project.images %}
-                        <figure>
-                          <img class="compact-image" width="600" height="338" src="{{ img.img_path }}" alt="{{ img.caption }}">
-                          <figcaption>{{ img.caption }}</figcaption>
-                        </figure>
-                      {% endfor %}
-                    </div>
-                  {% endif %}
-                </section>
-              {% endfor %}
+              <h2 class="section-heading">Interests</h2>
+              <div class="interests-tags-container">
+                {% for interest in interests_tags %}<span class="interest-tag" style="border-color: {{ interest.color }}">{{ interest.name }}</span>{% endfor %}
+              </div>
             </section>
           {% endif %}
 
-          {% if volunteer_experience %}
-            <section>
-              <h2 class="section-heading">Volunteer Experience</h2>
-              {% for vol in volunteer_experience %}
-                <section>
-                  <h3>
-                    {% if vol.url %}
-                      {{ vol.position }} at <a href="{{ vol.url }}">{{ vol.organization }}</a>
-                    {% else %}
-                      {{ vol.position }} at {{ vol.organization }}
-                    {% endif %}
-                  </h3>
-                  {% if vol.start_date and vol.end_date %}
-                    <p class="section-label">{{ vol.start_date }} - {{ vol.end_date }}</p>
-                  {% endif %}
-                  {% if vol.summary %}<p>{{ vol.summary }}</p>{% endif %}
-                  {% if vol.highlights %}
-                    <ul>
-                      {% for highlight in vol.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                </section>
-              {% endfor %}
+          {% if github_username %}
+            <section class="github-section">
+              <h2 class="section-heading">GitHub Activity</h2>
+              <div class="github-graph" style="text-align: center; margin: 20px 0;">
+                <a href="https://github.com/{{ github_username }}">
+                  <img src="https://ghchart.rshah.org/{{ github_username }}" alt="GitHub contribution graph" style="max-width: 100%;" />
+                </a>
+              </div>
             </section>
           {% endif %}
 
-          {% if references %}
-            <section>
-              <h2 class="section-heading">References</h2>
-              {% for ref in references %}
-                <section>
-                  {% if ref.name %}<h3>{{ ref.name }}</h3>{% endif %}
-                  {% if ref.relation %}<p class="section-label">{{ ref.relation }}</p>{% endif %}
-                  {% if ref.reference %}
-                    <blockquote>{{ ref.reference }}</blockquote>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
-          {% endif %}
-
-          <!-- Certifications & Courses Section -->
-          {% if certifications_and_courses %}
-          <section>
-            <h2 class="section-heading">Certifications &amp; Courses</h2>
-            {% for cert in certifications_and_courses %}
-              <section>
-                <h3>
-                  {% if cert.certificate_url %}
-                    <a href="{{ cert.certificate_url }}">{{ cert.title }}</a>
-                  {% else %}
-                    {{ cert.title }}
-                  {% endif %}
-                  &mdash; {{ cert.organization }}
-                </h3>
-              </section>
-            {% endfor %}
+          <!-- Inspiration Section -->
+          <section class="inspiration-section">
+            <h2 class="section-heading">Inspiration</h2>
+            <div style="text-align: center; padding: 20px;">
+              <p style="background-color: #fff3cd; display: inline-block; padding: 10px 20px; margin: 0 0 15px 0; font-style: italic; border-radius: 4px;">
+                "The light that found me in the night I was lost."
+              </p>
+              <p style="margin-bottom: 20px;"><strong>@GeorgeHotz</strong></p>
+              
+              <!-- YouTube Video -->
+              <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0;">
+                <iframe 
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                  src="https://www.youtube.com/embed/tvJ1RGlxe8Q" 
+                  title="YouTube video player" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
           </section>
+
+          {% if special_thanks %}
+            <section class="special-thanks-section">
+              <h2 class="section-heading">Special Thanks</h2>
+              <div class="thanks-list" style="text-align: center; padding: 20px;">
+                {% for professor in special_thanks %}
+                  <p style="margin: 5px 0; font-weight: 600;">{{ professor }}</p>
+                {% endfor %}
+              </div>
+            </section>
           {% endif %}
 
-          <!-- Blogs Section with Image on Left Side -->
-          {% if blogs %}
-          <section>
-            <h2 class="section-heading">Blog Posts</h2>
-            {% for blog in blogs %}
-              <section class="blog-item" style="display: flex; align-items: center; gap: 20px;">
-                {% if blog.image %}
-                  <div class="blog-image">
-                    <img class="compact-image" src="{{ blog.image }}" alt="{{ blog.title }} Blog Image" style="max-width: 150px; height: auto;">
-                  </div>
-                {% endif %}
-                <div class="blog-details">
-                  <h3>
-                    {% if blog.blog_url %}
-                      <a href="{{ blog.blog_url }}">{{ blog.title }}</a>
-                    {% else %}
-                      {{ blog.title }}
-                    {% endif %}
-                  </h3>
-                  <p class="section-label">{{ blog.author }} {% if blog.relation %}({{ blog.relation }}){% endif %}</p>
-                  {% if blog.reference %}<p>{{ blog.reference }}</p>{% endif %}
-                </div>
-              </section>
-            {% endfor %}
-          </section>
+          {% if languages %}
+            <section>
+              <h2 class="section-heading">Languages</h2>
+              <ul class="unstyled-list" style="text-align: center;">
+                {% for lang in languages %}
+                  <li style="display: inline-block; margin: 0 15px;">
+                    <h3 style="display: inline;">{{ lang.language }}</h3>
+                    <span class="section-label" style="margin-left: 5px;">({{ lang.fluency }})</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </section>
           {% endif %}
-        </main>
 
-        <!-- Sidebar Section -->
-        <aside>
           {% if education %}
             <section>
               <h2 class="section-heading">Education</h2>
@@ -263,66 +204,13 @@
             </section>
           {% endif %}
 
-          {% if skills %}
-            <section>
-              <h2 class="section-heading">Skills</h2>
-              <ul class="unstyled-list">
-                {% for skill in skills %}
-                  <li>
-                    <h3>{{ skill.name }}</h3>
-                    <div class="skill-bar">
-                      <div class="skill-bar-fill w-{{ skill.proficiency }}"
-                           role="meter"
-                           aria-valuenow="{{ skill.proficiency }}"
-                           aria-valuemin="0"
-                           aria-valuemax="100">
-                        <span class="skill-bar-label">{{ skill.proficiency_label }}</span>
-                      </div>
-                    </div>
-                  </li>
-                {% endfor %}
-              </ul>
-            </section>
-          {% endif %}
+          
 
-          {% if languages %}
-            <section>
-              <h2 class="section-heading">Languages</h2>
-              <ul class="unstyled-list">
-                {% for lang in languages %}
-                  <li>
-                    <h3>{{ lang.language }}</h3>
-                    <p class="section-label">{{ lang.fluency }}</p>
-                  </li>
-                {% endfor %}
-              </ul>
-            </section>
-          {% endif %}
-
-          {% if interests %}
-            <section>
-              <h2 class="section-heading">Interests</h2>
-              {% for interest in interests %}
-                <section>
-                  <h3>{{ interest.name }}</h3>
-                  {% if interest.summary %}<p>{{ interest.summary }}</p>{% endif %}
-                  {% if interest.images %}
-                    <div class="gallery side-gallery">
-                      {% for img in interest.images %}
-                        <figure>
-                          <img class="compact-image" width="600" height="338" src="{{ img.img_path }}" alt="{{ img.caption }}">
-                          {% if img.caption %}<figcaption>{{ img.caption }}</figcaption>{% endif %}
-                        </figure>
-                      {% endfor %}
-                    </div>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
-          {% endif %}
-        </aside>
+        </main>
       </div>
     </div>
+
+
 
     <footer class="page-footer">
       <div class="container">

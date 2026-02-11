@@ -33,16 +33,31 @@ if "social_links" in data:
 
 # Set up Jinja2 environment
 env = Environment(loader=FileSystemLoader("."), autoescape=True)
-try:
-    template = env.get_template("index_template.html")
-except TemplateNotFound:
-    raise Exception("index_template.html not found!")
 
-# Render the template with the JSON data
-html_output = template.render(**data)
+# Templates to render
+templates = {
+    "index.html": "index_template.html",
+    "projects.html": "projects_template.html",
+    "research.html": "research_template.html",
+    "blogs.html": "blogs_template.html",
+    "notes.html": "notes_template.html",
+}
 
-# Write the output to index.html
-with Path("index.html").open("w", encoding="utf-8") as f:
-    f.write(html_output)
+# Generate each page
+for output_file, template_file in templates.items():
+    try:
+        template = env.get_template(template_file)
+    except TemplateNotFound:
+        print(f"Warning: {template_file} not found, skipping...")
+        continue
 
-print("HTML file generated successfully!")
+    # Render the template with the JSON data
+    html_output = template.render(**data)
+
+    # Write the output
+    with Path(output_file).open("w", encoding="utf-8") as f:
+        f.write(html_output)
+
+    print(f"Generated {output_file}")
+
+print("\nAll HTML files generated successfully!")

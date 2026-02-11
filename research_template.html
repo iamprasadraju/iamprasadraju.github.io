@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Research - {{ name }}</title>
+    <meta name="description" content="Research by {{ name }}">
+    <meta name="author" content="{{ name }}">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Research - {{ name }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ base_url }}/research.html">
+    <meta property="og:image" content="{{ base_url }}/{{ image_path }}">
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Custom Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/modern_normalize.css" />
+    <link rel="stylesheet" href="css/html5bp.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="theme-color" content="#fafafa">
+    <!-- Favicon and Manifest -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+      <div class="container">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="research.html" class="active">Research</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="notes.html">Notes</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="page-content" style="padding-top: 2rem;">
+      <div class="container">
+        <main style="grid-column: 1 / -1;">
+          {% if research %}
+            <section>
+              <h2 class="section-heading">Research</h2>
+              {% for item in research %}
+                <section>
+                  <h3>
+                    {% if item.url %}
+                      <a href="{{ item.url }}">{{ item.title }}</a>
+                    {% else %}
+                      {{ item.title }}
+                    {% endif %}
+                  </h3>
+                  {% if item.organization %}<p class="section-label">{{ item.organization }}</p>{% endif %}
+                  {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
+                  {% if item.highlights %}
+                    <ul>
+                      {% for highlight in item.highlights %}<li>{{ highlight }}</li>{% endfor %}
+                    </ul>
+                  {% endif %}
+                  {% if item.images %}
+                    <div class="gallery main-gallery">
+                      {% for img in item.images %}
+                        <figure>
+                          <img class="compact-image" width="600" height="338" src="{{ img.img_path }}" alt="{{ img.caption }}">
+                          <figcaption>{{ img.caption }}</figcaption>
+                        </figure>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </section>
+              {% endfor %}
+            </section>
+          {% endif %}
+        </main>
+      </div>
+    </div>
+
+    <footer class="page-footer">
+      <div class="container">
+        <p>&copy; {{ current_year }} {{ name }}. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
