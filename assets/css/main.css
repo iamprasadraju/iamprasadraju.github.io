@@ -1479,45 +1479,33 @@ blockquote {
     justify-content: center;
   }
 
-  /* Projects grid centering */
+  /* Projects grid centering - simplified for equal spacing */
+  .page-content .container main section .projects-grid,
   .projects-grid {
-    width: calc(100% - 2rem);
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 1rem;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 1rem !important;
     box-sizing: border-box;
   }
 
+  .page-content .container main .project-card,
   .project-card {
     width: 100%;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
   }
 
-  /* Project detail page centering */
+  /* Project detail page centering - simplified */
+  .page-content .container main .project-detail,
   .project-detail {
-    width: calc(100% - 2rem);
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    margin: 0;
     padding: 0 1rem;
     box-sizing: border-box;
   }
 
-  .project-detail-header {
-    text-align: center;
-    width: 100%;
-  }
-
-  .project-detail-content {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .project-detail-content h1,
-  .project-detail-content h2,
-  .project-detail-content h3 {
+  .project-detail-header,
+  .project-detail-content,
+  .project-detail-actions {
     text-align: center;
   }
 
