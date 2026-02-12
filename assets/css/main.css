@@ -1025,11 +1025,10 @@ blockquote {
 }
 
 .profile-about {
-  background: rgba(248, 249, 250, 0.6);
+  background: #f8f9fa;
   border-radius: 12px;
   padding: 1.25rem;
-  border: 1px solid rgba(0,0,0,0.06);
-  border-left: none;
+  border: 1px solid #e0e0e0;
 }
 
 .profile-card-inner {
