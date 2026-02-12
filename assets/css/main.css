@@ -1479,26 +1479,21 @@ blockquote {
     justify-content: center;
   }
 
-  /* Projects grid centering - simplified for equal spacing */
-  .page-content .container main section .projects-grid,
+  /* Remove padding from resume.css on main element */
+  main {
+    padding: 0 !important;
+  }
+
+  /* Projects grid centering */
   .projects-grid {
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 1rem !important;
+    width: 100%;
+    padding: 0 1rem;
     box-sizing: border-box;
   }
 
-  .page-content .container main .project-card,
-  .project-card {
-    width: 100%;
-    margin: 0;
-  }
-
-  /* Project detail page centering - simplified */
-  .page-content .container main .project-detail,
+  /* Project detail page centering */
   .project-detail {
     width: 100%;
-    margin: 0;
     padding: 0 1rem;
     box-sizing: border-box;
   }
