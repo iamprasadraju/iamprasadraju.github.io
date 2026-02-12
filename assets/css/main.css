@@ -500,10 +500,9 @@ aside li {
 
   /* Ensure compact footer on all pages in mobile */
   .page-footer {
-    height: auto;
-    min-height: 32px;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    height: 32px;
+    padding: 0.25rem 1rem;
+    font-size: 1rem;
   }
 
   .page-footer .container {
@@ -1302,24 +1301,32 @@ blockquote {
 @media (max-width: 768px) {
   /* Increase base font size for better readability on mobile */
   body {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
 
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 
   h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
     font-size: 1.1rem;
   }
 
   p, li {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  a {
+    font-size: 1.1rem;
   }
 
   .home-container {
@@ -1329,35 +1336,66 @@ blockquote {
 
   .home-sidebar {
     position: static;
-    padding: 0 2.5rem;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
   }
 
   .profile-card {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     border-radius: 12px;
-    max-width: calc(100vw - 5rem);
+    padding: 1rem;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
 
   .profile-about {
     border-radius: 12px;
-    max-width: calc(100vw - 5rem);
+    padding: 1rem;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
 
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.75rem;
+  }
+
+  .profile-name {
+    font-size: 1.3rem;
+  }
+
+  .profile-title {
+    font-size: 0.9rem;
+  }
+
   .home-top-section {
     grid-template-columns: 1fr;
-    padding: 0 2.5rem;
+    padding: 0 1rem;
+    gap: 1rem;
   }
 
   .home-skills,
   .home-interests {
     padding: 1rem;
-    max-width: calc(100vw - 5rem);
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1rem;
+  }
+
+  .home-main {
+    padding: 0 1rem;
+  }
+
+  .home-github,
+  .home-inspiration,
+  .home-thanks,
+  .home-languages {
+    margin-bottom: 1rem;
+    padding: 0;
   }
 
   .profile-section {
