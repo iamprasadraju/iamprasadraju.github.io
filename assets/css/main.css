@@ -307,8 +307,9 @@ section {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   padding: 0.25rem 1rem;
-  font-size: 0.7rem;
-  height: 32px;
+  font-size: 0.85rem;
+  height: auto;
+  min-height: 32px;
   line-height: 1;
   display: flex;
   align-items: center;
@@ -477,6 +478,19 @@ aside li {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     color: #ccc;
+  }
+
+  /* Ensure compact footer on all pages in mobile */
+  .page-footer {
+    height: auto;
+    min-height: 32px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .page-footer .container {
+    padding: 0;
+    margin: 0 auto;
   }
 }
 
@@ -1268,6 +1282,28 @@ blockquote {
 
 /* Responsive - Mobile */
 @media (max-width: 768px) {
+  /* Increase base font size for better readability on mobile */
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  p, li {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
   .home-container {
     grid-template-columns: 1fr;
     padding: 0;
@@ -1313,6 +1349,64 @@ blockquote {
   .profile-image {
     width: 120px;
     height: 120px;
+  }
+
+  /* Center all sections in mobile view */
+  .page-content main,
+  .page-content section,
+  .blog-item,
+  .note-item {
+    text-align: center;
+  }
+
+  .page-content main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page-content section {
+    width: 100%;
+    max-width: calc(100vw - 2rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Blog item mobile centering */
+  .blog-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .blog-image img {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .blog-details {
+    text-align: center;
+  }
+
+  /* Note item mobile centering */
+  .note-item {
+    text-align: center;
+  }
+
+  .note-item h3 {
+    text-align: center;
+  }
+
+  .note-tags {
+    justify-content: center;
+  }
+
+  /* Ensure page content is centered */
+  .page-content .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
