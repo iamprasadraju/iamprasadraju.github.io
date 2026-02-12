@@ -28,8 +28,7 @@ header {
 }
 
 main,
-aside,
-footer {
+aside {
   padding: 2rem;
 }
 

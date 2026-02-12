@@ -174,9 +174,10 @@ body {
   font-family: "Nunito", "Segoe UI", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
   font-weight: 400;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+  padding-bottom: 32px;
 }
 
 h1,
@@ -266,6 +267,12 @@ section {
   margin-bottom: 1.5rem;
 }
 
+/* Remove extra margin from last section to prevent footer spacing issues */
+.page-content section:last-child,
+.page-content main section:last-child {
+  margin-bottom: 0;
+}
+
 /* Utility */
 .block {
   display: block;
@@ -286,8 +293,15 @@ section {
   margin: 0 auto;
 }
 
+.page-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .page-content .container {
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -302,19 +316,23 @@ section {
 }
 
 .page-footer {
-  background-color: var(--nav-bg-color);
+  background-color: var(--nav-bg-color) !important;
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   padding: 0.25rem 1rem;
   font-size: 0.85rem;
-  height: auto;
-  min-height: 32px;
+  height: 32px;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .page-footer .container {
@@ -1351,25 +1369,39 @@ blockquote {
     height: 120px;
   }
 
-  /* Center all sections in mobile view */
-  .page-content main,
-  .page-content section,
-  .blog-item,
-  .note-item {
-    text-align: center;
+  /* Center all sections in mobile view - equally spaced left and right */
+  .page-content {
+    width: 100%;
+  }
+
+  .page-content .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
   }
 
   .page-content main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .page-content main,
+  .page-content section,
+  .blog-item,
+  .note-item,
+  .projects-grid,
+  .project-card {
+    text-align: center;
   }
 
   .page-content section {
     width: 100%;
-    max-width: calc(100vw - 2rem);
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+    padding: 0;
   }
 
   /* Blog item mobile centering */
@@ -1378,6 +1410,9 @@ blockquote {
     align-items: center;
     text-align: center;
     gap: 1rem;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .blog-image img {
@@ -1387,11 +1422,15 @@ blockquote {
 
   .blog-details {
     text-align: center;
+    width: 100%;
   }
 
   /* Note item mobile centering */
   .note-item {
     text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .note-item h3 {
@@ -1402,11 +1441,45 @@ blockquote {
     justify-content: center;
   }
 
-  /* Ensure page content is centered */
-  .page-content .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  /* Projects grid centering */
+  .projects-grid {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Research section centering */
+  .page-content main section section {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Override resume.css footer styles */
+  footer.page-footer {
+    padding: 0.25rem 1rem !important;
   }
 }
 
+/* Final footer override to ensure consistency across all pages - must override resume.css */
+footer.page-footer {
+  padding: 0.25rem 1rem !important;
+  height: auto !important;
+  min-height: 32px !important;
+  max-height: 40px !important;
+  background-color: var(--nav-bg-color) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  margin: 0 !important;
+}
+
+footer.page-footer .container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+footer.page-footer p {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+}
