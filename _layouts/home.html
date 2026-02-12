@@ -2,131 +2,120 @@
 layout: default
 ---
 
-<header class="page-header">
-  <div class="container">
-    <div class="header-top flex-responsive">
-      {% if site.image_path %}
-        <img class="header-image compact-image" width="256" height="256" src="{{ site.image_path | relative_url }}" alt="{{ site.name }} Profile Image" />
-      {% endif %}
-      <div class="header-info">
-        <h1>{{ site.name }}</h1>
-        {% if site.label %}<h2 class="header-label">{{ site.label }}</h2>{% endif %}
-        {% if site.contact.email or site.contact.phone or site.contact.location %}
-          <address>
-            <ul class="inline-list flex-responsive">
-              {% if site.contact.email %}
-                <li>
-                  <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
-                </li>
-              {% endif %}
-              {% if site.contact.phone %}
-                <li>
-                  <a href="tel:+{{ site.contact.phone | replace: '-', '' }}">{{ site.contact.phone }}</a>
-                </li>
-              {% endif %}
-              {% if site.contact.location %}<li>{{ site.contact.location }}</li>{% endif %}
-            </ul>
-          </address>
+<div class="home-container">
+  <!-- Left Column: Profile -->
+  <aside class="home-sidebar">
+    <div class="profile-card">
+      <div class="profile-card-inner">
+        {% if site.image_path %}
+          <img class="profile-image" src="{{ site.image_path | relative_url }}" alt="{{ site.name }} Profile Image" />
         {% endif %}
+        <h1 class="profile-name">{{ site.name }}</h1>
+        {% if site.label %}<p class="profile-title">{{ site.label }}</p>{% endif %}
+        
+        {% if site.contact.email or site.contact.location %}
+          <div class="profile-contact">
+            {% if site.contact.email %}
+              <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
+            {% endif %}
+            {% if site.contact.location %}
+              <span class="location">{{ site.contact.location }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+        
         {% if site.social_links %}
-          <ul class="inline-list flex-responsive">
+          <div class="profile-social">
             {% for link in site.social_links %}
-              <li>
-                <a href="{{ link.url }}" rel="noopener noreferrer" aria-label="{{ link.label }}" class="link-with-icon">
-                  {% include {{ link.svg_path }} %}
-                  {{ link.label }}
-                </a>
-              </li>
+              <a href="{{ link.url }}" rel="noopener noreferrer" aria-label="{{ link.label }}" title="{{ link.label }}">
+                {% include {{ link.svg_path }} %}
+              </a>
             {% endfor %}
-          </ul>
+          </div>
         {% endif %}
-        {% if site.summary %}<p class="header-summary">{{ site.summary }}</p>{% endif %}
       </div>
     </div>
-  </div>
-</header>
+    
+    {% if site.summary %}
+      <div class="profile-about">
+        <h3>About</h3>
+        <p>{{ site.summary }}</p>
+      </div>
+    {% endif %}
+  </aside>
 
-<div class="page-content">
-  <div class="container">
-    <main>
-      {{ content }}
-      
+  <!-- Right Column: Content -->
+  <main class="home-main">
+    <!-- Skills & Interests Row -->
+    <div class="home-top-section">
       {% if site.skill_tags %}
-        <section>
-          <h2 class="section-heading">Skills</h2>
-          <div class="skill-tags-container">
-            {% for skill in site.skill_tags %}<span class="skill-tag">{{ skill }}</span>{% endfor %}
+        <section class="home-skills">
+          <h2>Skills</h2>
+          <div class="skill-tags-compact">
+            {% for skill in site.skill_tags %}<span class="skill-tag-compact">{{ skill }}</span>{% endfor %}
           </div>
         </section>
       {% endif %}
 
       {% if site.interests_tags %}
-        <section>
-          <h2 class="section-heading">Interests</h2>
-          <div class="interests-tags-container">
-            {% for interest in site.interests_tags %}<span class="interest-tag" style="border-color: {{ interest.color }}">{{ interest.name }}</span>{% endfor %}
+        <section class="home-interests">
+          <h2>Interests</h2>
+          <div class="interests-compact">
+            {% for interest in site.interests_tags %}<span class="interest-compact" style="border-color: {{ interest.color }}">{{ interest.name }}</span>{% endfor %}
           </div>
         </section>
       {% endif %}
+    </div>
 
-      {% if site.github_username %}
-        <section class="github-section">
-          <h2 class="section-heading">GitHub Activity</h2>
-          <div class="github-graph" style="text-align: center; margin: 20px 0;">
-            <a href="https://github.com/{{ site.github_username }}">
-              <img src="https://ghchart.rshah.org/{{ site.github_username }}" alt="GitHub contribution graph" style="max-width: 100%;" />
-            </a>
-          </div>
-        </section>
-      {% endif %}
+    {% if site.github_username %}
+      <section class="home-github">
+        <h2 class="section-heading">GitHub Activity</h2>
+        <a href="https://github.com/{{ site.github_username }}">
+          <img src="https://ghchart.rshah.org/{{ site.github_username }}" alt="GitHub contribution graph" />
+        </a>
+      </section>
+    {% endif %}
 
-      <!-- Inspiration Section -->
-      <section class="inspiration-section">
-        <h2 class="section-heading">Inspiration</h2>
-        <div style="text-align: center; padding: 20px;">
-          <p style="background-color: #fff3cd; display: inline-block; padding: 10px 20px; margin: 0 0 15px 0; font-style: italic; border-radius: 4px;">
-            "The light that found me in the night I was lost."
-          </p>
-          <p style="margin-bottom: 20px;"><strong>@GeorgeHotz</strong></p>
-          
-          <!-- YouTube Video -->
-          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0;">
-            <iframe 
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-              src="https://www.youtube.com/embed/tvJ1RGlxe8Q" 
-              title="YouTube video player" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
-          </div>
+    <!-- Inspiration with YouTube -->
+    <section class="home-inspiration">
+      <h2 class="section-heading">Inspiration</h2>
+      <blockquote>
+        "The light that found me in the night I was lost."
+        <cite>@GeorgeHotz</cite>
+      </blockquote>
+      
+      <!-- YouTube Video -->
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/tvJ1RGlxe8Q" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    {% if site.special_thanks %}
+      <section class="home-thanks">
+        <h2 class="section-heading">Special Thanks</h2>
+        <div class="thanks-list">
+          {% for professor in site.special_thanks %}
+            <span>{{ professor }}</span>
+          {% endfor %}
         </div>
       </section>
+    {% endif %}
 
-      {% if site.special_thanks %}
-        <section class="special-thanks-section">
-          <h2 class="section-heading">Special Thanks</h2>
-          <div class="thanks-list" style="text-align: center; padding: 20px;">
-            {% for professor in site.special_thanks %}
-              <p style="margin: 5px 0; font-weight: 600;">{{ professor }}</p>
-            {% endfor %}
-          </div>
-        </section>
-      {% endif %}
-
-      {% if site.languages %}
-        <section>
-          <h2 class="section-heading">Languages</h2>
-          <ul class="unstyled-list" style="text-align: center;">
-            {% for lang in site.languages %}
-              <li style="display: inline-block; margin: 0 15px;">
-                <h3 style="display: inline;">{{ lang.language }}</h3>
-                <span class="section-label" style="margin-left: 5px;">({{ lang.fluency }})</span>
-              </li>
-            {% endfor %}
-          </ul>
-        </section>
-      {% endif %}
-    </main>
-  </div>
+    {% if site.languages %}
+      <section class="home-languages">
+        <h2 class="section-heading">Languages</h2>
+        <div class="languages-list">
+          {% for lang in site.languages %}
+            <span>{{ lang.language }} ({{ lang.fluency }})</span>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  </main>
 </div>

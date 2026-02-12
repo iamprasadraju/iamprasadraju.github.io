@@ -17,13 +17,10 @@ contact:
     location: "Andhra Pradesh, India"
 
 # Summary
-summary: "I am Prasad Raju, a Machine Learning and Deep Learning practitioner focused on turning ideas into meaningful products with real-world impact. My curiosity spans across science and technology from Computer Science and Mathematics to Physics, Chemistry, and Biology all driven by one fundamental question: How does the Universe work?"
+summary: "My curiosity spans across science and technology from Computer Science and Mathematics to Physics, Chemistry, and Biology all driven by one fundamental question: How does the Universe work?"
 
 # Social Links
 social_links:
-    - label: "Portfolio"
-      url: "https://iamprasadraju.github.io/iamprasadraju"
-      svg_path: "globe.svg"
     - label: "Linkedin"
       url: "https://www.linkedin.com/in/iamprasadraju"
       svg_path: "linkedin.svg"
