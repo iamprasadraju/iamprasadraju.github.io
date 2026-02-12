@@ -1,0 +1,59 @@
+---
+layout: default
+---
+
+<div class="page-content" style="padding-top: 2rem;">
+  <div class="container">
+    <main style="grid-column: 1 / -1;">
+      <section>
+        <h2 class="section-heading">{{ page.title | default: "Projects" }}</h2>
+        
+        {% assign projects = site.projects | sort: 'date' | reverse %}
+        {% if projects.size > 0 %}
+          <div class="projects-grid">
+            {% for project in projects %}
+              <article class="project-card">
+                <a href="{{ project.url | relative_url }}" class="project-card-link-wrapper">
+                  <div class="project-card-image">
+                    {% if project.logo %}
+                      <img src="{{ project.logo }}" alt="{{ project.title }} logo">
+                    {% elsif project.images %}
+                      <img src="{{ project.images[0].img_path }}" alt="{{ project.title }}">
+                    {% else %}
+                      <div class="project-card-placeholder">
+                        <span>{{ project.title | slice: 0 }}</span>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="project-card-content">
+                    <h3 class="project-card-title">{{ project.title }}</h3>
+                    {% if project.summary %}
+                      <p class="project-card-summary">{{ project.summary | truncate: 120 }}</p>
+                    {% endif %}
+                    {% if project.highlights %}
+                      <ul class="project-card-highlights">
+                        {% assign highlights_to_show = project.highlights | slice: 0, 2 %}
+                        {% for highlight in highlights_to_show %}
+                          <li>{{ highlight | truncate: 60 }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </div>
+                </a>
+                {% if project.url %}
+                  <div class="project-card-footer">
+                    <a href="{{ project.url }}" class="project-card-link" target="_blank" rel="noopener">View on GitHub →</a>
+                  </div>
+                {% endif %}
+              </article>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p>No projects found.</p>
+        {% endif %}
+        
+        {{ content }}
+      </section>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{% if page.summary %}{{ page.summary }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="author" content="{{ site.name }}">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.name }}{% endif %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+    {% if page.logo %}
+      <meta property="og:image" content="{{ page.logo }}">
+    {% elsif site.image_path %}
+      <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/{{ site.image_path }}">
+    {% endif %}
+    
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Custom Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ '/assets/css/modern_normalize.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/html5bp.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/resume.css' | relative_url }}">
+    
+    <meta name="theme-color" content="#fafafa">
+    
+    <!-- Favicon and Manifest -->
+    <!-- <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any"> -->
+    <!-- <link rel="icon" href="{{ '/icon.svg' | relative_url }}" type="image/svg+xml"> -->
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="{{ '/icon.png' | relative_url }}"> -->
+    <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+    
+    {% seo %}
+  </head>
+
+  <body>
+    {% include navigation.html %}
+    
+    {{ content }}
+    
+    {% include footer.html %}
+    
+    <script src="{{ '/assets/js/app.js' | relative_url }}"></script>
+  </body>
+</html>

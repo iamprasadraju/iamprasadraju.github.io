@@ -1,0 +1,132 @@
+# Site settings
+title: "Prasad Raju G"
+description: "AI Engineer - Machine Learning and Deep Learning practitioner"
+baseurl: "/portfolio"
+url: "https://iamprasadraju.github.io"
+
+# Personal info
+name: "Prasad Raju G"
+label: "AI Engineer"
+image_path: "img/profile.jpg"
+
+github_username: iamprasadraju
+
+# Contact
+contact:
+    email: "g.leelasaiprasadraju@gmail.com"
+    location: "Andhra Pradesh, India"
+
+# Summary
+summary: "I am Prasad Raju, a Machine Learning and Deep Learning practitioner focused on turning ideas into meaningful products with real-world impact. My curiosity spans across science and technology from Computer Science and Mathematics to Physics, Chemistry, and Biology all driven by one fundamental question: How does the Universe work?"
+
+# Social Links
+social_links:
+    - label: "Portfolio"
+      url: "https://iamprasadraju.github.io/iamprasadraju"
+      svg_path: "globe.svg"
+    - label: "Linkedin"
+      url: "https://www.linkedin.com/in/iamprasadraju"
+      svg_path: "linkedin.svg"
+    - label: "Github"
+      url: "https://github.com/iamprasadraju"
+      svg_path: "github.svg"
+    - label: "Medium"
+      url: "https://medium.com/@iamprasadraju"
+      svg_path: "medium.svg"
+
+# Skills
+skill_tags:
+    - "Python"
+    - "C++"
+    - "C"
+    - "Math"
+    - "Machine Learning"
+    - "Deep Learning"
+    - "API"
+    - "Testing"
+    - "Performance Engineering"
+    - "Optimization"
+    - "Computer Vision"
+    - "Research"
+
+# Interests
+interests_tags:
+    - name: "🤖 Artificial Intelligence"
+      color: "#b3d9f7"
+    - name: "🎲 Game Theory"
+      color: "#ffcc80"
+    - name: "⚛️ Quantum Physics"
+      color: "#a5d6a7"
+    - name: "🧠 Neuroscience"
+      color: "#f8bbd9"
+    - name: "🧬 Bioinformatics"
+      color: "#80deea"
+    - name: "🔐 Cryptography"
+      color: "#ce93d8"
+    - name: "🦾 Robotics"
+      color: "#90caf9"
+
+# Special Thanks
+special_thanks:
+    - "Prof. David J Malan"
+    - "Prof. Brain Yu"
+    - "Prof. Andrew Ng"
+    - "Prof. Jeremy Howard"
+    - "Prof. Gilbert Strang"
+    - "Prof. Chris Piech"
+    - "Prof. Gary Gensler"
+    - "Prof. Allan Adams"
+
+# Languages
+languages:
+    - language: "English"
+      fluency: "Intermediate - Proficiency"
+    - language: "Telugu"
+      fluency: "Native Language"
+
+# Jekyll settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Plugins
+plugins:
+    - jekyll-feed
+    - jekyll-sitemap
+    - jekyll-seo-tag
+
+# Collections
+collections:
+    projects:
+        output: true
+        permalink: /:collection/:name/
+    research:
+        output: false
+    notes:
+        output: false
+    blogs:
+        output: false
+
+# Defaults
+defaults:
+    - scope:
+          path: ""
+          type: "projects"
+      values:
+          layout: "project"
+
+# Exclude from processing
+exclude:
+    - Gemfile
+    - Gemfile.lock
+    - node_modules
+    - vendor/bundle/
+    - vendor/cache/
+    - vendor/gems/
+    - vendor/ruby/
+    - JEKYLL_README.md
+    - "*.py"
+    - "*_template.html"
+    - portfolio.json
+    - README.md
+    - LICENSE
