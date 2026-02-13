@@ -1446,6 +1446,41 @@ blockquote {
   }
 }
 
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .main-nav .container {
+    padding: 0 0.5rem;
+  }
+  
+  .nav-list {
+    gap: 0.75rem;
+  }
+  
+  .nav-list a {
+    font-size: 12px;
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .theme-toggle-wrapper {
+    margin-left: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-list {
+    gap: 0.5rem;
+  }
+  
+  .nav-list a {
+    font-size: 11px;
+    padding: 0.5rem 0.15rem;
+  }
+  
+  .theme-toggle-wrapper {
+    margin-left: 0.25rem;
+  }
+}
+
 /* Responsive - Mobile */
 @media (max-width: 768px) {
   /* Increase base font size for better readability on mobile */
