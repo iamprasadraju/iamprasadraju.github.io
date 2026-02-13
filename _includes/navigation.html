@@ -7,6 +7,14 @@
       <li><a href="{{ '/research/' | relative_url }}" {% if page.url contains '/research/' %}class="active"{% endif %}>Research</a></li>
       <li><a href="{{ '/blogs/' | relative_url }}" {% if page.url contains '/blogs/' %}class="active"{% endif %}>Blogs</a></li>
       <li><a href="{{ '/notes/' | relative_url }}" {% if page.url contains '/notes/' %}class="active"{% endif %}>Notes</a></li>
+      <li class="theme-toggle-wrapper">
+        <label class="theme-toggle-apple" for="theme-toggle-input" aria-label="Toggle dark mode">
+          <input type="checkbox" id="theme-toggle-input" class="theme-toggle-input">
+          <span class="theme-toggle-slider">
+            <span class="theme-toggle-knob"></span>
+          </span>
+        </label>
+      </li>
     </ul>
   </div>
 </nav>
