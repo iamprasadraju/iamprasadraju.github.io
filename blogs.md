@@ -10,7 +10,8 @@ permalink: /blogs/
       <section>
         <h2 class="section-heading">Blog Posts</h2>
         
-        {% for blog in site.blogs %}
+        {% assign sorted_blogs = site.blogs | sort: 'date' | reverse %}
+        {% for blog in sorted_blogs %}
           <section class="blog-item" style="display: flex; align-items: center; gap: 20px;">
             {% if blog.image %}
               <div class="blog-image">
@@ -25,7 +26,7 @@ permalink: /blogs/
                   {{ blog.title }}
                 {% endif %}
               </h3>
-              <p class="section-label">{{ blog.author }} {% if blog.relation %}({{ blog.relation }}){% endif %}</p>
+              {% if blog.date %}<p class="section-label">{{ blog.date | date: "%B %d, %Y" }} {% if blog.author %}· {{ blog.author }}{% endif %}</p>{% endif %}
               {% if blog.reference %}<p>{{ blog.reference }}</p>{% endif %}
             </div>
           </section>

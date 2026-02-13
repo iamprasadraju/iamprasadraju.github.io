@@ -1,5 +1,6 @@
 ---
 title: "Deep Learning Approaches for Medical Image Analysis"
+date: 2024-08-20
 organization: "Research Paper - IEEE Conference 2024"
 summary: "Investigated the application of convolutional neural networks for automated detection of abnormalities in medical imaging, achieving 94% accuracy on benchmark datasets."
 url: "https://example.com/research-paper"

@@ -1,6 +1,6 @@
 ---
 title: "Docker Best Practices"
-date: "Dec 2024"
+date: 2024-12-05
 summary: "A collection of best practices for writing efficient Dockerfiles and managing containers in production environments."
 url: "https://example.com/notes/docker"
 tags:

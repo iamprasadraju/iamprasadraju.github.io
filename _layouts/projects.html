@@ -27,6 +27,7 @@ layout: default
                   </div>
                   <div class="project-card-content">
                     <h3 class="project-card-title">{{ project.title }}</h3>
+                    {% if project.date %}<p class="project-card-date">{{ project.date | date: "%B %Y" }}</p>{% endif %}
                     {% if project.summary %}
                       <p class="project-card-summary">{{ project.summary | truncate: 120 }}</p>
                     {% endif %}

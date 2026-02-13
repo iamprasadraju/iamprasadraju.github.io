@@ -1,6 +1,6 @@
 ---
 title: "Python Memory Management"
-date: "Nov 2024"
+date: 2024-11-20
 summary: "Notes on how Python handles memory allocation, garbage collection, and optimization techniques for memory-intensive applications."
 tags:
   - "Python"

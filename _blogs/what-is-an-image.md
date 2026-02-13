@@ -1,5 +1,6 @@
 ---
 title: "What is an Image and How Computers see Images?"
+date: 2025-03-15
 blog_url: "https://iamprasadraju.medium.com/what-is-an-image-387a154de105"
 author: "on Medium (Mar 2025)"
 reference: "An image is a visual representation. An image can be two-dimensional, such as a drawing, painting, or photograph, or three-dimensional, such as a carving or sculpture."

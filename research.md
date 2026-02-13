@@ -10,7 +10,8 @@ permalink: /research/
       <section>
         <h2 class="section-heading">Research</h2>
         
-        {% for item in site.research %}
+        {% assign sorted_research = site.research | sort: 'date' | reverse %}
+        {% for item in sorted_research %}
           <section>
             <h3>
               {% if item.url %}
@@ -19,6 +20,7 @@ permalink: /research/
                 {{ item.title }}
               {% endif %}
             </h3>
+            {% if item.date %}<p class="section-label">{{ item.date | date: "%B %d, %Y" }}</p>{% endif %}
             {% if item.organization %}<p class="section-label">{{ item.organization }}</p>{% endif %}
             {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
             {% if item.highlights %}

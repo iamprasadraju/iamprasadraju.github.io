@@ -10,7 +10,8 @@ permalink: /notes/
       <section>
         <h2 class="section-heading">Notes</h2>
         
-        {% for note in site.notes %}
+        {% assign sorted_notes = site.notes | sort: 'date' | reverse %}
+        {% for note in sorted_notes %}
           <section class="note-item">
             <h3>
               {% if note.url %}
@@ -19,7 +20,7 @@ permalink: /notes/
                 {{ note.title }}
               {% endif %}
             </h3>
-            {% if note.date %}<p class="section-label">{{ note.date }}</p>{% endif %}
+            {% if note.date %}<p class="section-label">{{ note.date | date: "%B %d, %Y" }}</p>{% endif %}
             {% if note.summary %}<p>{{ note.summary }}</p>{% endif %}
             {% if note.tags %}
               <div class="note-tags">
