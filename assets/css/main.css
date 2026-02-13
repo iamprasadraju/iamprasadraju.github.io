@@ -1758,7 +1758,7 @@ blockquote {
   /* Override resume.css footer styles */
   footer.page-footer {
     padding: 0.25rem 1rem !important;
-    font-size: 0.4rem !important;
+    font-size: 0.6rem !important;
   }
 }
 
@@ -1777,7 +1777,7 @@ footer.page-footer {
 
 @media (max-width: 768px) {
   footer.page-footer {
-    font-size: 0.4rem !important;
+    font-size: 0.6rem !important;
   }
 }
 
@@ -1795,6 +1795,6 @@ footer.page-footer p {
 
 @media (max-width: 768px) {
   footer.page-footer p {
-    font-size: 0.4rem !important;
+    font-size: 0.6rem !important;
   }
 }
