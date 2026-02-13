@@ -1758,6 +1758,7 @@ blockquote {
   /* Override resume.css footer styles */
   footer.page-footer {
     padding: 0.25rem 1rem !important;
+    font-size: 0.4rem !important;
   }
 }
 
