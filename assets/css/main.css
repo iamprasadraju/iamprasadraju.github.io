@@ -1457,7 +1457,7 @@ blockquote {
   }
   
   .nav-list a {
-    font-size: 12px;
+    font-size: 13px;
     padding: 0.5rem 0.25rem;
   }
   
@@ -1472,7 +1472,7 @@ blockquote {
   }
   
   .nav-list a {
-    font-size: 11px;
+    font-size: 12px;
     padding: 0.5rem 0.15rem;
   }
   
@@ -1485,32 +1485,32 @@ blockquote {
 @media (max-width: 768px) {
   /* Increase base font size for better readability on mobile */
   body {
-    font-size: 18px;
+    font-size: 19px;
   }
 
   h1 {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
   }
 
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
   }
 
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   h4 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   p, li {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.7;
   }
 
   a {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .home-container {
