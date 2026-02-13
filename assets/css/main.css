@@ -1790,4 +1790,11 @@ footer.page-footer p {
   margin: 0 !important;
   padding: 0 !important;
   line-height: 1.2 !important;
+  font-size: 0.75rem !important;
+}
+
+@media (max-width: 768px) {
+  footer.page-footer p {
+    font-size: 0.4rem !important;
+  }
 }
