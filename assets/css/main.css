@@ -1771,6 +1771,13 @@ footer.page-footer {
   backdrop-filter: saturate(180%) blur(20px) !important;
   -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
   margin: 0 !important;
+  font-size: 0.75rem !important;
+}
+
+@media (max-width: 768px) {
+  footer.page-footer {
+    font-size: 0.4rem !important;
+  }
 }
 
 footer.page-footer .container {
