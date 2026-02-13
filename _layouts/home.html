@@ -99,11 +99,11 @@ layout: default
     {% if site.special_thanks %}
       <section class="home-thanks">
         <h2 class="section-heading">Special Thanks</h2>
-        <div class="thanks-list">
+        <ul class="thanks-list">
           {% for professor in site.special_thanks %}
-            <span>{{ professor }}</span>
+            <li>{{ professor }}</li>
           {% endfor %}
-        </div>
+        </ul>
       </section>
     {% endif %}
 
