@@ -507,9 +507,15 @@ section {
   padding: 0;
   margin: 0;
   line-height: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
-.page-footer p {
+.page-footer .footer-eth,
+.page-footer .footer-copyright {
   margin: 0;
   line-height: 1;
 }
@@ -673,13 +679,13 @@ aside li {
   /* Ensure compact footer on all pages in mobile */
   .page-footer {
     height: 32px;
-    padding: 0.25rem 1rem;
+    padding: 0.25rem 0.5rem;
     font-size: 0.4rem;
   }
 
   .page-footer .container {
     padding: 0;
-    margin: 0 auto;
+    margin: 0;
   }
 }
 
@@ -1784,9 +1790,15 @@ footer.page-footer {
 footer.page-footer .container {
   padding: 0 !important;
   margin: 0 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 1200px !important;
 }
 
-footer.page-footer p {
+footer.page-footer .footer-eth,
+footer.page-footer .footer-copyright {
   margin: 0 !important;
   padding: 0 !important;
   line-height: 1.2 !important;
@@ -1794,7 +1806,8 @@ footer.page-footer p {
 }
 
 @media (max-width: 768px) {
-  footer.page-footer p {
+  footer.page-footer .footer-eth,
+  footer.page-footer .footer-copyright {
     font-size: 0.6rem !important;
   }
 }
