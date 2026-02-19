@@ -100,7 +100,8 @@ collections:
     research:
         output: false
     notes:
-        output: false
+        output: true
+        permalink: /:collection/:name/
     blogs:
         output: false
 
@@ -111,6 +112,11 @@ defaults:
           type: "projects"
       values:
           layout: "project"
+    - scope:
+          path: ""
+          type: "notes"
+      values:
+          layout: "note"
 
 # Exclude from processing
 exclude:

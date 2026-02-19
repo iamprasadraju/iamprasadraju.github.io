@@ -1189,6 +1189,124 @@ blockquote {
   color: white;
 }
 
+/* Note Detail Page */
+.note-detail {
+  max-width: 900px;
+  margin: 0 auto !important;
+  width: 100%;
+}
+
+.note-detail-header {
+  margin-bottom: 2rem;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100%;
+}
+
+.note-detail-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center !important;
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.note-detail-date {
+  font-size: 1rem;
+  color: var(--text-color-secondary);
+  margin-bottom: 1rem;
+  text-align: center !important;
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.note-detail-header .note-tags {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center !important;
+  align-items: center !important;
+  width: fit-content;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.note-detail-content {
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.note-detail-content h1,
+.note-detail-content h2,
+.note-detail-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.note-detail-content h1 {
+  font-size: 1.8rem;
+}
+
+.note-detail-content h2 {
+  font-size: 1.5rem;
+}
+
+.note-detail-content h3 {
+  font-size: 1.25rem;
+}
+
+.note-detail-content p {
+  margin-bottom: 1rem;
+}
+
+.note-detail-content ul,
+.note-detail-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.note-detail-content li {
+  margin-bottom: 0.5rem;
+}
+
+.note-detail-content strong {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.note-detail-content code {
+  background: var(--bg-color-secondary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.note-detail-content pre {
+  background: var(--bg-color-secondary);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.note-detail-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.note-detail-actions {
+  text-align: center;
+}
+
 /* Responsive grid */
 @media (min-width: 480px) {
   .projects-grid {
@@ -1752,6 +1870,33 @@ blockquote {
   .project-detail-content,
   .project-detail-actions {
     text-align: center;
+  }
+
+  /* Note detail page centering */
+  .note-detail {
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .note-detail-header {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .note-detail-title,
+  .note-detail-date {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .note-detail-header .note-tags {
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Research section centering */

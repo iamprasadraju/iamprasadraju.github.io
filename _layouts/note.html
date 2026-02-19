@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="page-content" style="padding-top: 2rem;">
+  <div class="container">
+    <main style="grid-column: 1 / -1;">
+      <article class="note-detail">
+        <header class="note-detail-header">
+          <h1 class="note-detail-title">{{ page.title }}</h1>
+          {% if page.date %}
+            <p class="note-detail-date">{{ page.date | date: "%B %d, %Y" }}</p>
+          {% endif %}
+          {% if page.tags %}
+            <div class="note-tags">
+              {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+            </div>
+          {% endif %}
+        </header>
+
+        <div class="note-detail-content">
+          {{ content }}
+        </div>
+
+        <div class="note-detail-actions" style="margin-top: 2rem;">
+          <a href="{{ '/notes/' | relative_url }}" class="project-card-link">← Back to Notes</a>
+        </div>
+      </article>
+    </main>
+  </div>
+</div>
