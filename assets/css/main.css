@@ -1126,24 +1126,29 @@ blockquote {
   background: var(--bg-color-secondary);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.9em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.85em;
   color: var(--text-color);
-  border: 1px solid var(--border-color);
+  border: none;
 }
 
 .project-detail-content pre {
-  background: var(--bg-color-secondary);
+  background: #0d1117;
   padding: 1rem;
   border-radius: 8px;
   overflow-x: auto;
   margin-bottom: 1rem;
-  border: 1px solid var(--border-color);
+  border: none;
 }
 
 .project-detail-content pre code {
   background: none;
   padding: 0;
+  font-size: 0.875rem;
+}
+
+[data-theme="light"] .project-detail-content pre {
+  background: #f6f8fa;
 }
 
 .project-detail-highlights {
@@ -1283,25 +1288,270 @@ blockquote {
   background: var(--bg-color-secondary);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.9em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.85em;
   color: var(--text-color);
-  border: 1px solid var(--border-color);
+  border: none;
 }
 
 .note-detail-content pre {
-  background: var(--bg-color-secondary);
+  background: #0d1117;
   padding: 1rem;
   border-radius: 8px;
   overflow-x: auto;
   margin-bottom: 1rem;
-  border: 1px solid var(--border-color);
+  border: none;
 }
 
 .note-detail-content pre code {
   background: none;
   padding: 0;
+  font-size: 0.875rem;
 }
+
+[data-theme="light"] .note-detail-content pre {
+  background: #f6f8fa;
+}
+
+/* GitHub-style Code Blocks */
+.code-block-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-block-wrapper pre {
+  margin-bottom: 0;
+  padding-top: 1rem;
+  border: none !important;
+}
+
+.code-lines {
+  display: block;
+}
+
+/* Per-line copy buttons */
+.code-line {
+  display: block;
+  min-height: 1.6em;
+  padding-right: 2.5rem;
+  position: relative;
+}
+
+.code-line-content {
+  display: block;
+  white-space: pre;
+}
+
+.line-copy-btn {
+  position: absolute;
+  right: 0.25rem;
+  top: 0.1em;
+  padding: 0.15rem 0.3rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease, background 0.15s ease;
+  color: #8b949e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.code-line:hover .line-copy-btn {
+  opacity: 1;
+}
+
+.line-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #c9d1d9;
+}
+
+.line-copy-btn.copied {
+  color: #2ea043;
+}
+
+.line-copy-btn svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+[data-theme="light"] .line-copy-btn {
+  background: rgba(0, 0, 0, 0.05);
+  color: #656d76;
+}
+
+[data-theme="light"] .line-copy-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #24292f;
+}
+
+/* Block copy button - above the block */
+.code-copy-btn {
+  align-self: flex-end;
+  margin-bottom: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  color: #8b949e;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.code-block-wrapper:hover .code-copy-btn {
+  opacity: 1;
+}
+
+.code-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #c9d1d9;
+}
+
+.code-copy-btn.copied {
+  color: #2ea043;
+}
+
+.code-copy-btn svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+[data-theme="light"] .code-copy-btn {
+  background: rgba(0, 0, 0, 0.05);
+  color: #656d76;
+}
+
+[data-theme="light"] .code-copy-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #24292f;
+}
+
+/* Syntax Highlighting - GitHub Dark Style */
+pre.highlight,
+pre.copy-enabled {
+  background: #0d1117 !important;
+  border: none !important;
+  border-radius: 8px;
+  color: #c9d1d9;
+}
+
+pre.highlight code,
+pre.copy-enabled code {
+  color: #c9d1d9;
+  background: transparent !important;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Rouge Syntax Highlighting Classes */
+.highlight .c, .highlight .c1, .highlight .cm { color: #8b949e; font-style: italic; }
+.highlight .err { color: #f85149; }
+.highlight .k, .highlight .kv { color: #ff7b72; }
+.highlight .o { color: #ff7b72; }
+.highlight .cm { color: #8b949e; }
+.highlight .cp { color: #8b949e; }
+.highlight .c1 { color: #8b949e; }
+.highlight .cs { color: #8b949e; }
+.highlight .gd { color: #ffa198; background-color: #490202; }
+.highlight .ge { font-style: italic; }
+.highlight .gh { color: #79c0ff; }
+.highlight .gi { color: #56d364; background-color: #0f5323; }
+.highlight .gp { color: #8b949e; }
+.highlight .gs { font-weight: bold; }
+.highlight .gu { color: #79c0ff; }
+.highlight .kc { color: #ff7b72; }
+.highlight .kd { color: #ff7b72; }
+.highlight .kn { color: #ff7b72; }
+.highlight .kp { color: #ff7b72; }
+.highlight .kr { color: #ff7b72; }
+.highlight .kt { color: #ff7b72; }
+.highlight .m { color: #79c0ff; }
+.highlight .mf { color: #79c0ff; }
+.highlight .mh { color: #79c0ff; }
+.highlight .mi { color: #79c0ff; }
+.highlight .mo { color: #79c0ff; }
+.highlight .il { color: #79c0ff; }
+.highlight .s { color: #a5d6ff; }
+.highlight .sb { color: #a5d6ff; }
+.highlight .sc { color: #a5d6ff; }
+.highlight .sd { color: #a5d6ff; }
+.highlight .s2 { color: #a5d6ff; }
+.highlight .se { color: #a5d6ff; }
+.highlight .sh { color: #a5d6ff; }
+.highlight .si { color: #a5d6ff; }
+.highlight .sx { color: #a5d6ff; }
+.highlight .sr { color: #a5d6ff; }
+.highlight .s1 { color: #a5d6ff; }
+.highlight .ss { color: #a5d6ff; }
+.highlight .na { color: #79c0ff; }
+.highlight .nb { color: #79c0ff; }
+.highlight .nc { color: #ffa657; }
+.highlight .no { color: #79c0ff; }
+.highlight .nd { color: #d2a8ff; }
+.highlight .ni { color: #ffa657; }
+.highlight .ne { color: #ffa657; }
+.highlight .nf { color: #d2a8ff; }
+.highlight .nt { color: #7ee787; }
+.highlight .nv { color: #79c0ff; }
+.highlight .vc { color: #79c0ff; }
+.highlight .vg { color: #79c0ff; }
+.highlight .vi { color: #79c0ff; }
+.highlight .w { color: #6e7681; }
+
+[data-theme="light"] .highlight .c,
+[data-theme="light"] .highlight .c1,
+[data-theme="light"] .highlight .cm { color: #6e7781; }
+[data-theme="light"] pre.highlight,
+[data-theme="light"] pre.copy-enabled {
+  background: #f6f8fa !important;
+  border: 1px solid #d0d7de !important;
+  color: #24292f;
+}
+[data-theme="light"] .highlight code,
+[data-theme="light"] pre.copy-enabled code {
+  color: #24292f;
+}
+[data-theme="light"] .highlight .k,
+[data-theme="light"] .highlight .kv { color: #cf222e; }
+[data-theme="light"] .highlight .o { color: #cf222e; }
+[data-theme="light"] .highlight .s,
+[data-theme="light"] .highlight .s1,
+[data-theme="light"] .highlight .s2,
+[data-theme="light"] .highlight .sb,
+[data-theme="light"] .highlight .sc,
+[data-theme="light"] .highlight .sd,
+[data-theme="light"] .highlight .se,
+[data-theme="light"] .highlight .sh,
+[data-theme="light"] .highlight .si,
+[data-theme="light"] .highlight .sr,
+[data-theme="light"] .highlight .ss { color: #0a3069; }
+[data-theme="light"] .highlight .m,
+[data-theme="light"] .highlight .mf,
+[data-theme="light"] .highlight .mh,
+[data-theme="light"] .highlight .mi,
+[data-theme="light"] .highlight .mo,
+[data-theme="light"] .highlight .il { color: #0550ae; }
+[data-theme="light"] .highlight .na { color: #953800; }
+[data-theme="light"] .highlight .nb { color: #0550ae; }
+[data-theme="light"] .highlight .nc { color: #953800; }
+[data-theme="light"] .highlight .nd { color: #8250df; }
+[data-theme="light"] .highlight .nf { color: #8250df; }
+[data-theme="light"] .highlight .nt { color: #116329; }
+[data-theme="light"] .highlight .nv { color: #0550ae; }
 
 .note-detail-actions {
   text-align: center;
