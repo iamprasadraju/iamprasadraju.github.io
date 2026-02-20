@@ -1,6 +1,6 @@
 # Site settings
 title: "Prasad Raju G"
-description: "AI Engineer - Machine Learning and Deep Learning practitioner"
+description: "AI Engineer - Machine Learning and Dee p Learning practitioner"
 baseurl: ""
 url: "https://iamprasadraju.github.io"
 
@@ -8,6 +8,7 @@ url: "https://iamprasadraju.github.io"
 name: "Prasad Raju G"
 label: "AI Engineer"
 image_path: "img/profile.jpg"
+open_to_work: true
 
 github_username: iamprasadraju
 

@@ -12,6 +12,13 @@ layout: default
         {% endif %}
         <h1 class="profile-name">{{ site.name }}</h1>
         {% if site.label %}<p class="profile-title">{{ site.label }}</p>{% endif %}
+        {% if site.open_to_work %}
+          <div class="open-to-work-badge">
+            <span class="pulse-dot"></span>
+            Open to work
+          </div>
+          <p class="open-to-work-details">As full time, contractor, freelancer</p>
+        {% endif %}
         
         {% if site.contact.email or site.contact.location %}
           <div class="profile-contact">
@@ -61,7 +68,7 @@ layout: default
         <section class="home-interests">
           <h2>Interests</h2>
           <div class="interests-compact">
-            {% for interest in site.interests_tags %}<span class="interest-compact" style="border-color: {{ interest.color }}">{{ interest.name }}</span>{% endfor %}
+            {% for interest in site.interests_tags %}<span class="interest-compact">{{ interest.name }}</span>{% endfor %}
           </div>
         </section>
       {% endif %}
