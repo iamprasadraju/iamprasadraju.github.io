@@ -1,6 +1,7 @@
 ---
 title:  "Getting Started With Git"
 date:   2025-08-15
+summary: ""
 tags:
 ---
 # Learning Git
