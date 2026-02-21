@@ -36,7 +36,8 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeSpeed;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 /* Hardware acceleration for smoother animations */
@@ -318,13 +319,15 @@ body,
 
 /* Base Styles */
 body {
-  font-family: "Nunito", "Segoe UI", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
+  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-weight: 400;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   padding-bottom: 32px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -1565,6 +1568,7 @@ pre.copy-enabled code {
   margin: 1rem auto 2rem auto;
   padding: 0 2rem;
   contain: layout style;
+  overflow-x: hidden;
 }
 
 /* Sidebar - Profile Section */
@@ -1881,6 +1885,7 @@ pre.copy-enabled code {
   border-radius: 8px;
   background: #000;
   contain: strict;
+  transform: translateZ(0);
 }
 
 .video-wrapper iframe {
@@ -2118,12 +2123,42 @@ pre.copy-enabled code {
     animation: none;
   }
 
-  .skill-tag-compact,
-  .interest-compact,
-  .open-to-work-badge {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    box-shadow: none;
+  /* Improve scroll performance with Content-Visibility */
+  .home-github,
+  .home-inspiration,
+  .home-thanks,
+  .home-languages {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 200px;
+  }
+
+  /* Remove hover effects completely on mobile */
+  .project-card:hover,
+  .project-card:active {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .nav-list a:hover,
+  .nav-list a:active,
+  .theme-toggle-btn:hover,
+  .theme-toggle-btn:active,
+  .theme-icon-sun:hover,
+  .theme-icon-sun:active,
+  .theme-icon-moon:hover,
+  .theme-icon-moon:active,
+  .project-card-link:hover,
+  .project-card-link:active,
+  a:hover,
+  a:active {
+    transform: none !important;
+  }
+
+  /* Optimize images on mobile */
+  .profile-image,
+  .video-wrapper iframe,
+  .home-github img {
+    transform: translateZ(0);
   }
 
   a {
