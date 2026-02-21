@@ -99,7 +99,8 @@ collections:
         output: true
         permalink: /:collection/:name/
     research:
-        output: false
+        output: true
+        permalink: /research/:name/
     notes:
         output: true
         permalink: /:collection/:name/
@@ -113,6 +114,11 @@ defaults:
           type: "projects"
       values:
           layout: "project"
+    - scope:
+          path: ""
+          type: "research"
+      values:
+          layout: "research-detail"
     - scope:
           path: ""
           type: "notes"

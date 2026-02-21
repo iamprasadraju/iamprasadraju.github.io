@@ -1,0 +1,63 @@
+---
+layout: default
+---
+
+<div class="page-content">
+  <div class="container">
+    <main style="grid-column: 1 / -1; padding-top: 0; margin-top: 0;">
+      <article class="note-detail">
+        <header class="note-detail-header">
+          <h1 class="note-detail-title">{{ page.title }}</h1>
+          {% assign status = page.status | default: 'completed' %}
+          <div class="timeline-status" style="justify-content: center; margin-bottom: 0.5rem;">
+            <span class="status-badge status-{{ status }}">
+              {% if status == 'ongoing' %}Ongoing{% endif %}
+              {% if status == 'completed' %}Completed{% endif %}
+              {% if status == 'paused' %}Paused{% endif %}
+              {% if status == 'published' %}Published{% endif %}
+            </span>
+          </div>
+          <div class="note-detail-meta">
+            {% if status == 'ongoing' or status == 'paused' %}
+              {% if page.date %}
+                <span class="note-detail-date">Started: {{ page.date | date: "%B %Y" }}</span>
+              {% endif %}
+            {% else %}
+              {% if page.date %}
+                {% if page.end_date %}
+                  <span class="note-detail-date">{{ page.date | date: "%B %Y" }} - {{ page.end_date | date: "%B %Y" }}</span>
+                {% else %}
+                  <span class="note-detail-date">{{ page.date | date: "%B %Y" }}</span>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+            {% if page.organization %}
+              <span class="note-detail-org">{{ page.organization }}</span>
+            {% endif %}
+          </div>
+          {% if page.tags %}
+            <div class="note-tags">
+              {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+            </div>
+          {% endif %}
+        </header>
+
+        {% if page.summary %}
+          <p class="research-detail-summary">{{ page.summary }}</p>
+        {% endif %}
+
+        <div class="note-detail-content">
+          {{ content }}
+        </div>
+
+        <div class="note-detail-actions" style="margin-top: 2rem;">
+          {% if page.url %}
+            <a href="{{ page.url }}" target="_blank" rel="noopener" class="project-card-link">View Paper →</a>
+            <span style="margin: 0 0.5rem;">|</span>
+          {% endif %}
+          <a href="{{ '/research/' | relative_url }}" class="project-card-link">← Back to Research</a>
+        </div>
+      </article>
+    </main>
+  </div>
+</div>

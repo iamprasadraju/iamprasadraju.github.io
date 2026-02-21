@@ -1,0 +1,68 @@
+---
+layout: default
+---
+
+<div class="page-content" style="padding-top: 2rem;">
+  <div class="container">
+    <main class="research-main" style="grid-column: 1 / -1;">
+      <section>
+        <h2 class="section-heading">{{ page.title | default: "Research" }}</h2>
+        
+        {% assign sorted_research = site.research | sort: 'date' | reverse %}
+        {% if sorted_research.size > 0 %}
+          <div class="research-timeline">
+            {% for item in sorted_research %}
+              <article class="timeline-item">
+                <div class="timeline-marker">
+                  <span class="timeline-dot"></span>
+                </div>
+                <div class="timeline-content">
+                  {% assign status = item.status | default: 'completed' %}
+                  <div class="timeline-status">
+                    <span class="status-badge status-{{ status }}">
+                      {% if status == 'ongoing' %}Ongoing{% endif %}
+                      {% if status == 'completed' %}Completed{% endif %}
+                      {% if status == 'paused' %}Paused{% endif %}
+                      {% if status == 'published' %}Published{% endif %}
+                    </span>
+                  </div>
+                  <div class="timeline-date">
+                    {% if status == 'ongoing' or status == 'paused' %}
+                      {{ item.date | date: "%B %Y" }}
+                    {% else %}
+                      {% if item.end_date %}
+                        {{ item.date | date: "%B %Y" }} - {{ item.end_date | date: "%B %Y" }}
+                      {% else %}
+                        {{ item.date | date: "%B %Y" }}
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                  <h3 class="timeline-title">
+                    <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                  </h3>
+                  {% if item.organization %}
+                    <p class="timeline-org">{{ item.organization }}</p>
+                  {% endif %}
+                  {% if item.summary %}
+                    <p class="timeline-summary">{{ item.summary }}</p>
+                  {% endif %}
+                  {% if item.tags %}
+                    <div class="timeline-tags">
+                      {% for tag in item.tags %}
+                        <span class="timeline-tag">{{ tag }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="no-research">No research items found.</p>
+        {% endif %}
+        
+        {{ content }}
+      </section>
+    </main>
+  </div>
+</div>

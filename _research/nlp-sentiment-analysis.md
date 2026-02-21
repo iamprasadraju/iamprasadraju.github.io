@@ -1,13 +1,14 @@
 ---
 title: "Natural Language Processing for Sentiment Analysis"
 date: 2024-11-10
+status: ongoing
 organization: "Independent Research Project"
 summary: "Explored transformer-based models for sentiment classification in social media text, comparing BERT and RoBERTa architectures."
 url: "https://example.com/nlp-research"
-highlights:
-  - "Fine-tuned pre-trained transformer models on custom datasets"
-  - "Implemented attention visualization techniques"
-  - "Open-sourced the trained models and evaluation framework"
+tags:
+  - NLP
+  - Deep Learning
+  - Transformers
 ---
 
 ## Abstract

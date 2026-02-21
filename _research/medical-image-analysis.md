@@ -1,16 +1,16 @@
 ---
 title: "Deep Learning Approaches for Medical Image Analysis"
-date: 2024-08-20
+date: 2023-08-20
+end_date: 2024-08-20
+status: published
 organization: "Research Paper - IEEE Conference 2024"
 summary: "Investigated the application of convolutional neural networks for automated detection of abnormalities in medical imaging, achieving 94% accuracy on benchmark datasets."
 url: "https://example.com/research-paper"
-highlights:
-  - "Developed a novel CNN architecture for medical image segmentation"
-  - "Achieved state-of-the-art results on publicly available datasets"
-  - "Published findings in peer-reviewed conference proceedings"
-images:
-  - img_path: "https://miro.medium.com/v2/resize:fit:1400/1*y68ztClLF6ae7P53ayyFzQ.png"
-    caption: "CNN Architecture"
+tags:
+  - Computer Vision
+  - Deep Learning
+  - Medical Imaging
+  - CNN
 ---
 
 ## Abstract
