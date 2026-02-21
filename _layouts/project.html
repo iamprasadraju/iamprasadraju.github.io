@@ -13,6 +13,14 @@ layout: default
             <img src="{{ page.images[0].img_path }}" alt="{{ page.title }}" class="project-detail-logo">
           {% endif %}
           <h1 class="project-detail-title">{{ page.title }}</h1>
+          <div class="project-detail-meta">
+            {% if page.date %}
+              <span class="project-detail-date">Published: {{ page.date | date: "%B %Y" }}</span>
+            {% endif %}
+            {% if page.last_modified_at %}
+              <span class="project-detail-modified">Updated: {{ page.last_modified_at | date: "%B %d, %Y" }}</span>
+            {% endif %}
+          </div>
           {% if page.summary %}
             <p class="project-detail-summary">{{ page.summary }}</p>
           {% endif %}

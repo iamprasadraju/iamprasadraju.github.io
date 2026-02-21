@@ -999,6 +999,20 @@ blockquote {
   margin-bottom: 0.5rem;
 }
 
+.project-detail-meta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-color-secondary);
+}
+
+.project-detail-date,
+.project-detail-modified {
+  opacity: 0.8;
+}
+
 .project-detail-summary {
   font-size: 1.1rem;
   color: var(--text-color-secondary);
@@ -1149,14 +1163,18 @@ blockquote {
   margin-right: auto !important;
 }
 
-.note-detail-date {
-  font-size: 1rem;
-  color: var(--text-color-secondary);
+.note-detail-meta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
   margin-bottom: 1rem;
-  text-align: center !important;
-  width: 100%;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  font-size: 0.85rem;
+  color: var(--text-color-secondary);
+}
+
+.note-detail-date,
+.note-detail-modified {
+  opacity: 0.8;
 }
 
 .note-detail-header .note-tags {

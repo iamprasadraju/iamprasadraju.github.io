@@ -141,13 +141,13 @@ We can look at history of repo (just like logs):
 Useful code:
 
 ```bash
-    // using -N, where N is the number of commits that you want to view
+    # using -N, where N is the number of commits that you want to view
     git log -1
 
-    // You can also reduce the quantity of information using the --oneline
+    # You can also reduce the quantity of information using the --oneline
     git log --oneline
 
-    // --graph to display the commit history as a text-based graph
+     # --graph to display the commit history as a text-based graph
     git log --oneline --graph
 ```
 
@@ -287,16 +287,42 @@ We can check that the command has worked by running ```git remote -v```:
 1. Generate SSH key
 
 ```bash
-    ssh-keygen -t ed25519 -C "iamprasadraju@duck.com"
+    ssh-keygen -t ed25519 -C "gls.prasadraju@gmail.com"
 ```
 Generate one Private and one Public Key
 
-2. Adding SSH key to ssh-agent
+
+2. config SSH configuration
 
 ```bash
-    ssh-agent -s
+    # rename the private as you want
+    mv id_ed25519 github
 
+    # create .ssh dir if not exists
+    mkdir ~/.ssh
+    mv github ~/.SSH
 ```
 
+- you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain.
 
-updated on: 04/01/2026
+```bash
+vim ~/.ssh/config
+
+
+# add this
+Host github.com
+    HostName github.com
+    User github
+    IdentityFile ~/.ssh/github
+```
+
+3. To verify the key is correctly set up with GitHub, test the connection using:
+
+```bash
+    ssh -T git@github.com
+```
+If successful, you’ll see a message like:
+
+<blockquote>
+    Hi iamprasadraju! You've successfully authenticated, but GitHub does not provide shell access.
+</blockquote>
