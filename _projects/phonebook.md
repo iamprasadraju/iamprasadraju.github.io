@@ -1,14 +1,8 @@
 ---
-title: Phonebook
+title: PhoneBook
 date: 2024-06-15
 summary: The Flask-based Phonebook Web App enables users to efficiently manage contacts with full CRUD functionality, user authentication, password reset, and real-time input validation for a seamless experience.
-url: https://github.com/iamprasadraju/Phonebook
-logo: https://cdn-icons-png.flaticon.com/512/1034/1034129.png
-highlights:
-  - User Authentication with secure login and registration
-  - Contact Management with full CRUD operations
-  - Password Reset with expiration for security
-  - Real-time Validation with instant feedback
+repo_url: https://github.com/iamprasadraju/Phonebook
 ---
 
 # Phonebook

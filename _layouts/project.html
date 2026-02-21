@@ -18,17 +18,6 @@ layout: default
           {% endif %}
         </div>
 
-        {% if page.highlights %}
-          <div class="project-detail-highlights">
-            <h3>Key Features</h3>
-            <ul>
-              {% for highlight in page.highlights %}
-                <li>{{ highlight }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-
         {% if content %}
           <div class="project-detail-content">
             {{ content }}
@@ -46,9 +35,9 @@ layout: default
           </div>
         {% endif %}
 
-        {% if page.url %}
+        {% if page.repo_url %}
           <div class="project-detail-actions">
-            <a href="{{ page.url }}" class="btn" target="_blank" rel="noopener">View on GitHub →</a>
+            <a href="{{ page.repo_url }}" class="btn" target="_blank" rel="noopener">View on GitHub →</a>
           </div>
         {% endif %}
 
