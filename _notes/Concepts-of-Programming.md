@@ -1,6 +1,7 @@
 ---
 title:  "Concepts of Programming"
 date:   2025-10-27
+modified_date: 2026-02-21
 summary: ""
 tags:
 ---

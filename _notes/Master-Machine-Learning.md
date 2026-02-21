@@ -1,6 +1,7 @@
 ---
 title:  "Master Machine Learning"
 date:   2025-09-03
+modified_date: 2026-02-21
 summary: ""
 tags:
 ---

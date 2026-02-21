@@ -1,6 +1,7 @@
 ---
 title: "Understanding Backpropagation"
 date: 2025-01-10
+modified_date: 2026-02-21
 summary: "Comprehensive notes on how backpropagation works in neural networks, including chain rule application and gradient computation."
 url: "https://example.com/notes/backpropagation"
 tags:

@@ -12,8 +12,8 @@ layout: default
             {% if page.date %}
               <span class="note-detail-date">Published: {{ page.date | date: "%B %d, %Y" }}</span>
             {% endif %}
-            {% if page.last_modified_at %}
-              <span class="note-detail-modified">Updated: {{ page.last_modified_at | date: "%B %d, %Y" }}</span>
+            {% if page.modified_date %}
+              <span class="note-detail-modified">Updated: {{ page.modified_date | date: "%B %d, %Y" }}</span>
             {% endif %}
           </div>
           {% if page.tags %}

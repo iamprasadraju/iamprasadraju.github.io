@@ -1,6 +1,7 @@
 ---
 title: Music Genre Classification Using Convolution Neural Networks
 date: 2024-09-01
+modified_date: 2026-02-21
 summary: Music genre classification is the task of automatically identifying the genre of a song based on its audio features. Convolutional Neural Networks (CNNs) are well-suited for this task because they can learn hierarchical features from spectrograms.
 repo_url: https://sample.com
 ---

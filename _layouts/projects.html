@@ -8,7 +8,7 @@ layout: default
       <section>
         <h2 class="section-heading">{{ page.title | default: "Projects" }}</h2>
         
-        {% assign projects = site.projects | sort: 'last_modified_at' | reverse %}
+        {% assign projects = site.projects | sort: 'modified_date' | reverse %}
         {% if projects.size > 0 %}
           <div class="projects-grid">
             {% for project in projects %}

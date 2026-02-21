@@ -10,7 +10,7 @@ permalink: /notes/
       <section>
         <h2 class="section-heading">Notes</h2>
         
-        {% assign sorted_notes = site.notes | sort: 'last_modified_at' | reverse %}
+        {% assign sorted_notes = site.notes | sort: 'modified_date' | reverse %}
         {% for note in sorted_notes %}
           <section class="note-item">
             <h3>

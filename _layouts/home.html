@@ -8,7 +8,7 @@ layout: default
     <div class="profile-card">
       <div class="profile-card-inner">
         {% if site.image_path %}
-          <img class="profile-image" src="{{ site.image_path | relative_url }}" alt="{{ site.name }} Profile Image" />
+          <img loading="lazy" decoding="async" class="profile-image" src="{{ site.image_path | relative_url }}" alt="{{ site.name }} Profile Image" />
         {% endif %}
         <h1 class="profile-name">{{ site.name }}</h1>
         {% if site.label %}<p class="profile-title">{{ site.label }}</p>{% endif %}
@@ -78,7 +78,7 @@ layout: default
       <section class="home-github">
         <h2 class="section-heading">GitHub Activity</h2>
         <a href="https://github.com/{{ site.github_username }}">
-          <img src="https://ghchart.rshah.org/{{ site.github_username }}" alt="GitHub contribution graph" />
+          <img loading="lazy" decoding="async" src="https://ghchart.rshah.org/{{ site.github_username }}" alt="GitHub contribution graph" />
         </a>
       </section>
     {% endif %}
@@ -91,9 +91,10 @@ layout: default
         <cite>@GeorgeHotz</cite>
       </blockquote>
       
-      <!-- YouTube Video -->
+      <!-- YouTube Video - Lazy loaded -->
       <div class="video-wrapper">
         <iframe 
+          loading="lazy"
           src="https://www.youtube.com/embed/tvJ1RGlxe8Q" 
           title="YouTube video player" 
           frameborder="0" 
