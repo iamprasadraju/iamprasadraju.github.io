@@ -96,6 +96,7 @@ body {
   align-items: center;
   height: 56px;
   padding: 0 1rem;
+  gap: 1rem;
 }
 
 .nav-list {
@@ -104,6 +105,10 @@ body {
   gap: 1.5rem;
   margin: 0;
   padding: 0;
+}
+
+.theme-toggle-wrapper {
+  margin-left: auto;
 }
 
 .nav-list li {
@@ -133,7 +138,11 @@ body {
 .theme-toggle-wrapper {
   display: flex;
   align-items: center;
-  margin-left: 1rem;
+}
+
+/* Burger Menu */
+.burger-menu {
+  display: none;
 }
 
 .theme-toggle-btn {
@@ -1857,19 +1866,12 @@ pre.copy-enabled code {
 @media (max-width: 768px) {
   .main-nav .container {
     padding: 0 0.75rem;
-  }
-  
-  .nav-list {
-    gap: 1rem;
-  }
-  
-  .nav-list a {
-    font-size: 16px;
-    padding: 0.75rem 0.5rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
   }
   
   .theme-toggle-wrapper {
-    margin-left: 0.75rem;
+    margin-left: 0;
   }
 
   .theme-toggle-btn {
@@ -1885,6 +1887,87 @@ pre.copy-enabled code {
   .theme-icon-moon svg {
     width: 18px;
     height: 18px;
+  }
+  
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    gap: 5px;
+    margin-left: auto;
+  }
+  
+  .burger-menu span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  .burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .burger-menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  .nav-list {
+    display: none;
+    position: fixed;
+    top: 56px;
+    right: -280px;
+    width: 280px;
+    height: calc(100vh - 56px);
+    background-color: var(--bg-color);
+    border-left: 1px solid var(--border-color);
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 999;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+  }
+  
+  .nav-list.active {
+    display: flex;
+    right: 0;
+  }
+  
+  .nav-list li {
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .nav-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .nav-list a {
+    font-size: 16px;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    padding-left: 1.5rem;
+  }
+  
+  .nav-list a:hover {
+    background-color: var(--bg-color-secondary);
   }
 }
 

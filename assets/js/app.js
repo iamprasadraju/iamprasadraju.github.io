@@ -1,3 +1,32 @@
+// Burger Menu Toggle
+(function() {
+  const burgerMenu = document.getElementById('burger-menu');
+  const navList = document.getElementById('nav-list');
+  
+  if (burgerMenu && navList) {
+    burgerMenu.addEventListener('click', () => {
+      burgerMenu.classList.toggle('active');
+      navList.classList.toggle('active');
+    });
+    
+    // Close menu when clicking a link
+    navList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burgerMenu.classList.remove('active');
+        navList.classList.remove('active');
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!burgerMenu.contains(e.target) && !navList.contains(e.target)) {
+        burgerMenu.classList.remove('active');
+        navList.classList.remove('active');
+      }
+    });
+  }
+})();
+
 // Dark Mode Toggle
 (function() {
   const getTheme = () => {
