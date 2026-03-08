@@ -4,33 +4,9 @@ layout: default
 
 <div class="page-content">
   <div class="container">
-    <main style="grid-column: 1 / -1; padding-top: 0; margin-top: 0;">
-      <article class="note-detail">
-        <header class="note-detail-header">
-          <h1 class="note-detail-title">{{ page.title }}</h1>
-          <div class="note-detail-meta">
-            {% if page.date %}
-              <span class="note-detail-date">Published: {{ page.date | date: "%B %d, %Y" }}</span>
-            {% endif %}
-            {% if page.modified_date %}
-              <span class="note-detail-modified">Updated: {{ page.modified_date | date: "%B %d, %Y" }}</span>
-            {% endif %}
-          </div>
-          {% if page.tags %}
-            <div class="note-tags">
-              {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
-            </div>
-          {% endif %}
-        </header>
-
-        <div class="note-detail-content">
-          {{ content }}
-        </div>
-
-        <div class="note-detail-actions" style="margin-top: 2rem;">
-          <a href="{{ '/notes/' | relative_url }}" class="project-card-link">← Back to Notes</a>
-        </div>
-      </article>
+    <main style="grid-column: 1 / -1; padding-top: 2rem;">
+      <a href="{{ '/notes/' | relative_url }}" class="project-card-link" style="display: inline-block; margin-bottom: 1rem;">← Back</a>
+      {{ content }}
     </main>
   </div>
 </div>

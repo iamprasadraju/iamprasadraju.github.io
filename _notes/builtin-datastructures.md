@@ -1,5 +1,5 @@
 ---
-title: "In-built Datastructures in py, c++, c"
+title: "In-built Datastructures in Python, C++, C"
 date: "8 Mar 2026"
 summary: "Complete reference for built-in data structures in Python, C++, and C with code examples"
 tags:
@@ -16,8 +16,8 @@ A quick reference for common data structure operations. Use this as your go-to g
 
 ---
 
-## Table of Contents
-
+## <u>Table of Contents</u>
+<span></span>
 ### Python
 [List](#list) | [Tuple](#tuple) | [Set](#set) | [Dictionary](#dictionary) | [Array](#array-module) | [Collections](#collections)
 
