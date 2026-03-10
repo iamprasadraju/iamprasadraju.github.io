@@ -83,6 +83,8 @@ layout: default
       </section>
     {% endif %}
 
+    {% include calendar.html %}
+
     <!-- Inspiration with YouTube -->
     <section class="home-inspiration">
       <h2 class="section-heading">Inspiration</h2>
@@ -115,15 +117,12 @@ layout: default
       </section>
     {% endif %}
 
-    {% if site.languages %}
-      <section class="home-languages">
-        <h2 class="section-heading">Languages</h2>
-        <div class="languages-list">
-          {% for lang in site.languages %}
-            <span>{{ lang.language }} ({{ lang.fluency }})</span>
-          {% endfor %}
-        </div>
-      </section>
-    {% endif %}
+    <section class="home-links">
+      <h2 class="section-heading">Reads</h2>
+      <div class="links-list">
+        <a href="https://iamprasadraju.github.io/ResearchRack/" target="_blank" rel="noopener">Research Papers</a>
+        <a href="https://iamprasadraju.github.io/ResearchRack/books" target="_blank" rel="noopener">Books</a>
+      </div>
+    </section>
   </main>
 </div>

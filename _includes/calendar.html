@@ -1,0 +1,92 @@
+<section class="home-calendar">
+  <h2 class="section-heading">Timeline</h2>
+  
+  <div class="calendar-wrapper">
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button class="calendar-nav-btn" id="prevMonth">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <span class="calendar-month-year" id="monthYear"></span>
+        <button class="calendar-nav-btn" id="nextMonth">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+      
+      <div class="calendar-weekdays">
+        <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+      </div>
+      
+      <div class="calendar-days" id="calendarDays"></div>
+    </div>
+    
+    <div class="calendar-items-panel" id="itemsPanel">
+      <button class="date-select-btn" id="datePickerBtn">
+        <span id="selectedDateTitle">Select date</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <input type="date" id="customDateInput">
+      <div class="calendar-items-list" id="itemsList"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const calendarData = [{% for project in site.projects %}{% if project.date %}{type:'project',title:"{{ project.title|escape }}",date:"{{ project.date|date:'%Y-%m-%d' }}",url:"{{ project.url|relative_url }}",summary:"{{ project.summary|escape }}"},{% endif %}{% endfor %}{% for note in site.notes %}{% if note.date %}{type:'note',title:"{{ note.title|escape }}",date:"{{ note.date|date:'%Y-%m-%d' }}",url:"{{ note.url|relative_url }}",summary:"{{ note.summary|escape }}"},{% endif %}{% endfor %}{% for research in site.research %}{% if research.date %}{type:'research',title:"{{ research.title|escape }}",date:"{{ research.date|date:'%Y-%m-%d' }}",url:"{{ research.url|relative_url }}",summary:"{{ research.summary|escape }}"},{% endif %}{% endfor %}];
+
+  let currentDate = new Date();
+  let selectedDate = null;
+
+  function renderCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    document.getElementById('monthYear').textContent = monthNames[month] + ' ' + year;
+    
+    const firstDay = new Date(year, month, 1).getDay();
+    const totalDays = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
+    const pad = (n) => n.toString().padStart(2,'0');
+    const todayStr = today.getFullYear() + '-' + pad(today.getMonth()+1) + '-' + pad(today.getDate());
+    
+    const itemsByDate = {};
+    calendarData.forEach(item => { if(!itemsByDate[item.date]) itemsByDate[item.date] = []; itemsByDate[item.date].push(item); });
+    
+    let html = '';
+    for (let i = 0; i < firstDay; i++) html += '<span class="empty"></span>';
+    for (let day = 1; day <= totalDays; day++) {
+      const d = new Date(year, month, day);
+      const dateKey = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate());
+      const isToday = dateKey === todayStr;
+      const isSelected = dateKey === selectedDate;
+      const hasItems = itemsByDate[dateKey];
+      const isFuture = d > today;
+      let cls = 'day' + (isToday?' today':'') + (isSelected?' selected':'') + (hasItems?' has-items':'') + (isFuture?' future':'');
+      html += '<span class="'+cls+'" data-date="'+dateKey+'">'+day+'</span>';
+    }
+    document.getElementById('calendarDays').innerHTML = html;
+    document.querySelectorAll('.day:not(.future)').forEach(el => el.addEventListener('click', () => selectDate(el.dataset.date)));
+  }
+
+  function selectDate(dateKey) {
+    selectedDate = dateKey;
+    renderCalendar();
+    const d = new Date(dateKey + 'T00:00:00');
+    document.getElementById('selectedDateTitle').textContent = d.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+    const items = calendarData.filter(item => item.date === dateKey);
+    const list = document.getElementById('itemsList');
+    if (!items.length) { list.innerHTML = '<p class="no-items">No activity</p>'; return; }
+    const colors = {project:'#10b981', note:'#3b82f6', research:'#8b5cf6'};
+    list.innerHTML = items.map(i => '<div class="item"><span class="tag" style="background:'+colors[i.type]+'">'+i.type+'</span><a href="'+i.url+'">'+i.title+'</a></div>').join('');
+  }
+
+  document.getElementById('prevMonth').onclick = () => { currentDate.setMonth(currentDate.getMonth() - 1); renderCalendar(); };
+  document.getElementById('nextMonth').onclick = () => { currentDate.setMonth(currentDate.getMonth() + 1); renderCalendar(); };
+  
+  document.getElementById('datePickerBtn').onclick = () => document.getElementById('customDateInput').showPicker();
+  document.getElementById('customDateInput').onchange = (e) => { if(e.target.value) selectDate(e.target.value); };
+  
+  renderCalendar();
+})();
+</script>

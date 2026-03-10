@@ -2,6 +2,7 @@
 title: "In-built Datastructures in Python, C++, C"
 date: "8 Mar 2026"
 summary: "Complete reference for built-in data structures in Python, C++, and C with code examples"
+excerpt: ""
 tags:
   - "Data Structures"
   - "Python"
@@ -87,20 +88,20 @@ stack[-1]          # peek - O(1)
 
 **Interview Questions:**
 
-Q: When would you use list instead of array?
-A: Use list when you need dynamic sizing, mixed types, or built-in methods. Use array module when you need memory efficiency for large numeric data of the same type.
+<div class="q">Q: When would you use list instead of array?</div>
+<div class="a">A: Use list when you need dynamic sizing, mixed types, or built-in methods. Use array module when you need memory efficiency for large numeric data of the same type.</div>
 
-Q: What is the time complexity of `append()` vs `insert()`?
-A: append() is O(1) amortized - adds to end. insert() is O(n) - requires shifting all elements.
+<div class="q">Q: What is the time complexity of `append()` vs `insert()`?</div>
+<div class="a">A: append() is O(1) amortized - adds to end. insert() is O(n) - requires shifting all elements.</div>
 
-Q: How does list handle dynamic resizing?
-A: Python list uses over-allocation. When full, allocates ~12.5% more space. This amortizes resize cost to O(1) for append.
+<div class="q">Q: How does list handle dynamic resizing?</div>
+<div class="a">A: Python list uses over-allocation. When full, allocates ~12.5% more space. This amortizes resize cost to O(1) for append.</div>
 
-Q: Difference between `remove()` and `pop()`?
-A: remove() removes first occurrence of value (O(n)), raises ValueError if not found. pop() removes and returns element at index.
+<div class="q">Q: Difference between `remove()` and `pop()`?</div>
+<div class="a">A: remove() removes first occurrence of value (O(n)), raises ValueError if not found. pop() removes and returns element at index.</div>
 
-Q: How would you implement a stack using list?
-A: Use append() for push, pop() for pop. Top of stack is last element.
+<div class="q">Q: How would you implement a stack using list?</div>
+<div class="a">A: Use append() for push, pop() for pop. Top of stack is last element.</div>
 
 ---
 
@@ -141,19 +142,19 @@ a, b = func()
 
 **Interview Questions:**
 
-Q: Why is tuple immutable? What are the benefits?
+<div class="q">Q: </div><div class="a">A: </div>Why is tuple immutable? What are the benefits?
 A: Immutability provides hashability (can be dict keys), memory efficiency, and thread safety.
 
-Q: Can tuple contain mutable objects? What happens?
+<div class="q">Q: </div><div class="a">A: </div>Can tuple contain mutable objects? What happens?
 A: Yes, tuple can contain mutable objects like lists. The tuple itself can't change, but contents can.
 
-Q: Difference between tuple and list?
+<div class="q">Q: </div><div class="a">A: </div>Difference between tuple and list?
 A: Tuple is immutable (faster, less memory, hashable), used for fixed data. List is mutable.
 
-Q: How does tuple hash work?
+<div class="q">Q: </div><div class="a">A: </div>How does tuple hash work?
 A: Only works if all elements are hashable. Hash is computed from contents.
 
-Q: Use cases where tuple is preferred over list?
+<div class="q">Q: </div><div class="a">A: </div>Use cases where tuple is preferred over list?
 A: Function return values, dictionary keys, fixed records (coordinates).
 
 ---
@@ -199,19 +200,19 @@ unique = list(dict.fromkeys(lst))
 
 **Interview Questions:**
 
-Q: How is set implemented internally in Python?
+<div class="q">Q: </div><div class="a">A: </div>How is set implemented internally in Python?
 A: Python set uses a hash table. Elements are hashed, collisions handled using open addressing.
 
-Q: What is the difference between set and frozenset?
+<div class="q">Q: </div><div class="a">A: </div>What is the difference between set and frozenset?
 A: set is mutable, frozenset is immutable and hashable.
 
-Q: How to find common elements between two lists?
+<div class="q">Q: </div><div class="a">A: </div>How to find common elements between two lists?
 A: Convert both to sets and use intersection.
 
-Q: Why set doesn't support indexing?
+<div class="q">Q: </div><div class="a">A: </div>Why set doesn't support indexing?
 A: Sets are hash tables - order is determined by hash values.
 
-Q: How would you remove duplicates from a list while preserving order?
+<div class="q">Q: </div><div class="a">A: </div>How would you remove duplicates from a list while preserving order?
 A: Use dict.fromkeys() or loop through with seen set.
 
 ---
@@ -258,22 +259,22 @@ d3 = d1 | d2
 
 **Interview Questions:**
 
-Q: How is dictionary implemented in Python?
+<div class="q">Q: </div><div class="a">A: </div>How is dictionary implemented in Python?
 A: Python dict uses a hash table with open addressing. Uses hash to compute index, handles collisions via probing.
 
-Q: What is hash collision and how does Python handle it?
+<div class="q">Q: </div><div class="a">A: </div>What is hash collision and how does Python handle it?
 A: When two keys hash to same index. Python uses open addressing - probes for next empty slot.
 
-Q: Difference between `get()` and `[]`?
+<div class="q">Q: </div><div class="a">A: </div>Difference between `get()` and `[]`?
 A: get() returns None/default if key not found. [] raises KeyError.
 
-Q: How does dictionary maintain insertion order (Python 3.7+)?
+<div class="q">Q: </div><div class="a">A: </div>How does dictionary maintain insertion order (Python 3.7+)?
 A: Python 3.7+ maintains insertion order using compact array.
 
-Q: What is the difference between dict and collections.defaultdict?
+<div class="q">Q: </div><div class="a">A: </div>What is the difference between dict and collections.defaultdict?
 A: Regular dict raises KeyError for missing keys. defaultdict provides default values.
 
-Q: How would you merge two dictionaries in Python?
+<div class="q">Q: </div><div class="a">A: </div>How would you merge two dictionaries in Python?
 A: Use | operator (Python 3.9+), update(), or {**d1, **d2}.
 
 ---
@@ -394,16 +395,16 @@ v.reserve(n);          // O(n)
 
 **Interview Questions:**
 
-Q: What is amortized O(1) for push_back?
+<div class="q">Q: </div><div class="a">A: </div>What is amortized O(1) for push_back?
 A: Most push_back calls are O(1), but occasionally reallocates and copies all elements. This rare cost is amortized.
 
-Q: Difference between vector and array?
+<div class="q">Q: </div><div class="a">A: </div>Difference between vector and array?
 A: Array has fixed size at compile time. Vector has dynamic size.
 
-Q: When should you use reserve()?
+<div class="q">Q: </div><div class="a">A: </div>When should you use reserve()?
 A: When you know approximate size beforehand. Prevents multiple reallocations.
 
-Q: Capacity vs size?
+<div class="q">Q: </div><div class="a">A: </div>Capacity vs size?
 A: size = elements. capacity = memory allocated. size <= capacity.
 
 ---
@@ -434,10 +435,10 @@ dq[0], dq.at(0)       // O(1)
 
 **Interview Questions:**
 
-Q: How is deque different from vector?
+<div class="q">Q: </div><div class="a">A: </div>How is deque different from vector?
 A: Deque allows O(1) at both ends. Vector only at back.
 
-Q: Internal structure?
+<div class="q">Q: </div><div class="a">A: </div>Internal structure?
 A: Uses multiple fixed-size arrays (chunks) mapped together.
 
 ---
@@ -471,10 +472,10 @@ lst.sort();                 // O(n log n)
 
 **Interview Questions:**
 
-Q: When to use list over vector?
+<div class="q">Q: </div><div class="a">A: </div>When to use list over vector?
 A: When frequent insertion/deletion in middle, or at front.
 
-Q: Time complexity of inserting in middle?
+<div class="q">Q: </div><div class="a">A: </div>Time complexity of inserting in middle?
 A: O(1) if you have iterator. O(n) to find position.
 
 ---
@@ -524,10 +525,10 @@ st.size();         // O(1)
 
 **Interview Questions:**
 
-Q: Basic operations of stack?
+<div class="q">Q: </div><div class="a">A: </div>Basic operations of stack?
 A: push, pop, top, empty, size - all O(1).
 
-Q: Applications of stack?
+<div class="q">Q: </div><div class="a">A: </div>Applications of stack?
 A: DFS, expression evaluation, parenthesis matching, undo/redo.
 
 ---
@@ -559,7 +560,7 @@ q.size();          // O(1)
 
 **Interview Questions:**
 
-Q: Applications of queue?
+<div class="q">Q: </div><div class="a">A: </div>Applications of queue?
 A: BFS, task scheduling, print job queue.
 
 ---
@@ -589,10 +590,10 @@ pq.pop();         // O(log n)
 
 **Interview Questions:**
 
-Q: Time complexity of push and pop?
+<div class="q">Q: </div><div class="a">A: </div>Time complexity of push and pop?
 A: Both O(log n).
 
-Q: Applications?
+<div class="q">Q: </div><div class="a">A: </div>Applications?
 A: Dijkstra's, Huffman coding, top-k elements.
 
 ---
@@ -624,7 +625,7 @@ s.upper_bound(x)              // O(log n)
 
 **Interview Questions:**
 
-Q: Time complexity?
+<div class="q">Q: </div><div class="a">A: </div>Time complexity?
 A: All operations O(log n) due to tree structure.
 
 ---
@@ -679,7 +680,7 @@ for(auto [k, v] : m) {}       // O(n)
 
 **Interview Questions:**
 
-Q: vs unordered_map?
+<div class="q">Q: </div><div class="a">A: </div>vs unordered_map?
 A: map is O(log n) sorted. unordered_map is O(1) average.
 
 ---
@@ -728,7 +729,7 @@ us.erase(x);                  // O(1) avg
 
 **Interview Questions:**
 
-Q: Load factor?
+<div class="q">Q: </div><div class="a">A: </div>Load factor?
 A: Ratio of elements to buckets. Lower = less collisions, more memory.
 
 ---
@@ -755,7 +756,7 @@ um.find("key") != um.end()  // O(1) avg
 
 **Interview Questions:**
 
-Q: Hash collisions?
+<div class="q">Q: </div><div class="a">A: </div>Hash collisions?
 A: Uses chaining or probing. Falls back to rehashing.
 
 ---
@@ -833,10 +834,10 @@ void func(int *arr, int size) {}
 
 **Interview Questions:**
 
-Q: Contiguous memory enables?
+<div class="q">Q: </div><div class="a">A: </div>Contiguous memory enables?
 A: O(1) random access, good cache locality.
 
-Q: Array decay?
+<div class="q">Q: </div><div class="a">A: </div>Array decay?
 A: Array decays to pointer when passed, loses size info.
 
 ---
@@ -869,10 +870,10 @@ strncpy(dest, src, n)     // O(n)
 
 **Interview Questions:**
 
-Q: Buffer overflow?
+<div class="q">Q: </div><div class="a">A: </div>Buffer overflow?
 A: Writing beyond array bounds, security vulnerability.
 
-Q: Safe copy?
+<div class="q">Q: </div><div class="a">A: </div>Safe copy?
 A: Use strncpy with null termination, or snprintf.
 
 ---
@@ -903,7 +904,7 @@ typedef struct {
 
 **Interview Questions:**
 
-Q: Padding?
+<div class="q">Q: </div><div class="a">A: </div>Padding?
 A: Compiler adds padding for alignment. Size may be larger.
 
 ---
@@ -963,10 +964,10 @@ void alloc(int **p) {
 
 **Interview Questions:**
 
-Q: malloc vs calloc?
+<div class="q">Q: </div><div class="a">A: </div>malloc vs calloc?
 A: malloc: uninitialized. calloc: zero-initialized.
 
-Q: Memory leak?
+<div class="q">Q: </div><div class="a">A: </div>Memory leak?
 A: Memory allocated but never freed.
 
 ---
