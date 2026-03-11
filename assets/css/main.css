@@ -1817,7 +1817,6 @@ pre.copy-enabled code {
   margin-bottom: 1rem;
 }
 
-.thanks-list,
 .languages-list {
   display: flex;
   flex-wrap: wrap;
@@ -1827,17 +1826,74 @@ pre.copy-enabled code {
 .thanks-list {
   list-style: none;
   padding-left: 0;
-  margin: 0 auto;
-  display: table;
+  margin: 0;
+  overflow: hidden;
+  max-height: 180px;
+  position: relative;
   text-align: center;
 }
 
+.thanks-list::before,
+.thanks-list::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.thanks-list::before {
+  top: 0;
+  background: linear-gradient(180deg, var(--bg-color) 0%, transparent 100%);
+}
+
+.thanks-list::after {
+  bottom: 0;
+  background: linear-gradient(0deg, var(--bg-color) 0%, transparent 100%);
+}
+
+.thanks-list .credits-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  animation: credits-scroll 20s linear infinite;
+}
+
+.thanks-list .credits-scroll:hover {
+  animation-play-state: paused;
+}
+
 .thanks-list li {
-  font-size: 0.95rem;
-  color: var(--text-color);
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
+  color: var(--text-color);
+  padding: 0.25rem 0;
+}
+
+@keyframes credits-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thanks-list .credits-scroll {
+    animation: none;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 .languages-list span {

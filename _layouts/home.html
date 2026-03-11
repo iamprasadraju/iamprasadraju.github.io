@@ -110,9 +110,14 @@ layout: default
       <section class="home-thanks">
         <h2 class="section-heading">Special Thanks</h2>
         <ul class="thanks-list">
-          {% for professor in site.special_thanks %}
-            <li>{{ professor }}</li>
-          {% endfor %}
+          <div class="credits-scroll">
+            {% for professor in site.special_thanks %}
+              <li>{{ professor }}</li>
+            {% endfor %}
+            {% for professor in site.special_thanks %}
+              <li>{{ professor }}</li>
+            {% endfor %}
+          </div>
         </ul>
       </section>
     {% endif %}
