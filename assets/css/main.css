@@ -2812,6 +2812,13 @@ code {
 .calendar-items-list .tag { display: inline-block; padding: 0.08rem 0.2rem; border-radius: 2px; font-size: 0.45rem; font-weight: 600; color: white; text-transform: uppercase; margin-right: 0.2rem; }
 .calendar-items-list a { font-size: 0.65rem; color: var(--text-color); text-decoration: none; font-weight: 500; }
 .calendar-items-list a:hover { color: var(--link-color); }
+
+@media (min-width: 768px) {
+  .calendar-items-list { gap: 0.5rem; }
+  .calendar-items-list .item { padding: 0.6rem; border-radius: 4px; }
+  .calendar-items-list .tag { padding: 0.15rem 0.35rem; font-size: 0.7rem; margin-right: 0.35rem; }
+  .calendar-items-list a { font-size: 1rem; }
+}
 .no-items { text-align: center; color: var(--text-color-secondary); font-size: 0.65rem; margin: 0; }
 
 .home-links { margin-bottom: 1rem; }
