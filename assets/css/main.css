@@ -1779,6 +1779,46 @@ pre.copy-enabled code {
   color: #ffffff;
 }
 
+.profile-section {
+  margin-top: 1.25rem;
+}
+
+.profile-section h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.profile-link-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  padding: 0.5rem 0.6rem;
+  background: var(--bg-color-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.profile-link-item:hover {
+  border-color: var(--link-color);
+  background: var(--hover-bg);
+  text-decoration: none;
+}
+
+.profile-link-item svg {
+  opacity: 0.6;
+  margin-left: auto;
+}
+
 /* Main Content Area */
 .home-main {
   padding-top: 0;
