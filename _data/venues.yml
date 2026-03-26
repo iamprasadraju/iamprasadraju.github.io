@@ -1,0 +1,5 @@
+# Publication venues for badge display
+# Format:
+# abbreviation:
+#   url: https://venue-url.com
+#   color: "#hexcolor"

@@ -1,0 +1,55 @@
+cv:
+  name: Prasad Raju G
+  label: Aspiring AI Engineer & Researcher
+  email: gls.prasadraju@gmail.com
+  location: India
+  image: ""
+  summary: Aspiring AI Engineer & Researcher with a B.Tech in Artificial Intelligence and Data Science. Skilled in Machine Learning, Deep Learning, and Applied Mathematics. Building real AI systems through independent research and project development.
+
+  social_networks:
+    - network: LinkedIn
+      username: realprasadraju
+    - network: GitHub
+      username: # your-github-username
+
+  sections:
+    Experience:
+      - company: Independent
+        position: AI Research
+        location: Remote
+        start_date: "2024-06"
+        end_date: Present
+        summary: Studying machine learning, deep learning, and mathematical foundations.
+        highlights:
+          - Implementing ML algorithms and AI models using Python and PyTorch.
+          - Reproducing research papers from platforms like arXiv.
+          - Building and documenting projects on GitHub.
+          - Strengthening fundamentals in algorithms, calculus, statistics, and linear algebra.
+
+    Education:
+      - institution: Kakinada Institute of Engineering and Technology
+        location: Kakinada, India
+        area: Artificial Intelligence and Data Science
+        studyType: Bachelor of Technology (B.Tech)
+        start_date: "2020-01"
+        end_date: "2024-06"
+        highlights:
+          - Core coursework in AI, Data Science, Machine Learning, and Deep Learning.
+
+    Skills:
+      - name: Machine Learning
+        level: Intermediate
+        icon: fa-solid fa-brain
+        keywords: "Supervised Learning, Unsupervised Learning, Feature Engineering, Model Evaluation"
+      - name: Deep Learning
+        level: Intermediate
+        icon: fa-solid fa-network-wired
+        keywords: "PyTorch, Neural Networks, CNNs, RNNs, Transformers"
+      - name: Applied Mathematics
+        level: Intermediate
+        icon: fa-solid fa-calculator
+        keywords: "Linear Algebra, Calculus, Statistics, Probability"
+      - name: Programming
+        level: Proficient
+        icon: fa-solid fa-code
+        keywords: "Python, NumPy, Pandas, Scikit-learn, Git"

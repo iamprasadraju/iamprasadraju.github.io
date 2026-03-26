@@ -1,0 +1,587 @@
+/*******************************************************************************
+ * Homepage — Clean, borderless, section-based layout
+ ******************************************************************************/
+
+@use "variables" as v;
+
+// ============================================
+// PAGE WRAPPER
+// ============================================
+
+.home-page-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 3rem;
+}
+
+// ============================================
+// HERO
+// ============================================
+
+.home-hero {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.home-hero-split {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+// Left column: photo + contact + socials + links
+.home-hero-left {
+  flex-shrink: 0;
+  width: 200px;
+}
+
+.home-hero-image {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 2px solid var(--global-divider-color);
+}
+
+.home-hero-contact {
+  font-size: 0.8rem;
+  color: var(--global-text-color-light);
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1.5;
+
+  a {
+    color: var(--global-theme-color);
+    text-decoration: none;
+    word-break: break-all;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .location {
+    opacity: 0.7;
+    font-size: 0.78rem;
+  }
+}
+
+// Right column: name, subtitle, about, socials, links
+.home-hero-right {
+  flex: 1;
+  min-width: 0;
+}
+
+.home-hero-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--global-text-color);
+  letter-spacing: -0.02em;
+}
+
+.home-hero-subtitle {
+  font-size: 1rem;
+  color: var(--global-text-color-light);
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+}
+
+.home-hero-about {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--global-text-color);
+  margin-bottom: 1rem;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.home-hero-about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  font-size: 0.88rem;
+
+  a {
+    color: var(--global-theme-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.15s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    svg {
+      width: 10px;
+      height: 10px;
+      margin-left: 0.2rem;
+      vertical-align: middle;
+      opacity: 0.6;
+    }
+  }
+}
+
+.home-hero-social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+
+  a {
+    color: var(--global-text-color-light);
+    transition: color 0.15s, transform 0.15s;
+
+    &:hover {
+      color: var(--global-theme-color);
+      transform: translateY(-1px);
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.home-hero-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+
+  a {
+    color: var(--global-theme-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.15s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    svg {
+      width: 9px;
+      height: 9px;
+      margin-left: 0.2rem;
+      vertical-align: middle;
+      opacity: 0.6;
+    }
+  }
+}
+
+// ============================================
+// SHARED SECTION STYLES
+// ============================================
+
+.home-section {
+  margin-bottom: 2.5rem;
+}
+
+.home-section-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--global-text-color-light);
+  margin-bottom: 1rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--global-theme-color);
+}
+
+// ============================================
+// ABOUT
+// ============================================
+
+.home-about {
+  p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--global-text-color);
+    margin-bottom: 0;
+  }
+}
+
+// ============================================
+// SKILLS & INTERESTS
+// ============================================
+
+.home-tags-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.home-tags-column {
+  h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--global-text-color);
+    margin-bottom: 0.6rem;
+  }
+}
+
+.home-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.home-tag {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border-radius: 2rem;
+  background-color: var(--global-theme-color);
+  color: var(--global-hover-text-color);
+  opacity: 0.85;
+  transition: opacity 0.15s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.home-tag--outlined {
+  background-color: transparent;
+  color: var(--global-text-color);
+  border: 1px solid var(--global-divider-color);
+  opacity: 1;
+
+  &:hover {
+    border-color: var(--global-theme-color);
+    color: var(--global-theme-color);
+  }
+}
+
+// ============================================
+// GITHUB ACTIVITY
+// ============================================
+
+.home-github {
+  img {
+    width: 100%;
+    border-radius: 0.5rem;
+    opacity: 0.9;
+    transition: opacity 0.15s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// Pinned repos
+.pinned-repos-scroll {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  padding-bottom: 0.25rem;
+
+  &::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--global-divider-color);
+    border-radius: 3px;
+  }
+}
+
+.pinned-repos-loading {
+  text-align: center;
+  color: var(--global-text-color-light);
+  padding: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.pinned-repos-empty {
+  text-align: center;
+  color: var(--global-text-color-light);
+  padding: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.pinned-repos-wrapper {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  animation: pinned-scroll 35s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes pinned-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.pinned-repo-card {
+  display: block;
+  width: 240px;
+  min-width: 240px;
+  padding: 0.85rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.5rem;
+  background-color: var(--global-bg-color);
+  color: var(--global-text-color);
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &:hover {
+    border-color: var(--global-theme-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    text-decoration: none;
+    color: var(--global-text-color);
+  }
+}
+
+.pinned-repo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+
+  svg {
+    color: var(--global-theme-color);
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+}
+
+.pinned-repo-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pinned-repo-desc {
+  font-size: 0.75rem;
+  color: var(--global-text-color-light);
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pinned-repo-meta {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  color: var(--global-text-color-light);
+}
+
+.pinned-repo-lang {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.lang-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.pinned-repo-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+// ============================================
+// RESEARCH PAPERS
+// ============================================
+
+.home-research {
+  .publications {
+    ol.bibliography {
+      padding-left: 1rem;
+    }
+  }
+}
+
+.home-research-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--global-theme-color);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-bottom-color: var(--global-theme-color);
+  }
+}
+
+// ============================================
+// VIDEO
+// ============================================
+
+.home-inspiration-quote {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--global-text-color-light);
+  border-left: 3px solid var(--global-theme-color);
+  padding: 0.5rem 0 0.5rem 1rem;
+  margin: 0 0 1.25rem 0;
+  line-height: 1.6;
+
+  cite {
+    display: block;
+    font-size: 0.85rem;
+    font-style: normal;
+    margin-top: 0.3rem;
+    color: var(--global-theme-color);
+  }
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--global-divider-color);
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+// ============================================
+// SPECIAL THANKS (scrolling credits)
+// ============================================
+
+.home-thanks {
+  overflow: hidden;
+}
+
+.credits-scroll-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.credits-scroll {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: credits-scroll 25s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes credits-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.thanks-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  white-space: nowrap;
+  font-size: 0.82rem;
+  color: var(--global-text-color);
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: var(--global-theme-color);
+  }
+}
+
+.thanks-name {
+  font-weight: 500;
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+
+@media (max-width: 576px) {
+  .home-page-wrapper {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .home-hero-split {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .home-hero-left {
+    width: 100%;
+    text-align: center;
+  }
+
+  .home-hero-image {
+    width: 150px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .home-hero-contact {
+    align-items: center;
+  }
+
+  .home-hero-links {
+    align-items: center;
+  }
+
+  .home-hero-social {
+    justify-content: center;
+  }
+
+  .home-hero-right {
+    width: 100%;
+  }
+
+  .home-hero-name {
+    font-size: 1.4rem;
+  }
+
+  .home-tags-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pinned-repo-card {
+    width: 200px;
+    min-width: 200px;
+  }
+}

@@ -1,0 +1,270 @@
+/*******************************************************************************
+ * Navigation bar and header customization
+ ******************************************************************************/
+
+@use "variables" as v;
+
+.navbar {
+  box-shadow: none;
+  border-bottom: 1px solid var(--global-divider-color);
+  background-color: var(--global-bg-color);
+  opacity: 0.95;
+}
+
+.navbar .dropdown-menu,
+.btn-group.dropdown .dropdown-menu {
+  background-color: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+
+  a:not(.active) {
+    color: var(--global-text-color);
+  }
+
+  a:hover {
+    color: var(--global-hover-color);
+  }
+
+  .dropdown-divider {
+    border-top: 1px solid var(--global-divider-color) !important;
+  }
+}
+
+.dropdown-item {
+  color: var(--global-text-color);
+
+  &:hover {
+    color: var(--global-hover-color);
+    background-color: var(--global-bg-color);
+  }
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--global-hover-color);
+  color: var(--global-hover-text-color) !important;
+
+  &:hover {
+    color: var(--global-hover-text-color);
+  }
+}
+
+.navbar.navbar-light {
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .navbar-brand {
+    color: var(--global-text-color);
+  }
+
+  .navbar-nav .nav-item .nav-link {
+    color: var(--global-text-color);
+
+    &:hover {
+      color: var(--global-hover-color);
+    }
+  }
+
+  .navbar-nav .nav-item.active > .nav-link {
+    background-color: inherit;
+    font-weight: bolder;
+    color: var(--global-theme-color);
+
+    &:hover {
+      color: var(--global-hover-color);
+    }
+  }
+
+  .navbar-brand.social {
+    padding-bottom: 0;
+    padding-top: 0;
+    font-size: 1.7rem;
+
+    a {
+      img {
+        width: 1.7rem;
+        height: 1.7rem;
+        margin-bottom: 0.5rem;
+      }
+
+      svg {
+        width: 1.7rem;
+        height: 1.7rem;
+        margin-bottom: 0.5rem;
+
+        image {
+          width: 1.7rem;
+          height: 1.7rem;
+        }
+      }
+
+      i::before {
+        color: var(--global-text-color);
+        transition-property: all 0.2s ease-in-out;
+      }
+
+      &:hover {
+        i::before {
+          color: var(--global-theme-color);
+        }
+      }
+    }
+  }
+}
+
+.navbar-toggler {
+  .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--global-text-color);
+    border-radius: 1px;
+    margin-bottom: 4px;
+    transition: all 0.2s;
+  }
+
+  .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+  }
+
+  .middle-bar {
+    opacity: 0;
+  }
+
+  .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+  }
+}
+
+.navbar-toggler.collapsed {
+  .top-bar {
+    transform: rotate(0);
+  }
+
+  .middle-bar {
+    opacity: 1;
+  }
+
+  .bottom-bar {
+    transform: rotate(0);
+  }
+}
+
+#search-toggle {
+  padding: 0;
+  border: 0;
+  background-color: inherit;
+  color: var(--global-text-color);
+
+  &:hover {
+    color: var(--global-hover-color);
+  }
+}
+
+// Theme toggle switch
+.theme-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  z-index: 1031;
+}
+
+.theme-toggle-checkbox {
+  display: none;
+}
+
+.theme-toggle-label {
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-track {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  background-color: var(--global-divider-color);
+  border-radius: 28px;
+  transition: none;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--global-bg-color);
+  border-radius: 50%;
+  transition: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.theme-toggle-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  z-index: 1;
+  transition: none;
+  line-height: 1;
+
+  &.sun {
+    left: 6px;
+    color: #f9d71c;
+  }
+
+  &.moon {
+    right: 6px;
+    color: #a7c4e8;
+    opacity: 0;
+  }
+}
+
+// Dark mode state (driven by html attribute, not checkbox)
+html[data-theme-setting="dark"] {
+  .theme-toggle-track {
+    background-color: #4a5568;
+  }
+
+  .theme-toggle-thumb {
+    transform: translateX(24px);
+  }
+
+  .theme-toggle-icon {
+    &.sun {
+      opacity: 0;
+    }
+
+    &.moon {
+      opacity: 1;
+    }
+  }
+}
+
+// Enable transitions only after user interaction
+.theme-toggle-animate {
+  .theme-toggle-track {
+    transition: background-color 0.3s ease;
+  }
+
+  .theme-toggle-thumb {
+    transition: transform 0.3s ease;
+  }
+
+  .theme-toggle-icon {
+    transition: opacity 0.3s ease;
+  }
+}
+
+// Hover effect
+.theme-toggle-label:hover .theme-toggle-track {
+  box-shadow: 0 0 0 3px var(--global-theme-color);
+  opacity: 0.85;
+}
