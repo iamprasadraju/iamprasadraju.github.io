@@ -2,32 +2,40 @@
 layout: post
 title: jupyter notebook example
 date: 2026-03-24
-description: How to embed Jupyter notebooks in your notes.
+description: How to work with Jupyter notebooks in your projects.
 tags: [python, jupyter]
 categories: [notes]
 ---
 
-This note demonstrates how to embed a Jupyter notebook directly into a page.
+This note demonstrates how to work with Jupyter notebooks in your projects.
 
 ## Embedding a Notebook
 
-Use the following Liquid snippet to embed an `.ipynb` file:
+To embed a Jupyter notebook in your site, convert it to HTML using `nbconvert`:
 
-{::nomarkdown}
-{% assign jupyter_path = 'assets/jupyter/blog.ipynb' | relative_url %}
-{% capture notebook_exists %}{% file_exists assets/jupyter/blog.ipynb %}{% endcapture %}
-{% if notebook_exists == 'true' %}
-  {% jupyter_notebook jupyter_path %}
-{% else %}
-  <p>Notebook file not found. Place your <code>.ipynb</code> file in <code>assets/jupyter/</code>.</p>
-{% endif %}
-{:/nomarkdown}
+```bash
+jupyter nbconvert --to html your_notebook.ipynb
+```
 
-## How to use this
+Then link to the generated HTML file or embed it in an iframe.
 
-1. Place your `.ipynb` file in `assets/jupyter/`
-2. Copy the Liquid snippet above into any note or blog post
-3. Update the path to point to your notebook file
-4. The notebook is rendered at build time using `nbconvert`
+## Example
 
-The notebook automatically supports both light and dark themes.
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 2 * np.pi, 100)
+y = np.sin(x)
+
+plt.plot(x, y)
+plt.title("Sine Wave")
+plt.show()
+```
+
+## Tips
+
+- Keep notebooks focused on one topic each
+- Add markdown cells to explain your thought process
+- Use `nbstripout` to remove output before committing to Git
+- Consider using [Google Colab](https://colab.research.google.com/) for interactive notebooks
