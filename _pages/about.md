@@ -74,6 +74,4 @@ I'm currently engaged in independent AI research - studying ML/DL algorithms, im
 
 My curiosity spans across science and technology - from Computer Science and Mathematics to Physics, Chemistry, and Biology - all driven by one fundamental question: How does the Universe work?
 
-I believe in learning by building. Every concept I study ends up as code, every paper I read becomes a project. I'm driven by the desire to understand intelligence - both biological and artificial - and to build systems that push the boundaries of what machines can do.
-
 When I'm not writing code, you'll find me reading research papers, exploring quantum mechanics, or diving into neuroscience - always chasing that fundamental question.
