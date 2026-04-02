@@ -41,7 +41,8 @@
   height: auto;
   object-fit: cover;
   border-radius: 0.5rem;
-  border: 2px solid var(--global-divider-color);
+  border: none;
+  box-shadow: 0 0 0 0.5px var(--global-theme-color);
 }
 
 .home-hero-contact {
@@ -79,7 +80,7 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
-  color: var(--global-text-color);
+  color: var(--global-theme-color);
   letter-spacing: -0.02em;
 }
 
