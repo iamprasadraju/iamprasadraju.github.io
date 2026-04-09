@@ -16,7 +16,8 @@ minima:
   show_excerpts: true
 
 # Build settings
-baseurl: /minima
+baseurl: ""
+url: "https://iamprasadraju.github.io"
 theme: minima
 plugins:
   - jekyll-feed
