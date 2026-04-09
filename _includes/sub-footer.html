@@ -26,14 +26,17 @@
 
   if (prevSkin) {
     skinSwitcher.value = prevSkin;
+    document.documentElement.setAttribute('data-theme', prevSkin.replace('.css', ''));
   } else {
     skinSwitcher.value = SSName;
+    document.documentElement.setAttribute('data-theme', SSName.replace('.css', ''));
   }
 
   function changeSkin() {
     _ssName = event.target.value;
     metaTag.href = SSHref.replace(SSName, _ssName);
     localStorage.setItem("minima-ss", _ssName);
+    document.documentElement.setAttribute('data-theme', _ssName.replace('.css', ''));
   }
 
   var siteFooter = document.querySelector(".site-footer");
