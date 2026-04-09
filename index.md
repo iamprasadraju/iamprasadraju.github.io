@@ -170,3 +170,82 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     }
   })();
 </script>
+
+### Special Thanks
+
+<style>
+.thanks-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+.thanks-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(42, 122, 226, 0.1);
+  color: #2a7ae2 !important;
+  border: 1px solid rgba(42, 122, 226, 0.2);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  animation: floatIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(15px);
+}
+.thanks-badge:hover {
+  background: #2a7ae2;
+  color: #fff !important;
+  text-decoration: none;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 6px 12px rgba(42, 122, 226, 0.25);
+}
+
+/* Staggered load animation */
+.thanks-badge:nth-child(1) { animation-delay: 0.1s; }
+.thanks-badge:nth-child(2) { animation-delay: 0.2s; }
+.thanks-badge:nth-child(3) { animation-delay: 0.3s; }
+.thanks-badge:nth-child(4) { animation-delay: 0.4s; }
+.thanks-badge:nth-child(5) { animation-delay: 0.5s; }
+.thanks-badge:nth-child(6) { animation-delay: 0.6s; }
+.thanks-badge:nth-child(7) { animation-delay: 0.7s; }
+.thanks-badge:nth-child(8) { animation-delay: 0.8s; }
+.thanks-badge:nth-child(9) { animation-delay: 0.9s; }
+.thanks-badge:nth-child(10) { animation-delay: 1.0s; }
+
+@keyframes floatIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark Theme Sync */
+html[data-theme='dark'] .thanks-badge,
+html[data-theme='solarized-dark'] .thanks-badge {
+  background: rgba(79, 156, 249, 0.1);
+  color: #4f9cf9 !important;
+  border-color: rgba(79, 156, 249, 0.2);
+}
+html[data-theme='dark'] .thanks-badge:hover,
+html[data-theme='solarized-dark'] .thanks-badge:hover {
+  background: #4f9cf9;
+  color: #0d1117 !important;
+  box-shadow: 0 6px 12px rgba(79, 156, 249, 0.25);
+}
+</style>
+
+<div class="thanks-grid">
+  <a href="https://en.wikipedia.org/wiki/David_J._Malan" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. David J. Malan</a>
+  <a href="https://en.wikipedia.org/wiki/Andrew_Ng" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. Andrew Ng</a>
+  <a href="https://en.wikipedia.org/wiki/George_Hotz" target="_blank" rel="noopener noreferrer" class="thanks-badge">George Hotz</a>
+  <a href="https://en.wikipedia.org/wiki/Gilbert_Strang" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. Gilbert Strang</a>
+  <a href="https://en.wikipedia.org/wiki/Geoffrey_Hinton" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. Geoffrey Hinton</a>
+  <a href="https://physics.mit.edu/faculty/allan-adams/" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. Allan Adams</a>
+  <a href="https://en.wikipedia.org/wiki/3Blue1Brown" target="_blank" rel="noopener noreferrer" class="thanks-badge">Grant Sanderson</a>
+  <a href="https://en.wikipedia.org/wiki/Andrej_Karpathy" target="_blank" rel="noopener noreferrer" class="thanks-badge">Andrej Karpathy</a>
+  <a href="https://en.wikipedia.org/wiki/Gary_Gensler" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. Gary Gensler</a>
+</div>
