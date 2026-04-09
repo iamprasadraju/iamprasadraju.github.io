@@ -2,7 +2,7 @@
 layout: page
 ---
 
-<img src="https://github.com/iamprasadraju/configuration/blob/main/pp.png?raw=true" alt="Prasad Raju G" width="160" style="margin: 0 auto 24px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 4px;">
+<img src="assets/pp.png" alt="Prasad Raju G" width="160" style="margin: 0 auto 24px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 4px;">
 
 
 I’m currently engaged in independent AI research - studying ML/DL algorithms, implementing models in Python and PyTorch, reproducing research papers from arXiv, and building projects on GitHub. My work sits at the intersection of applied mathematics, deep learning, and systems engineering.
