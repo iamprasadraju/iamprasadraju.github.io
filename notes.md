@@ -6,7 +6,8 @@ permalink: /notes/
 
 <div class="home">
   <ul class="post-list">
-    {% for note in site.notes %}
+    {% assign sorted_notes = site.notes | sort: "date" | reverse %}
+    {% for note in sorted_notes %}
       <li>
         <span class="post-meta">{{ note.date | date: "%b %-d, %Y" }}</span>
         <h3 style="margin-top: 0; padding-top: 0;">
