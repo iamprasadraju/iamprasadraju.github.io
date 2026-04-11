@@ -12,6 +12,21 @@ My curiosity spans across science and technology - from Computer Science and Mat
 When I’m not writing code, you’ll find me reading research papers, exploring quantum mechanics, or diving into neuroscience - always chasing that fundamental question.
 
 <style>
+  .commit-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 480px) {
+    .commit-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+  }
+
   .gh-quote {
     padding: 16px;
     background-color: #f6f8fa;
@@ -148,12 +163,12 @@ When I’m not writing code, you’ll find me reading research papers, exploring
         const percentage = Math.round((count / totalCommits) * 100);
         
         li.innerHTML = `
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h4 style="margin: 0; font-size: 16px; font-weight: 600;">
+          <div class="commit-row">
+            <h4 style="margin: 0; font-size: 16px; font-weight: 600; min-width: 0; overflow-wrap: break-word;">
               <a href="https://github.com/${repo}" target="_blank" style="text-decoration: none; color: #2a7ae2;">${repo}</a>
             </h4>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="color: #828282; font-size: 14px;">${commitText}</span>
+            <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+              <span style="color: #828282; font-size: 14px; white-space: nowrap;">${commitText}</span>
               <div style="width: 60px; height: 8px; background-color: #ebedf0; border-radius: 4px; overflow: hidden;">
                 <div style="height: 100%; background-color: #40c463; width: ${percentage}%;"></div>
               </div>
