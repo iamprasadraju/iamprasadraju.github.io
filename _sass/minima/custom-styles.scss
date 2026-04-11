@@ -73,3 +73,14 @@
   color: $border-color-03;
   background: $table-header-bg-color;
 }
+
+hr {
+  border: none;
+  border-top: 2px solid $border-color-01;
+  margin: $spacing-unit 0;
+  opacity: 0.9;
+}
+
+h1 + hr, h2 + hr, h3 + hr, h4 + hr, h5 + hr, h6 + hr {
+  margin-top: 0;
+}
