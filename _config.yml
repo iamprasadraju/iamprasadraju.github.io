@@ -2,7 +2,7 @@ title: Prasad Raju G
 author:
   name: Email me at
   email: gls.prasadraju@gmail.com
-  
+
 # description: >
 # Write an awesome description for your new site here. You can edit this
 # line in _config.yml. It will appear in your document head meta (for
@@ -33,3 +33,9 @@ sass:
   silence_deprecations:
     - "import"
     - "global-builtin"
+
+
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
