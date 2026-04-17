@@ -23,6 +23,8 @@ theme: minima
 collections:
   notes:
     output: true
+  projects:
+    output: true
 
 plugins:
   - jekyll-feed
