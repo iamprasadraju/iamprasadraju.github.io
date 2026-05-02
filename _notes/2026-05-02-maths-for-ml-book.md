@@ -5,7 +5,7 @@ date: 2026-05-02
 ---
 
 
-### Book name - Mathematics for Nachine Learning
+### Book name - Mathematics for Machine Learning
 [Book url](https://iamprasadraju.github.io/ResearchRack/books/mathematics-for-machine-learning-1777020629)
 
 ```mermaid
