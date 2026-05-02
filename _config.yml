@@ -25,6 +25,8 @@ collections:
     output: true
   projects:
     output: true
+  research:
+    output: true
 
 plugins:
   - jekyll-feed
@@ -35,7 +37,6 @@ sass:
   silence_deprecations:
     - "import"
     - "global-builtin"
-
 
 kramdown:
   syntax_highlighter_opts:
