@@ -9,7 +9,6 @@ author:
 # Google search results) and in your feed.xml site description.
 
 minima:
-  skin: dark
   date_format: "%b %-d, %Y"
   social_links:
     - { icon: "github", title: "GitHub", url: "https://github.com/iamprasadraju" }
