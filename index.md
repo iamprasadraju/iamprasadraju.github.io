@@ -12,6 +12,53 @@ My curiosity spans across science and technology - from Computer Science and Mat
 When I’m not writing code, you’ll find me reading research papers, exploring quantum mechanics, or diving into neuroscience - always chasing that fundamental question.
 
 <style>
+  h1, h2, h3, h4 {
+    /* Silver Shine Animation */
+    background: linear-gradient(
+      110deg,
+      #8b949e 0%,
+      #8b949e 40%,
+      #ffffff 50%,
+      #8b949e 60%,
+      #8b949e 100%
+    );
+    background-size: 200% auto;
+    color: #8b949e;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: silverShine 4s linear infinite;
+  }
+
+  .ghost-pill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  .ghost-pill {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 2em;
+    background-color: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: currentColor;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+
+  .ghost-pill:hover {
+    transform: translateY(-2px);
+    border-color: rgba(128, 128, 128, 0.7);
+    opacity: 1;
+  }
+
   .commit-row {
     display: flex;
     justify-content: space-between;
@@ -42,15 +89,36 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   }
 
   .cwo-section {
-    padding: 36px 0;
+    padding: 16px 0;
   }
 
   .cwo-label {
-    font-size: 18px;
+    font-size: 15px;
     font-style: normal;
-    color: #0969da;
-    font-weight: 600;
-    margin: 0 0 24px 0;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    /* Silver Shine Animation */
+    background: linear-gradient(
+      110deg,
+      #8b949e 0%,
+      #8b949e 40%,
+      #ffffff 50%,
+      #8b949e 60%,
+      #8b949e 100%
+    );
+    background-size: 200% auto;
+    color: #8b949e;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: silverShine 4s linear infinite;
+  }
+
+  @keyframes silverShine {
+    0% { background-position: 200% center; }
+    100% { background-position: 0% center; }
   }
 
   .cwo-loading {
@@ -60,10 +128,10 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   }
 
   .repo-card {
-    border: 1px solid #d0d7de;
-    border-radius: 6px;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 8px;
     padding: 16px;
-    background-color: #ffffff;
+    background-color: transparent;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif;
   }
 
@@ -105,7 +173,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   .repo-description {
     font-size: 12px;
     color: #57606a;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .repo-meta {
@@ -113,7 +181,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     align-items: center;
     font-size: 12px;
     color: #57606a;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     flex-wrap: wrap;
     gap: 16px;
   }
@@ -138,9 +206,9 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   }
 
   .repo-latest-commit {
-    border-top: 1px solid #d0d7de;
-    padding-top: 12px;
-    margin-top: 12px;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+    padding-top: 8px;
+    margin-top: 8px;
   }
 
   .commit-section-title {
@@ -212,12 +280,11 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   }
   html[data-theme='dark'] .cwo-label,
   html[data-theme='solarized-dark'] .cwo-label {
-    color: #58a6ff;
+    /* Hollow text inherits from body */
   }
   html[data-theme='dark'] .repo-card,
   html[data-theme='solarized-dark'] .repo-card {
-    border-color: #30363d;
-    background-color: #0d1117;
+    border-color: rgba(255, 255, 255, 0.15);
   }
   html[data-theme='dark'] .repo-header svg,
   html[data-theme='solarized-dark'] .repo-header svg,
@@ -513,13 +580,30 @@ When I’m not writing code, you’ll find me reading research papers, exploring
 
 ### Skills
 
-`Python` &nbsp;&nbsp; `C++` &nbsp;&nbsp; `C` &nbsp;&nbsp; `Applied Mathematics` &nbsp;&nbsp; `Machine Learning` &nbsp;&nbsp; `Deep Learning` &nbsp;&nbsp; `System Design` &nbsp;&nbsp; `Performance Engineering` &nbsp;&nbsp; `Computer Vision` &nbsp;&nbsp;
-{: style="line-height: 2.2;" }
+<div class="ghost-pill-container">
+  <span class="ghost-pill">Python</span>
+  <span class="ghost-pill">C++</span>
+  <span class="ghost-pill">C</span>
+  <span class="ghost-pill">Applied Mathematics</span>
+  <span class="ghost-pill">Machine Learning</span>
+  <span class="ghost-pill">Deep Learning</span>
+  <span class="ghost-pill">System Design</span>
+  <span class="ghost-pill">Performance Engineering</span>
+  <span class="ghost-pill">Computer Vision</span>
+</div>
 
 ### Interests
 
-`Artificial Intelligence` &nbsp;&nbsp; `Game Theory` &nbsp;&nbsp; `Quantum Physics` &nbsp;&nbsp; `Neuroscience` &nbsp;&nbsp; `Bioinformatics` &nbsp;&nbsp; `Cryptography` &nbsp;&nbsp; `Robotics` &nbsp;&nbsp; `Quant Finance`
-{: style="line-height: 2.2;" }
+<div class="ghost-pill-container">
+  <span class="ghost-pill">Artificial Intelligence</span>
+  <span class="ghost-pill">Game Theory</span>
+  <span class="ghost-pill">Quantum Physics</span>
+  <span class="ghost-pill">Neuroscience</span>
+  <span class="ghost-pill">Bioinformatics</span>
+  <span class="ghost-pill">Cryptography</span>
+  <span class="ghost-pill">Robotics</span>
+  <span class="ghost-pill">Quant Finance</span>
+</div>
 
 
 
