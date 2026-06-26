@@ -32,12 +32,12 @@
   </script>
 
   <script>
-    var prevSkin = localStorage.getItem("minima-ss") || "style.css";
+    var prevSkin = localStorage.getItem("minima-ss") || "dark.css";
     var stylesheetUrl = "{{ '/assets/css/' | relative_url }}" + prevSkin;
     document.write('<link id="main-stylesheet" rel="stylesheet" href="' + stylesheetUrl + '">');
   </script>
   <noscript>
-    <link id="main-stylesheet" rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link id="main-stylesheet" rel="stylesheet" href="{{ '/assets/css/dark.css' | relative_url }}">
   </noscript>
 
   {%- feed_meta -%}
