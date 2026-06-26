@@ -2,7 +2,12 @@
 layout: page
 ---
 
-<img src="assets/pp.png" alt="Prasad Raju G" width="160" style="margin: 0 auto 24px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 4px;">
+<div class="popout-avatar">
+  <div class="popout-circle">
+    <img src="assets/profile.png" alt="Prasad Raju G">
+  </div>
+  <img src="assets/profile.png" alt="" class="popout-top">
+</div>
 
 
 I’m currently engaged in independent AI research - studying ML/DL algorithms, implementing models in Python and PyTorch, reproducing research papers from arXiv, and building projects on GitHub. My work sits at the intersection of applied mathematics, deep learning, and systems engineering.
@@ -12,6 +17,48 @@ My curiosity spans across science and technology - from Computer Science and Mat
 When I’m not writing code, you’ll find me reading research papers, exploring quantum mechanics, or diving into neuroscience - always chasing that fundamental question.
 
 <style>
+  :root {
+    --avatar-filter: brightness(1.15) contrast(1.05);
+  }
+  html[data-theme='dark'],
+  html[data-theme='solarized-dark'] {
+    --avatar-filter: brightness(1) contrast(1);
+  }
+  .popout-avatar {
+    width: 150px;
+    height: 150px;
+    margin: 0 0 32px 0;
+    position: relative;
+    z-index: 10;
+  }
+  .popout-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(128, 128, 128, 0.1); /* Subtle premium background */
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+  }
+  .popout-avatar img {
+    position: absolute;
+    bottom: -18px; /* Sinks the harsh cut below the circle so it gets elegantly rounded off */
+    left: 45%;
+    transform: translateX(-45%) rotate(1deg); /* Nudges the image right, and rotates it slightly */
+    width: 150%; /* Zoomed in */
+    height: auto;
+    display: block;
+    pointer-events: none;
+    filter: var(--avatar-filter);
+  }
+  .popout-top {
+    clip-path: inset(0 0 50% 0); /* Renders ONLY the top half of the image outside the circle */
+    z-index: 2;
+    filter: var(--avatar-filter) drop-shadow(0 -4px 8px rgba(0,0,0,0.15)); /* Soft shadow on the popped-out head */
+  }
+
+
   h1, h2, h3, h4 {
     /* Silver Shine Animation */
     background: linear-gradient(
@@ -392,6 +439,27 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     text-decoration: none;
   }
 
+  /* AUTO theme sync for OS Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    html[data-theme='auto'] { --avatar-filter: brightness(1) contrast(1); }
+    html[data-theme='auto'] .cwo-hairline { background: #303030; }
+    html[data-theme='auto'] .repo-card { border-color: rgba(255, 255, 255, 0.15); }
+    html[data-theme='auto'] .repo-header svg, html[data-theme='auto'] .repo-meta-item svg { fill: #8b949e; }
+    html[data-theme='auto'] .repo-name { color: #58a6ff; }
+    html[data-theme='auto'] .repo-badge { border-color: #30363d; color: #8b949e; }
+    html[data-theme='auto'] .repo-description, html[data-theme='auto'] .repo-meta, html[data-theme='auto'] .commit-time { color: #8b949e; }
+    html[data-theme='auto'] .repo-lang-color { border: 1px solid rgba(240,246,252,0.1); }
+    html[data-theme='auto'] .repo-latest-commit { border-top-color: #30363d; }
+    html[data-theme='auto'] .commit-section-title { color: #8b949e; background-color: rgba(110,118,129,0.1); border-color: rgba(240,246,252,0.1); }
+    html[data-theme='auto'] .commit-msg { color: #c9d1d9; }
+    html[data-theme='auto'] .diff-block-neutral { background-color: #30363d; }
+    html[data-theme='auto'] .cwo-diff-add-text { color: #3fb950; }
+    html[data-theme='auto'] .cwo-diff-del-text { color: #f85149; }
+    html[data-theme='auto'] .spotlight-quote-container {
+      background: radial-gradient(circle 150px at var(--x) var(--y), rgba(255, 255, 255, 1) 0%, rgba(88, 166, 255, 0.9) 40%, rgba(139, 148, 158, 0.25) 80%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+  }
 </style>
 
 <div class="spotlight-quote-container" id="quote-spotlight">
