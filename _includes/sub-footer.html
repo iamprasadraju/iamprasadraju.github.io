@@ -5,6 +5,7 @@
   <div id="skin-switch-container">
     Page rendered with the <select id="skin-switch" onchange="changeSkin()">
       {%- for skin in page.available_skins %}
+      {%- if skin == 'solarized' %}{% continue %}{% endif -%}
       {% if skin == 'classic' -%}
       <option value="style.css">classic</option>
       {%- else -%}
