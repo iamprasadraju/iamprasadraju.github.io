@@ -25,8 +25,8 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     --avatar-filter: brightness(1) contrast(1);
   }
   .popout-avatar {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     margin: 0 0 32px 0;
     position: relative;
     z-index: 10;
@@ -43,9 +43,9 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   }
   .popout-avatar img {
     position: absolute;
-    bottom: -20px; /* Sinks the image deeper to compensate for the larger zoom */
+    bottom: -18px; /* Sinks the image deeper to compensate for the larger zoom */
     left: 43%;
-    transform: translateX(-43%) rotate(1deg); /* Nudged to keep the face perfectly centered */
+    transform: translateX(-43%) rotate(0deg); /* Nudged to keep the face perfectly centered */
     width: 200%; /* Zoomed in heavily on the face */
     height: auto;
     display: block;
