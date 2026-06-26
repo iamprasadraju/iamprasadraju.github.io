@@ -2,11 +2,30 @@
 layout: page
 ---
 
-<div class="popout-avatar">
-  <div class="popout-circle">
-    <img src="assets/profile.png" alt="Prasad Raju G">
+<div class="hero-header">
+  <div class="popout-avatar">
+    <div class="popout-circle">
+      <img src="assets/profile.png" alt="Prasad Raju G">
+    </div>
+    <img src="assets/profile.png" alt="" class="popout-top">
   </div>
-  <img src="assets/profile.png" alt="" class="popout-top">
+  
+  <div class="hero-links">
+    <!-- Column 1: Connect -->
+    <div class="link-column">
+      <div class="col-title">Connect</div>
+      <a href="mailto:gls.prasadraju@gmail.com" class="hero-link">Email ↗</a>
+      <a href="https://linkedin.com/in/realprasadraju" class="hero-link">LinkedIn ↗</a>
+      <a href="https://github.com/iamprasadraju" class="hero-link">GitHub ↗</a>
+    </div>
+    
+    <!-- Column 2: Reading List -->
+    <div class="link-column">
+      <div class="col-title">Reading List</div>
+      <a href="https://iamprasadraju.github.io/ResearchRack/" class="hero-link">Papers ↗</a>
+      <a href="https://iamprasadraju.github.io/ResearchRack/books" class="hero-link">Books ↗</a>
+    </div>
+  </div>
 </div>
 
 
@@ -17,6 +36,80 @@ My curiosity spans across science and technology - from Computer Science and Mat
 When I’m not writing code, you’ll find me reading research papers, exploring quantum mechanics, or diving into neuroscience - always chasing that fundamental question.
 
 <style>
+  .hero-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Keeps the links grouped beside the avatar */
+    gap: 220px; /* Much larger, rigid spacing */
+    margin-bottom: 40px;
+    flex-wrap: nowrap; /* Forces the links to stay beside the avatar */
+  }
+  .hero-header .popout-avatar {
+    margin-bottom: 0;
+  }
+  .hero-links {
+    display: flex;
+    gap: 64px; /* More space between the text columns */
+    flex-shrink: 0; /* Prevents columns from squishing */
+  }
+
+  .link-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .col-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #8b949e;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .hero-link {
+    font-size: 14px;
+    color: #58a6ff;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+  .hero-link:hover {
+    color: #79c0ff;
+    transform: translateX(3px); /* Interactive rightward slide */
+  }
+  
+  html[data-theme='classic'] .hero-link { color: #0969da; }
+  html[data-theme='classic'] .hero-link:hover { color: #0349b4; }
+  html[data-theme='classic'] .col-title { color: #57606a; }
+
+  @media (max-width: 768px) {
+    .hero-header { gap: 48px; }
+  }
+  @media (max-width: 600px) {
+    .hero-header { 
+      gap: 80px; 
+    }
+    .hero-links {
+      flex-direction: column; 
+      gap: 16px; /* Tighter gap between the two columns */
+    }
+    .link-column {
+      gap: 6px; /* Ultra-compact spacing between individual links */
+    }
+    .hero-link {
+      font-size: 13px; /* Smaller text to prevent overflow */
+    }
+    .col-title {
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+    .popout-avatar {
+      width: 130px; /* Slightly smaller avatar */
+      height: 130px;
+    }
+  }
+
   :root {
     --avatar-filter: brightness(1.15) contrast(1.05);
   }
@@ -27,9 +120,10 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   .popout-avatar {
     width: 180px;
     height: 180px;
-    margin: 0 0 32px 0;
+    margin: 0;
     position: relative;
     z-index: 10;
+    flex-shrink: 0; /* Strictly prevents the avatar from shrinking and causing inconsistent spacing */
   }
   .popout-circle {
     width: 100%;
