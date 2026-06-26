@@ -43,10 +43,10 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   }
   .popout-avatar img {
     position: absolute;
-    bottom: -18px; /* Sinks the harsh cut below the circle so it gets elegantly rounded off */
-    left: 45%;
-    transform: translateX(-45%) rotate(1deg); /* Nudges the image right, and rotates it slightly */
-    width: 150%; /* Zoomed in */
+    bottom: -20px; /* Sinks the image deeper to compensate for the larger zoom */
+    left: 43%;
+    transform: translateX(-43%) rotate(1deg); /* Nudged to keep the face perfectly centered */
+    width: 200%; /* Zoomed in heavily on the face */
     height: auto;
     display: block;
     pointer-events: none;
