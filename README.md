@@ -95,4 +95,43 @@ The site extends the standard Minima theme with a fully functional skin switcher
 - **`_sass/minima/custom-styles.scss`:** Where you should write any custom CSS overrides (like the hero header styles or global animations).
 
 ---
+
+## 🍱 Customizing the Projects Page (Bento Grid)
+
+The `/projects/` page uses a custom **Bento Grid** architecture defined in `projects.md`. Here is how you control it:
+
+### 1. Making a Card Large (Pinned)
+To make a project span the full width of the grid and display a code snippet, simply add `pinned: true` to its YAML front matter:
+```yaml
+---
+title: "My Big Project"
+pinned: true
+---
+```
+Regular projects (without `pinned: true`) will automatically render as compact, half-width cards below the pinned ones.
+
+### 2. Editing the Code Snippets
+The code previews inside the pinned cards are manually crafted to look like a realistic IDE without using heavy JavaScript syntax highlighters. 
+To edit or add a new snippet for a pinned project, simply add a `snippet:` field to its YAML front matter using the pipe `|` character for multi-line text:
+
+```yaml
+---
+title: "Your Project Name"
+pinned: true
+snippet: |
+  <span class="cm"># Your comment here</span>
+  <span class="kw">from</span> my_lib <span class="kw">import</span> <span class="fn">Function</span>
+  
+  <span class="op">$</span> command <span class="st">--flag</span>
+---
+```
+
+**Syntax Highlighting Classes:**
+- `kw`: Keywords (e.g. `import`, `from`, `def`, `return`) — renders red
+- `fn`: Functions/Classes (e.g. `Model`, `print`) — renders purple
+- `st`: Strings/Flags (e.g. `"--help"`, `"hello"`) — renders blue
+- `cm`: Comments (e.g. `# this is a comment`) — renders gray
+- `op`: Operators (e.g. `=`, `$`, `+`) — renders dark gray
+
+---
 *Maintained and optimized for performance, accessibility, and the generative web.*
