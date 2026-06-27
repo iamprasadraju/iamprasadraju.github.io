@@ -51,3 +51,11 @@ If you need to add custom styling rules (beyond what the Minima skins provide):
 ### 4. Overriding Defaults
 To override default HTML from the base Minima theme without editing the gem directly:
 - Create corresponding files like `_layouts/default.html` or `_includes/header.html` in your repository. Jekyll will prioritize your local structural files over the theme defaults.
+
+## 🤖 SEO, AEO, & GEO Architecture
+
+This site is deeply optimized for traditional search engines, LLM answer engines, and generative AI crawlers:
+- **`llms.txt`**: A Liquid-compiled, machine-readable summary of the portfolio automatically updated for AI agents like ChatGPT or Perplexity.
+- **`_includes/custom-head.html`**: Contains advanced JSON-LD structured data (Person, WebSite, ProfilePage) and Google Search Console tags.
+- **`sitemap.xml` & `robots.txt`**: Automatically handles search engine indexing.
+- **`SEO_AEO_GUIDE.md`**: Refer to this guide when writing new markdown files to ensure they conform to AI-scraping best practices (Q&A headings, semantic boldness, etc.).

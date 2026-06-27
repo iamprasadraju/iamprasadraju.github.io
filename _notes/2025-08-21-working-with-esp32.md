@@ -6,11 +6,6 @@ description: "A comprehensive guide on working with the ESP32 microcontroller, i
 tags: [ESP32, MicroPython, C++, IoT, Microcontroller]
 ---
 
-### TL;DR
-- **Versatile Hardware:** The ESP32 is a low-cost, energy-efficient microcontroller with built-in Wi-Fi and Bluetooth.
-- **Multiple Languages:** Supports development in both C/C++ using the ESP-IDF and Python using MicroPython.
-- **Rich Tooling:** Utilize tools like esptool, mpremote, and WebREPL for easy flashing, debugging, and wireless management.
-
 **ESP32** is a family of low-cost, energy-efficient microcontrollers that integrate both Wi-Fi and Bluetooth capabilities. These chips feature a variety of processing options, including the **Tensilica Xtensa LX6 microprocessor** available in both dual-core and single-core variants, the **Xtensa LX7 dual-core processor**, or a single-core **RISC-V microprocessor**. In addition, the ESP32 incorporates components essential for wireless data communication such as built-in antenna switches, an RF balun, power amplifiers, low-noise receivers, filters, and power-management modules.
 
 ![ESP32 Overview](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/_images/esp32-devkitc-v4-functional-overview.png)

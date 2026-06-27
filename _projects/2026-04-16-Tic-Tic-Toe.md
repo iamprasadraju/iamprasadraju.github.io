@@ -6,12 +6,6 @@ description: "A graphical, pixel-art style Tic-Tac-Toe game built with Python an
 tags: [Python, Pygame, Game Development, Pixel Art]
 ---
 
-### TL;DR
-
-- **Python & Pygame Game**: A fully functional graphical Tic-Tac-Toe game featuring classic **human-vs-human gameplay**.
-- **Retro Aesthetic**: Designed with a **pixel-art style**, custom fonts, and **confetti particle effects** for win celebrations.
-- **Ready to Run**: Easily installable via `pip` or `uv`, with future plans for **AI opponents** and **multiplayer modes**.
-
 <div align="center">
   <img width="35%" src="https://github.com/iamprasadraju/tic-tac-toe/raw/main/assets/tic-tac-toe.png">
   <h2>Endless Tic-Tac-Toe</h2>

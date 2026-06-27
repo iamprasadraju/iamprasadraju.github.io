@@ -6,11 +6,6 @@ description: "A curated collection of top resources, including Harvard and MIT c
 tags: [Statistics, Probability, Python, Data Science, Machine Learning]
 ---
 
-### TL;DR
-* **Harvard's Stat 110** provides a comprehensive introduction to **probability** and **random variables**.
-* **MIT's 18.650** delves into the **theoretical foundations of statistical methods** for real-world applications.
-* The book **An Introduction to Statistical Learning with Applications in Python** is an essential guide for practical machine learning and data science.
-
 A collection of courses and resources that I find interesting while learning statistics.
 
 ## What are the best courses for learning statistics?
@@ -26,9 +21,7 @@ Stat 110 is an introduction to **probability** as a language and set of tools fo
 
 Taught by [Philippe Rigollet](https://math.mit.edu/directory/profile.html?pid=1654)
 
-
 This course offers an in-depth exploration of the **theoretical foundations for statistical methods** that are useful in many applications. The goal is to understand the role of mathematics in the research and development of **efficient statistical methods**.
-
 
 ## Which books are recommended for statistical learning?
 ---

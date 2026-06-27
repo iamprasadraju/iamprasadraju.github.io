@@ -6,11 +6,6 @@ description: "Explore the core mathematical concepts behind Machine Learning, co
 tags: [Machine Learning, Mathematics, Data Science, Deep Learning, Artificial Intelligence]
 ---
 
-### TL;DR
-- **Mathematical foundations** like linear algebra, calculus, and probability are essential for designing algorithms that extract insights from data.
-- **Vectors represent data** and can be viewed conceptually as arrays of numbers, arrows with magnitude and direction, or mathematical objects for scaling and addition.
-- **Model training relies on optimization**, using gradient descent to minimize a loss function and generalize effectively to unseen data.
-
 ### What is the Mathematics for Machine Learning Book About?
 [Book url](https://iamprasadraju.github.io/ResearchRack/books/mathematics-for-machine-learning-1777020629)
 
@@ -41,16 +36,13 @@ computer science view)
 
 -  a vector as an object that obeys **addition and scaling** (a mathematical view)
 
-
 ## How Do Machine Learning Models Learn From Data?
 
 Learning component of machine learning - <span style="background-color: yellow;">**Training the model** means to use the data available to **optimize** <span style="background-color: lightgreen;">(**gradient descent**) </span> some parameters of the model with respect to a **utility function** <span style="background-color: lightgreen;">(**loss function**)</span>  that evaluates how well the model predicts the training data.</span>
 
-
 $^{*}\text{Note:}$ <span style="background-color: #FAA0A0;"> Performing well on data that
 we have already seen (**training data**) may only mean that we found a
 good way to **memorize** the data. </span>
-
 
 ### What Are the Core Mathematical Pillars of Machine Learning?
 

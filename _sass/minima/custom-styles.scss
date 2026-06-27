@@ -84,3 +84,26 @@ hr {
 h1 + hr, h2 + hr, h3 + hr, h4 + hr, h5 + hr, h6 + hr {
   margin-top: 0;
 }
+
+@keyframes silverShine {
+  0% { background-position: 200% center; }
+  100% { background-position: 0% center; }
+}
+
+.site-title {
+  background: linear-gradient(
+    110deg,
+    #8b949e 0%,
+    #8b949e 40%,
+    #ffffff 50%,
+    #8b949e 60%,
+    #8b949e 100%
+  );
+  background-size: 200% auto;
+  color: #8b949e !important;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: silverShine 4s linear infinite;
+  display: inline-block;
+}
