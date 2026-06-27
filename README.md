@@ -1,61 +1,98 @@
-# Minima Demo Site (with Dynamic Theme Switcher)
+# Prasad Raju G — Engineering Portfolio
 
-This is a customized Jekyll site built on top of the powerful [Minima](https://github.com/jekyll/minima) theme. It extends standard Minima with a fully functional, dynamic skin switcher UI located in the footer, which persists user string choices with `localStorage`.
+Welcome to the source code for my professional portfolio. This is a highly customized, ultra-performant, and heavily SEO/AI-optimized static site powered by Jekyll. 
 
-It relies directly on the `master` branch of Minima to access bleeding-edge features (like built-in skins), rather than using older frozen versions on RubyGems or the `jekyll-remote-theme` plugin.
+This `README.md` serves as the master documentation for the architecture, content writing standards, and configuration of the site.
 
-## 🚀 Setup
+---
 
-1. **Prerequisites:** Ensure you have [Ruby](https://www.ruby-lang.org/en/documentation/installation/) and [Bundler](https://bundler.io/) installed.
-2. **Install Dependencies:** Open your terminal in the project directory and run:
+## 🚀 Setup & Local Development
+
+1. **Install Dependencies:** Ensure you have Ruby and Bundler installed, then run:
    ```bash
    bundle install
    ```
-   *(This will download Jekyll, Minima, and the updated Jekyll-Sass-Converter to resolve styling deprecation warnings).*
+2. **Run Locally:**
+   ```bash
+   bundle exec jekyll serve --livereload
+   ```
+3. Your site will be available at `http://localhost:4000/`.
 
-## 🛠 Usage & Running Locally
+---
 
-To run the site locally for development:
+## 📝 Writing Content (Projects, Notes, Research)
 
-```bash
-bundle exec jekyll serve --livereload
+Content is divided into dedicated Jekyll collections (`_projects`, `_notes`, and `_research`). Every markdown file you create **must** begin with a YAML front matter block to ensure it renders correctly and is accurately indexed by search engines.
+
+### The Required YAML Template
+
+```yaml
+---
+layout: page
+title: "Your Post Title Here"
+date: YYYY-MM-DD
+description: "A 1-2 sentence concise summary. This is injected into Google search results and Twitter link previews."
+tags: [Machine Learning, Python, Systems Design]
+math: true       # Optional: Set to true if using KaTeX ($$ equations $$)
+mermaid: true    # Optional: Set to true if using Mermaid flowcharts
+image: "/assets/my-thumbnail.png" # Optional: Strongly recommended for rich embeds
+---
 ```
 
-- Your site will typically be available at: [http://localhost:4000/minima/](http://localhost:4000/minima/) *(Depending on the `baseurl` inside your config)*.
-- The `--livereload` flag ensures your browser seamlessly refreshes any time you make changes to your files.
+### Best Practices for Content
+- **Naming Convention:** Name your files `YYYY-MM-DD-title-of-post.md` (e.g., `2026-06-27-neural-networks.md`).
+- **Heavy Scripts (KaTeX & Mermaid):** To maintain the site's `100/100` Lighthouse performance score, heavy JavaScript libraries do not load globally. They *only* load on pages where you explicitly define `math: true` or `mermaid: true` (or if you include `$$` / `mermaid` in the body).
+- **Images:** Always use `.webp` format for images instead of `.png` or `.jpg` to prevent layout shifts and bloat.
 
-### The Theme Switcher
-This site dynamically generates styles for multiple variants of Minima (Classic, Dark, Auto, Solarized, etc.). There is a custom UI injected into the sub-footer where you (or visitors) can toggle the site's aesthetic seamlessly.
-- **_plugins/skin_manager.rb**: A custom Ruby plugin that generates a CSS file for every available Minima skin.
-- **_includes/sub-footer.html**: Contains the frontend layout and JavaScript logic to hot-swap stylesheets without refreshing and remembers user preferences via `localStorage`.
+---
 
-## 🎨 Customizing
+## 🤖 SEO, AEO, & GEO Master Rules
 
-There are several ways you can change how your site looks and behaves:
+This site is deeply optimized not just for traditional search engines (Google), but for LLM Answer Engines (ChatGPT, Perplexity) and Generative Engine Optimization (GEO). 
 
-### 1. Site Metadata & Configuration
-Edit `_config.yml` to change the fundamental aspects of your site:
-- Site `title` and author details
-- `email` and `social_links` (which populate the footer icons natively)
-- `baseurl` (Change this to `""` if you are hosting at the root of your domain)
+When writing your markdown files, strictly adhere to the following rules:
 
-### 2. Custom SASS / CSS
-If you need to add custom styling rules (beyond what the Minima skins provide):
-- Open `_sass/minima/custom-styles.scss`.
-- Add your custom CSS here. This file is currently used to construct the custom design of the theme-switcher dropdown, but you can append any sitewide rules here!
+### 1. Q&A Heading Style
+Generative AI matches user queries to your headings. Avoid generic, one-word headers.
+- **❌ Bad:** `## Features`
+- **✅ Good:** `## What can Gen-CLI do?`
+- **❌ Bad:** `## Architecture`
+- **✅ Good:** `## How does the system handle concurrent requests?`
 
-### 3. Adding Content
-- **Pages**: You can edit `about.md` and `index.md` directly in the root directory. Add `.md` files with frontmatter layout keys (e.g., `layout: page`) to generate more standalone pages.
-- **Posts**: Write blog posts in the `_posts` directory in the naming format `YYYY-MM-DD-title-of-post.md`.
+### 2. Semantic Boldness
+When stating facts or defining terms, use **bold text**. LLM scrapers weigh bold text (`**text**`) higher than normal text when extracting entity definitions. 
+- *Example:* "**TrueML** is a zero-abstraction framework designed for..."
 
-### 4. Overriding Defaults
-To override default HTML from the base Minima theme without editing the gem directly:
-- Create corresponding files like `_layouts/default.html` or `_includes/header.html` in your repository. Jekyll will prioritize your local structural files over the theme defaults.
+### 3. Outbound Authority
+To rank in AI Overviews, you must prove you are an authority. Always hyperlink to canonical sources. If you mention PyTorch, link to the PyTorch docs. If you mention an algorithm, link to the original arXiv paper.
 
-## 🤖 SEO, AEO, & GEO Architecture
+### 4. No TL;DR Blocks
+Do not include arbitrary `### TL;DR` blocks at the top of files. The site architecture relies on clean markdown and the `description` metadata in the YAML block to feed summaries to AI bots.
 
-This site is deeply optimized for traditional search engines, LLM answer engines, and generative AI crawlers:
-- **`llms.txt`**: A Liquid-compiled, machine-readable summary of the portfolio automatically updated for AI agents like ChatGPT or Perplexity.
-- **`_includes/custom-head.html`**: Contains advanced JSON-LD structured data (Person, WebSite, ProfilePage) and Google Search Console tags.
-- **`sitemap.xml` & `robots.txt`**: Automatically handles search engine indexing.
-- **`SEO_AEO_GUIDE.md`**: Refer to this guide when writing new markdown files to ensure they conform to AI-scraping best practices (Q&A headings, semantic boldness, etc.).
+---
+
+## ⚙️ Site Architecture & Configuration
+
+The site includes advanced automation under the hood. You rarely need to touch these files, but here is how they work:
+
+### 1. `_config.yml` (Global Settings)
+This is where you update your primary site metadata.
+- Change your Site `title`, `description`, and `email`.
+- Update `social_links` (these automatically populate the footer and header icons).
+- Contains the strict sitemap hierarchy (`changefreq` and `priority` for search engines).
+
+### 2. `llms.txt` (Agentic Web)
+An emerging standard for AI crawlers. It uses Liquid templating to automatically recompile a machine-readable summary of your entire portfolio every time you publish a new project or note.
+
+### 3. `_includes/head.html` & `custom-head.html`
+- **SEO Schemas:** Automatically injects Schema.org JSON-LD structured data (`Person`, `WebSite`, `ProfilePage`) proving your identity to Google.
+- **Performance:** Handles preconnect hints, async CSS loading, and LCP image preloading.
+
+### 4. The Theme Switcher
+The site extends the standard Minima theme with a fully functional skin switcher.
+- **`_plugins/skin_manager.rb`:** Generates CSS for multiple Minima variants.
+- **`_includes/sub-footer.html`:** Controls the frontend toggle and stores user preferences in `localStorage`.
+- **`_sass/minima/custom-styles.scss`:** Where you should write any custom CSS overrides (like the hero header styles or global animations).
+
+---
+*Maintained and optimized for performance, accessibility, and the generative web.*
