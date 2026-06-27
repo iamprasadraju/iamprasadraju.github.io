@@ -126,7 +126,7 @@ permalink: /notes/
   gap: 6px;
   flex-wrap: wrap;
   margin-top: 12px;
-  height: 20px; 
+  height: 26px; /* Increased from 20px to prevent slicing the bottom of the pills off */
   overflow: hidden;
 }
 

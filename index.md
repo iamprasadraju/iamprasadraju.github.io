@@ -86,10 +86,28 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #8b949e;
     font-weight: 600;
     margin-bottom: 4px;
+    
+    /* Silver Shining Effect (Dark Theme) */
+    color: transparent !important;
+    background: linear-gradient(
+      110deg,
+      #8b949e 0%,
+      #8b949e 40%,
+      #ffffff 50%,
+      #8b949e 60%,
+      #8b949e 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine-silver 3.5s linear infinite;
   }
+  @keyframes shine-silver {
+    to { background-position: -200% center; }
+  }
+
   .hero-link {
     font-size: 14px;
     color: currentColor;
@@ -104,7 +122,21 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     opacity: 1;
     transform: translateX(3px); /* Interactive rightward slide */
   }
-  html[data-theme='classic'] .col-title { color: #57606a; }
+
+  /* Silver Shining Effect (Light Theme) */
+  html[data-theme='classic'] .col-title {
+    background: linear-gradient(
+      110deg,
+      #57606a 0%,
+      #57606a 40%,
+      #b0b8c0 50%,
+      #57606a 60%,
+      #57606a 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
 
   @media (max-width: 768px) {
     .hero-header { gap: 60px; }
