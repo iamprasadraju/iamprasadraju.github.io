@@ -12,7 +12,10 @@ minima:
   date_format: "%b %-d, %Y"
   social_links:
     - { icon: "github", title: "GitHub", url: "https://github.com/iamprasadraju" }
-    - { icon: "x-twitter", title: "X (formerly Twitter)", url: "https://x.com/irealprasadraju" }
+    - { icon: "kaggle", title: "Kaggle", url: "https://www.kaggle.com/iamprasadraju" }
+    - { icon: "huggingface", title: "Hugging Face", url: "https://huggingface.co/iamprasadraju" }
+    - { icon: "google-scholar", title: "Google Scholar", url: "https://scholar.google.com/citations?hl=en&user=n_0swYgAAAAJ" }
+#   - { icon: "x-twitter", title: "X (formerly Twitter)", url: "https://x.com/irealprasadraju" }
   show_excerpts: true
 
 # Build settings
@@ -31,6 +34,14 @@ collections:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+
+feed:
+  path: feed/posts.xml
+  collections:
+    - posts
+    - notes
+    - projects
+    - research
 
 sass:
   quiet_deps: true
