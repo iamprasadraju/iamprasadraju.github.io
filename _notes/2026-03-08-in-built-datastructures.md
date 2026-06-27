@@ -6,11 +6,6 @@ description: "A comprehensive guide and quick reference for in-built data struct
 tags: [Python, C++, C, Data Structures, Algorithms]
 ---
 
-### TL;DR
-- **Comprehensive Reference**: A quick guide to the most common in-built data structures across **Python**, **C++ (STL)**, and **C**.
-- **Performance Insights**: Detailed time and space complexity tables for critical operations like search, insertion, and deletion.
-- **Interview Ready**: Includes common technical interview questions and answers for each data structure to help you prep efficiently.
-
 A quick reference for common data structure operations. Use this as your go-to guide.
 
 ---
