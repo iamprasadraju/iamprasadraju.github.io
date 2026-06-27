@@ -3,10 +3,8 @@ author:
   name: Email me at
   email: gls.prasadraju@gmail.com
 
-# description: >
-# Write an awesome description for your new site here. You can edit this
-# line in _config.yml. It will appear in your document head meta (for
-# Google search results) and in your feed.xml site description.
+description: >
+  Independent AI Researcher & Systems Engineer focusing on ML/DL algorithms, Python, PyTorch, and building systems engineering projects on GitHub.
 
 minima:
   date_format: "%b %-d, %Y"

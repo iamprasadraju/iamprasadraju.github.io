@@ -3,7 +3,7 @@
     <span class="sf-toggle-icon"></span>
   </span>
   <div id="skin-switch-container">
-    Page rendered with the <select id="skin-switch" onchange="changeSkin()">
+    Page rendered with the <select id="skin-switch" aria-label="Theme Selector" onchange="changeSkin()">
       {%- for skin in page.available_skins %}
       {%- if skin == 'solarized' %}{% continue %}{% endif -%}
       {% if skin == 'classic' -%}

@@ -7,9 +7,9 @@ layout: page
 <div class="hero-header">
   <div class="popout-avatar">
     <div class="popout-circle">
-      <img src="assets/profile.png" alt="Prasad Raju G">
+      <img src="assets/profile.png" alt="Prasad Raju G" width="180" height="180">
     </div>
-    <img src="assets/profile.png" alt="" class="popout-top">
+    <img src="assets/profile.png" alt="" class="popout-top" width="180" height="180">
   </div>
   
   <div class="hero-links">
@@ -221,6 +221,11 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     transform: translateY(-2px);
     border-color: rgba(128, 128, 128, 0.7);
     opacity: 1;
+  }
+  
+  html[data-theme='classic'] .ghost-pill {
+    color: #57606a;
+    border-color: rgba(87, 96, 106, 0.4);
   }
 
   .commit-row {
@@ -793,7 +798,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
 
 
 <h3 style="margin-top: 24px;">Contribution Activity</h3>
-<img src="https://ghchart.rshah.org/iamprasadraju" alt="iamprasadraju's Github chart" style="margin-top: 16px; margin-bottom: 24px; width: 100%; display: block;" />
+<img src="https://ghchart.rshah.org/iamprasadraju" alt="iamprasadraju's Github chart" width="700" height="110" style="margin-top: 16px; margin-bottom: 24px; width: 100%; height: auto; display: block;" />
 
 <div id="github-activity">
   <p style="color: #828282; font-size: 14px;">Loading actual GitHub activity...</p>
