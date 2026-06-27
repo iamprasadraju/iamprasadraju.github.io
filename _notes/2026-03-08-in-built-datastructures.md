@@ -2,13 +2,20 @@
 layout: page
 title: "In-built Datastructures in Python, C++, C"
 date: "2026-03-08"
+description: "A comprehensive guide and quick reference for in-built data structures in Python, C++, and C. Discover time complexities, common operations, and interview questions."
+tags: [Python, C++, C, Data Structures, Algorithms]
 ---
+
+### TL;DR
+- **Comprehensive Reference**: A quick guide to the most common in-built data structures across **Python**, **C++ (STL)**, and **C**.
+- **Performance Insights**: Detailed time and space complexity tables for critical operations like search, insertion, and deletion.
+- **Interview Ready**: Includes common technical interview questions and answers for each data structure to help you prep efficiently.
 
 A quick reference for common data structure operations. Use this as your go-to guide.
 
 ---
 
-## Table of Contents
+## What is in this Guide?
 
 ### Python
 [List](#list) | [Tuple](#tuple) | [Set](#set) | [Dictionary](#dictionary) | [Array](#array-module) | [Collections](#collections)
@@ -21,10 +28,10 @@ A quick reference for common data structure operations. Use this as your go-to g
 
 ---
 
-## <a name="python"></a>Python
+## <a name="python"></a>What are the In-Built Data Structures in Python?
 
-### <a name="list"></a>List []
-**Definition:** Ordered, mutable sequence that allows duplicate elements. Elements are indexed starting from 0. Supports dynamic resizing.
+### <a name="list"></a>How do you use a List [] in Python?
+**Definition:** **Ordered**, **mutable sequence** that allows duplicate elements. Elements are indexed starting from 0. Supports **dynamic resizing**.
 
 | Operation | Time | Space |
 |-----------|------|-------|
@@ -96,8 +103,8 @@ A: Use append() for push, pop() for pop. Top of stack is last element.
 
 ---
 
-### <a name="tuple"></a>Tuple ()
-**Definition:** Ordered, immutable sequence. Once created, cannot be modified. Used for fixed collections.
+### <a name="tuple"></a>When should you use a Tuple ()?
+**Definition:** **Ordered**, **immutable sequence**. Once created, cannot be modified. Used for **fixed collections**.
 
 | Operation | Time | Space |
 |-----------|------|-------|
@@ -150,8 +157,8 @@ A: Function return values, dictionary keys, fixed records (coordinates).
 
 ---
 
-### <a name="set"></a>Set {}
-**Definition:** Unordered collection of unique elements. No duplicates. Provides O(1) average-case lookup.
+### <a name="set"></a>How does a Set {} work?
+**Definition:** **Unordered collection** of **unique elements**. No duplicates. Provides **O(1) average-case lookup**.
 
 | Operation | Time (Avg) | Time (Worst) | Space |
 |-----------|-------------|---------------|-------|
@@ -208,8 +215,8 @@ A: Use dict.fromkeys() or loop through with seen set.
 
 ---
 
-### <a name="dictionary"></a>Dictionary {}
-**Definition:** Collection of key-value pairs where each key is unique. Provides O(1) average-case lookup.
+### <a name="dictionary"></a>How to manage key-value pairs with a Dictionary {}?
+**Definition:** Collection of **key-value pairs** where each key is unique. Provides **O(1) average-case lookup**.
 
 | Operation | Time (Avg) | Time (Worst) | Space |
 |-----------|-------------|---------------|-------|
@@ -270,8 +277,8 @@ A: Use | operator (Python 3.9+), update(), or {**d1, **d2}.
 
 ---
 
-### <a name="array-module"></a>Array (array module)
-**Definition:** Homogeneous array of numeric values stored more efficiently than lists.
+### <a name="array-module"></a>When to use the Array module?
+**Definition:** **Homogeneous array** of numeric values stored more **efficiently** than lists.
 
 | Operation | Time | Space |
 |-----------|------|-------|
@@ -293,7 +300,7 @@ arr[0]           # O(1)
 
 ---
 
-### <a name="collections"></a>Collections Module
+### <a name="collections"></a>What advanced structures does the Collections Module offer?
 
 **deque:** Double-ended queue - O(1) add/remove at both ends
 
@@ -347,10 +354,10 @@ dd['key'].append(1)  # O(1)
 
 ---
 
-## <a name="cpp"></a>C++ (STL)
+## <a name="cpp"></a>What does the C++ (STL) provide?
 
-### <a name="vector"></a>Vector `<vector>`
-**Definition:** Dynamic array that can resize automatically. Provides random access.
+### <a name="vector"></a>How do you use a Vector `<vector>`?
+**Definition:** **Dynamic array** that can resize automatically. Provides **random access**.
 
 | Operation | Time | Space |
 |-----------|------|-------|
@@ -400,8 +407,8 @@ A: size = elements. capacity = memory allocated. size <= capacity.
 
 ---
 
-### <a name="deque"></a>Deque `<deque>`
-**Definition:** Double-ended queue allowing O(1) insertion/deletion at both front and back.
+### <a name="deque"></a>How does a Deque `<deque>` operate?
+**Definition:** **Double-ended queue** allowing **O(1) insertion/deletion** at both front and back.
 
 | Operation | Time |
 |-----------|------|
@@ -434,8 +441,8 @@ A: Uses multiple fixed-size arrays (chunks) mapped together.
 
 ---
 
-### <a name="list-cpp"></a>List `<list>`
-**Definition:** Doubly linked list with O(1) insertion/deletion anywhere. No random access.
+### <a name="list-cpp"></a>When is a List `<list>` useful in C++?
+**Definition:** **Doubly linked list** with **O(1) insertion/deletion** anywhere. No random access.
 
 | Operation | Time |
 |-----------|------|
@@ -471,8 +478,8 @@ A: O(1) if you have iterator. O(n) to find position.
 
 ---
 
-### <a name="array-cpp"></a>Array `<array>`
-**Definition:** Fixed-size container wrapping C-style array.
+### <a name="array-cpp"></a>How to use a fixed-size Array `<array>`?
+**Definition:** **Fixed-size container** wrapping C-style array.
 
 | Operation | Time |
 |-----------|------|
@@ -491,8 +498,8 @@ arr.size()            // O(1) - compile time
 
 ---
 
-### <a name="stack"></a>Stack `<stack>`
-**Definition:** LIFO adapter with push, pop, top operations.
+### <a name="stack"></a>How do you implement a Stack `<stack>`?
+**Definition:** **LIFO adapter** with push, pop, top operations.
 
 | Operation | Time |
 |-----------|------|
@@ -524,8 +531,8 @@ A: DFS, expression evaluation, parenthesis matching, undo/redo.
 
 ---
 
-### <a name="queue"></a>Queue `<queue>`
-**Definition:** FIFO adapter with enqueue at back, dequeue at front.
+### <a name="queue"></a>How to manage FIFO with a Queue `<queue>`?
+**Definition:** **FIFO adapter** with enqueue at back, dequeue at front.
 
 | Operation | Time |
 |-----------|------|
@@ -556,8 +563,8 @@ A: BFS, task scheduling, print job queue.
 
 ---
 
-### <a name="priority-queue"></a>Priority Queue `<queue>`
-**Definition:** Heap-based, max/min element at top.
+### <a name="priority-queue"></a>When to use a Priority Queue `<queue>`?
+**Definition:** **Heap-based**, max/min element at top.
 
 | Operation | Time |
 |-----------|------|
@@ -589,8 +596,8 @@ A: Dijkstra's, Huffman coding, top-k elements.
 
 ---
 
-### <a name="set-cpp"></a>Set `<set>`
-**Definition:** Sorted unique elements. Red-Black tree.
+### <a name="set-cpp"></a>How does a Set `<set>` maintain order?
+**Definition:** **Sorted unique elements**. Implemented as a **Red-Black tree**.
 
 | Operation | Time |
 |-----------|------|
@@ -621,8 +628,8 @@ A: All operations O(log n) due to tree structure.
 
 ---
 
-### <a name="multiset"></a>Multiset `<multiset>`
-**Definition:** Sorted container allowing duplicate elements.
+### <a name="multiset"></a>What is a Multiset `<multiset>`?
+**Definition:** **Sorted container** allowing **duplicate elements**.
 
 | Operation | Time |
 |-----------|------|
@@ -644,8 +651,8 @@ ms.count(2);      // O(log n + k)
 
 ---
 
-### <a name="map"></a>Map `<map>`
-**Definition:** Sorted key-value pairs. Red-Black tree.
+### <a name="map"></a>How does a Map `<map>` handle key-value pairs?
+**Definition:** **Sorted key-value pairs**. Implemented as a **Red-Black tree**.
 
 | Operation | Time |
 |-----------|------|
@@ -676,8 +683,8 @@ A: map is O(log n) sorted. unordered_map is O(1) average.
 
 ---
 
-### <a name="multimap"></a>Multimap `<multimap>`
-**Definition:** Sorted key-value pairs allowing duplicate keys.
+### <a name="multimap"></a>When is a Multimap `<multimap>` useful?
+**Definition:** **Sorted key-value pairs** allowing **duplicate keys**.
 
 | Operation | Time |
 |-----------|------|
@@ -698,8 +705,8 @@ mm.equal_range("fruit");     // O(log n + k)
 
 ---
 
-### <a name="unordered-set"></a>Unordered Set `<unordered_set>`
-**Definition:** Hash-based set. O(1) average lookup.
+### <a name="unordered-set"></a>How does an Unordered Set `<unordered_set>` improve lookup?
+**Definition:** **Hash-based set**. Provides **O(1) average lookup**.
 
 | Operation | Time (Avg) | Time (Worst) |
 |-----------|------------|---------------|
@@ -725,8 +732,8 @@ A: Ratio of elements to buckets. Lower = less collisions, more memory.
 
 ---
 
-### <a name="unordered-map"></a>Unordered Map `<unordered_map>`
-**Definition:** Hash-based map. O(1) average lookup.
+### <a name="unordered-map"></a>How fast is an Unordered Map `<unordered_map>`?
+**Definition:** **Hash-based map**. Provides **O(1) average lookup**.
 
 | Operation | Time (Avg) | Time (Worst) |
 |-----------|------------|---------------|
@@ -752,7 +759,7 @@ A: Uses chaining or probing. Falls back to rehashing.
 
 ---
 
-### <a name="pair-tuple"></a>Pair & Tuple
+### <a name="pair-tuple"></a>How do you use Pair & Tuple in C++?
 
 | Operation | Time |
 |-----------|------|
@@ -773,7 +780,7 @@ tie(a, b, c) = t;            // O(k)
 
 ---
 
-### <a name="string-cpp"></a>String `<string>`
+### <a name="string-cpp"></a>How do you manipulate a String `<string>` in C++?
 
 | Operation | Time |
 |-----------|------|
@@ -798,10 +805,10 @@ s.replace(0, 5, "bye")     // O(n+m)
 
 ---
 
-## <a name="c-lang"></a>C Language
+## <a name="c-lang"></a>What Data Structures exist in C Language?
 
-### <a name="array-c"></a>Array
-**Definition:** Contiguous memory block with elements of same type. Fixed size.
+### <a name="array-c"></a>How do C Arrays work?
+**Definition:** **Contiguous memory block** with elements of same type. **Fixed size**.
 
 | Operation | Time | Notes |
 |-----------|------|-------|
@@ -833,8 +840,8 @@ A: Array decays to pointer when passed, loses size info.
 
 ---
 
-### <a name="string-c"></a>String
-**Definition:** Null-terminated character array.
+### <a name="string-c"></a>How are Strings implemented in C?
+**Definition:** **Null-terminated** character array.
 
 | Operation | Time |
 |-----------|------|
@@ -869,8 +876,8 @@ A: Use strncpy with null termination, or snprintf.
 
 ---
 
-### <a name="struct"></a>Struct
-**Definition:** Composite type grouping different types.
+### <a name="struct"></a>How do you define a Struct?
+**Definition:** **Composite type** grouping different types.
 
 | Operation | Time |
 |-----------|------|
@@ -900,8 +907,8 @@ A: Compiler adds padding for alignment. Size may be larger.
 
 ---
 
-### <a name="union"></a>Union
-**Definition:** All members share same memory location.
+### <a name="union"></a>What is the purpose of a Union?
+**Definition:** All members share **same memory location**.
 
 ```c
 union Data {
@@ -916,8 +923,8 @@ d.i = 10;                  // O(1)
 
 ---
 
-### <a name="enum"></a>Enum
-**Definition:** Named integer constants.
+### <a name="enum"></a>How to use an Enum?
+**Definition:** **Named integer constants**.
 
 ```c
 enum Day {SUN, MON, TUE};
@@ -926,8 +933,8 @@ enum Color {RED = 1, GREEN = 2};
 
 ---
 
-### <a name="pointer"></a>Pointer
-**Definition:** Variable storing memory address.
+### <a name="pointer"></a>How do Pointers work in C?
+**Definition:** Variable storing a **memory address**.
 
 | Operation | Time |
 |-----------|------|
@@ -963,7 +970,7 @@ A: Memory allocated but never freed.
 
 ---
 
-### <a name="linked-list"></a>Linked List (manual)
+### <a name="linked-list"></a>How do you manually implement a Linked List?
 
 | Operation | Time |
 |-----------|------|
@@ -992,7 +999,7 @@ for(struct Node *p = head; p; p = p->next)
 
 ---
 
-## Quick Reference
+## Where can I find a Quick Reference?
 
 | Need | Python | C++ | C |
 |------|--------|-----|---|
@@ -1007,7 +1014,7 @@ for(struct Node *p = head; p; p = p->next)
 
 ---
 
-## Complexity Summary
+## What is the Complexity Summary?
 
 ### Python
 

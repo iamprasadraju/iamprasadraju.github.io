@@ -1,0 +1,56 @@
+<!-- Google Search Console verification -->
+<!-- Replace YOUR_VERIFICATION_CODE after signing up at https://search.google.com/search-console -->
+<!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> -->
+
+<!-- Preload LLM context -->
+<link rel="prefetch" href="/llms.txt" as="fetch" crossorigin="anonymous">
+
+<!-- Structured Data (JSON-LD) — Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "{{ '/' | absolute_url }}#person",
+  "name": "Prasad Raju G",
+  "url": "{{ '/' | absolute_url }}",
+  "sameAs": [
+    "https://github.com/iamprasadraju",
+    "https://linkedin.com/in/realprasadraju",
+    "https://huggingface.co/iamprasadraju",
+    "https://scholar.google.com/citations?hl=en&user=n_0swYgAAAAJ",
+    "https://www.kaggle.com/iamprasadraju"
+  ],
+  "jobTitle": "Independent AI Researcher & Systems Engineer",
+  "alumniOf": "Independent"
+}
+</script>
+
+<!-- Structured Data (JSON-LD) — WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "{{ '/' | absolute_url }}#website",
+  "name": "{{ site.title | escape }}",
+  "url": "{{ '/' | absolute_url }}",
+  "description": "{{ site.description | escape }}",
+  "author": { "@id": "{{ '/' | absolute_url }}#person" },
+  "inLanguage": "en-US"
+}
+</script>
+
+<!-- Structured Data (JSON-LD) — ProfilePage (Only output on homepage) -->
+{% if page.url == '/' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "{{ '/' | absolute_url }}#profilepage",
+  "url": "{{ '/' | absolute_url }}",
+  "name": "{{ site.title | escape }} | Portfolio",
+  "isPartOf": { "@id": "{{ '/' | absolute_url }}#website" },
+  "mainEntity": { "@id": "{{ '/' | absolute_url }}#person" },
+  "inLanguage": "en-US"
+}
+</script>
+{% endif %}
