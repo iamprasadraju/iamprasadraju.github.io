@@ -1,7 +1,7 @@
 <ul class="social-media-list">
 {%- for entry in site.minima.social_links -%}
   <li>
-    <a rel="me" href="{{ entry.url }}" target="_blank" title="{{ entry.title }}">
+    <a rel="me" href="{{ entry.url }}" target="_blank" title="{{ entry.title }}" aria-label="{{ entry.title }} Profile">
       {% if entry.icon == 'huggingface' %}
         <svg class="svg-icon grey" viewBox="0 0 95 88" style="width: 1.25em; height: 1.25em; vertical-align: -0.2em;">
           <path fill="currentColor" opacity="0.2" d="M47.21 76.5a34.75 34.75 0 1 0 0-69.5 34.75 34.75 0 0 0 0 69.5Z" />
@@ -32,7 +32,7 @@
     {% assign feed_path = "feed/research.xml" %}
   {% endif %}
   <li>
-    <a href="{{ feed_path | absolute_url }}" target="_blank" title="Subscribe to syndication feed">
+    <a href="{{ feed_path | absolute_url }}" target="_blank" title="Subscribe to syndication feed" aria-label="RSS Feed">
       <svg class="svg-icon grey" viewbox="0 0 16 16">
         <path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194
           11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0
@@ -44,3 +44,6 @@
   </li>
 {%- endunless %}
 </ul>
+<div style="margin-top: 10px; opacity: 0.5; font-size: 11px;">
+  <a href="{{ '/llms.txt' | absolute_url }}" style="color: inherit; text-decoration: none;">llms.txt</a>
+</div>
