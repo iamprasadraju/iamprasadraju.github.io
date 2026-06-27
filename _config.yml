@@ -54,3 +54,33 @@ kramdown:
   syntax_highlighter_opts:
     block:
       line_numbers: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      sitemap:
+        changefreq: weekly
+        priority: 1.0
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      sitemap:
+        changefreq: monthly
+        priority: 0.9
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      sitemap:
+        changefreq: monthly
+        priority: 0.8
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      sitemap:
+        changefreq: monthly
+        priority: 0.7
