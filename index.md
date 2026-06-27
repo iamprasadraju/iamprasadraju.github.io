@@ -7,9 +7,9 @@ layout: page
 <div class="hero-header">
   <div class="popout-avatar">
     <div class="popout-circle">
-      <img src="assets/profile.png" alt="Prasad Raju G" width="180" height="180">
+      <img src="assets/profile.webp" alt="Prasad Raju G" width="180" height="180">
     </div>
-    <img src="assets/profile.png" alt="" class="popout-top" width="180" height="180">
+    <img src="assets/profile.webp" alt="" class="popout-top" width="180" height="180">
   </div>
   
   <div class="hero-links">
