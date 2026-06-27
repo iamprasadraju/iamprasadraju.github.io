@@ -213,7 +213,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     letter-spacing: 1px;
     color: currentColor;
     opacity: 0.8;
-    transition: all 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
     cursor: default;
   }
 
@@ -908,8 +908,9 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
   animation: floatIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
   opacity: 0;
   transform: translateY(15px);
 }

@@ -4,34 +4,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {%- seo -%}
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"></noscript>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <!-- Preconnect to critical CDNs -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://api.github.com" crossorigin>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      mermaid.initialize({ startOnLoad: false, theme: "neutral" });
-      
-      var mermaidBlocks = document.querySelectorAll(
-        "pre code.language-mermaid, div.highlight-mermaid pre code, div.language-mermaid pre"
-      );
-      
-      mermaidBlocks.forEach(function(block) {
-        var pre = block.closest("pre");
-        if (!pre) return;
-        
-        var text = block.textContent || pre.textContent;
-        var graphDiv = document.createElement("div");
-        graphDiv.className = "mermaid";
-        graphDiv.textContent = text.trim();
-        pre.parentNode.replaceChild(graphDiv, pre);
-      });
-      mermaid.run();
-    });
-  </script>
+  <!-- Preload LCP image on homepage -->
+  {% if page.url == '/' %}
+  <link rel="preload" href="{{ '/assets/profile.webp' | relative_url }}" as="image" type="image/webp">
+  {% endif %}
 
+  <!-- Theme stylesheet (non-blocking swap) -->
   <link id="main-stylesheet" rel="stylesheet" href="{{ '/assets/css/dark.css' | relative_url }}">
   <script>
     var prevSkin = localStorage.getItem("minima-ss");
@@ -45,6 +27,7 @@
     {%- include google-analytics.html -%}
   {%- endif -%}
 
+  <!-- External links: open in new tab -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       var links = document.querySelectorAll("a[href]");
@@ -61,16 +44,55 @@
       });
     });
   </script>
+
+  <!-- KaTeX: only load on pages with math content -->
+  {% assign page_content = page.content | default: content %}
+  {% if page.math or page_content contains '$$' %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"></noscript>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ],
-        throwOnError: false
-      });
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ],
+          throwOnError: false
+        });
+      }
     });
   </script>
+  {% endif %}
+
+  <!-- Mermaid: only load on pages with mermaid diagrams -->
+  {% if page_content contains 'mermaid' %}
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (typeof mermaid === 'undefined') return;
+      mermaid.initialize({ startOnLoad: false, theme: "neutral" });
+
+      var mermaidBlocks = document.querySelectorAll(
+        "pre code.language-mermaid, div.highlight-mermaid pre code, div.language-mermaid pre"
+      );
+
+      mermaidBlocks.forEach(function(block) {
+        var pre = block.closest("pre");
+        if (!pre) return;
+
+        var text = block.textContent || pre.textContent;
+        var graphDiv = document.createElement("div");
+        graphDiv.className = "mermaid";
+        graphDiv.textContent = text.trim();
+        pre.parentNode.replaceChild(graphDiv, pre);
+      });
+      mermaid.run();
+    });
+  </script>
+  {% endif %}
+
   {%- include custom-head.html -%}
 </head>

@@ -105,5 +105,6 @@ h1 + hr, h2 + hr, h3 + hr, h4 + hr, h5 + hr, h6 + hr {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: silverShine 4s linear infinite;
+  will-change: background-position;
   display: inline-block;
 }
