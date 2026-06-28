@@ -98,7 +98,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   
   .actively-building {
     font-family: 'Caveat', cursive;
-    font-size: clamp(13px, 4.2vw, 16.6px);
+    font-size: clamp(13.6px, 4.3vw, 17.2px);
     color: #8b949e;
     letter-spacing: 0.5px;
     transform: rotate(-1.5deg); /* Slight natural tilt */
@@ -135,7 +135,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   
   .brand-repo-link {
     font-family: 'Caveat', cursive;
-    font-size: clamp(15px, 4.8vw, 18.6px);
+    font-size: clamp(15.6px, 4.9vw, 19.2px);
     font-weight: 700;
     color: var(--text-color) !important;
     text-decoration: none !important;
