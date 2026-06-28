@@ -250,7 +250,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   })();
 </script>
 
-### Skills
+<h3 class="home-heading">Skills</h3>
 
 <div class="ghost-pill-container">
   <span class="ghost-pill">Python</span>
@@ -264,7 +264,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   <span class="ghost-pill">Computer Vision</span>
 </div>
 
-### Interests
+<h3 class="home-heading">Interests</h3>
 
 <div class="ghost-pill-container">
   <span class="ghost-pill">Artificial Intelligence</span>
@@ -279,7 +279,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
 
 
 
-<h3 style="margin-top: 24px;">Contribution Activity</h3>
+<h3 class="home-heading" style="margin-top: 24px;">Contribution Activity</h3>
 <img src="https://ghchart.rshah.org/iamprasadraju" alt="iamprasadraju's Github chart" width="700" height="110" style="margin-top: 16px; margin-bottom: 24px; width: 100%; height: auto; display: block;" />
 
 <div id="github-activity">
@@ -370,7 +370,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   })();
 </script>
 
-### Special Thanks
+<h3 class="home-heading">Special Thanks</h3>
 
 <style>
 .thanks-grid {
