@@ -12,6 +12,7 @@ layout: page
     <img src="assets/profile.webp" alt="" class="popout-top" width="180" height="180">
   </div>
   
+  <div class="hero-text-block">
   <div class="hero-links">
     <!-- Column 1: Connect -->
     <div class="link-column">
@@ -50,6 +51,11 @@ layout: page
       </a>
     </div>
   </div>
+  
+  <div class="actively-building">
+    Actively Building <a href="https://github.com/iamprasadraju/TrueML" target="_blank" rel="noopener noreferrer" class="brand-repo-link">TrueML</a> & <a href="https://github.com/iamprasadraju/AlgoX" target="_blank" rel="noopener noreferrer" class="brand-repo-link">AlgoX</a>
+  </div>
+</div>
 </div>
 
 
@@ -60,6 +66,8 @@ My curiosity spans across science and technology - from Computer Science and Mat
 When I’m not writing code, you’ll find me reading research papers, exploring quantum mechanics, or diving into neuroscience - always chasing that fundamental question.
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap');
+
   .hero-header {
     display: flex;
     align-items: center;
@@ -82,13 +90,33 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     flex-direction: column;
     gap: 12px;
   }
-  .col-title {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-    margin-bottom: 4px;
+  .hero-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .actively-building {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(13px, 4.2vw, 16.6px);
+    color: #8b949e;
+    letter-spacing: 0.5px;
+    transform: rotate(-1.5deg); /* Slight natural tilt */
+    display: inline-block;
+    white-space: nowrap; /* Force single line on mobile */
     
+    /* Apple Pencil drawing animation */
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    animation: pencil-draw 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.3s;
+  }
+  
+  @keyframes pencil-draw {
+    0% { clip-path: polygon(0 0, 0 0, 0 120%, 0 120%); }
+    100% { clip-path: polygon(0 0, 110% 0, 110% 120%, 0 120%); }
+  }
+  
+  .col-title {
     /* Silver Shining Effect (Dark Theme) */
     color: transparent !important;
     background: linear-gradient(
@@ -103,6 +131,51 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     -webkit-background-clip: text;
     background-clip: text;
     animation: shine-silver 3.5s linear infinite;
+  }
+  
+  .brand-repo-link {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(15px, 4.8vw, 18.6px);
+    font-weight: 700;
+    color: var(--text-color) !important;
+    text-decoration: none !important;
+    display: inline-block;
+    position: relative;
+    transition: opacity 0.2s ease;
+  }
+  
+  /* Hand-drawn tapered strike (thick start, thin end) */
+  .brand-repo-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M2,4 Q50,4 98,5 Q99,5.25 98,5.5 Q50,6.5 2,8 Q0,6 2,4 Z' fill='%238b949e'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform-origin: left center;
+  }
+  
+  .brand-repo-link:hover {
+    opacity: 0.8;
+    text-decoration: none !important;
+  }
+  
+  .brand-repo-link:hover::after {
+    opacity: 1;
+    transform: scaleX(1.05); /* Slight organic stretch on hover */
+  }
+  
+  .col-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-bottom: 4px;
   }
   @keyframes shine-silver {
     to { background-position: -200% center; }
@@ -137,13 +210,37 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     -webkit-background-clip: text;
     background-clip: text;
   }
+  
+  html[data-theme='classic'] .actively-building {
+    color: #57606a;
+  }
 
   @media (max-width: 768px) {
-    .hero-header { gap: 60px; }
+    .hero-header { 
+      gap: 30px; 
+    }
+    .hero-links {
+      gap: 32px;
+    }
   }
   @media (max-width: 600px) {
     .hero-header { 
-      gap: 80px; 
+      gap: 20px; 
+      flex-wrap: wrap; /* Allow wrapping on mobile */
+    }
+    .popout-avatar {
+      width: 130px;
+      height: 130px;
+    }
+    .popout-avatar img {
+      bottom: -13px; /* Proportionally adjust the 3D sink for the smaller scale */
+    }
+    .hero-text-block {
+      display: contents; /* Removes the structural wrapper on mobile only */
+    }
+    .actively-building {
+      flex-basis: 100%; /* Forces this specific line to drop to a new row under the PFP */
+      margin-top: 15px;
     }
     .hero-links {
       flex-direction: column; 
