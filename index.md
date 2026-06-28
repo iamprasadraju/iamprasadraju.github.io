@@ -751,7 +751,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
 <hr class="cwo-hairline">
 
 <script>
-  window.addEventListener('load', async function() {
+  (async function() {
     var cacheKey = 'cwo_github_data';
     var cacheExpiry = 60 * 60 * 1000; // 1 hour
 
@@ -894,7 +894,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
         }
       }
     }
-  });
+  })();
 </script>
 
 ### Skills
@@ -934,7 +934,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
 </div>
 
 <script>
-  window.addEventListener('load', async function fetchGitHubActivity() {
+  (async function fetchGitHubActivity() {
     try {
       const urls = [
         'https://api.github.com/users/iamprasadraju/events/public?per_page=100&page=1',
@@ -1014,7 +1014,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       document.getElementById('github-activity').innerHTML = '<p style="color: #828282; font-size: 14px;">Unable to load GitHub activity at this time.</p>';
       console.error('GitHub Activity Error:', error);
     }
-  });
+  })();
 </script>
 
 ### Special Thanks
