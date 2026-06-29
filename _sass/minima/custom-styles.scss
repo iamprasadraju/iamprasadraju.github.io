@@ -1,3 +1,7 @@
+.site-nav {
+  z-index: 9999 !important;
+}
+
 .site-footer {
   padding-bottom: $spacing-unit * 4;
   transition: padding-bottom 0.5s;
