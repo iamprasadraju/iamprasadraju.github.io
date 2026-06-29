@@ -13,14 +13,19 @@
   <link rel="preload" href="{{ '/assets/profile.webp' | relative_url }}" as="image" type="image/webp">
   {% endif %}
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
   <!-- Theme stylesheet (non-blocking swap) -->
-  <link id="main-stylesheet" rel="stylesheet" href="{{ '/assets/css/dark.css' | relative_url }}">
   <script>
-    var prevSkin = localStorage.getItem("minima-ss");
-    if (prevSkin && prevSkin !== "dark.css") {
-      document.getElementById("main-stylesheet").href = "{{ '/assets/css/' | relative_url }}" + prevSkin;
-    }
+    var prevSkin = localStorage.getItem("minima-ss") || "dark.css";
+    document.write('<link id="main-stylesheet" rel="stylesheet" href="{{ "/assets/css/" | relative_url }}' + prevSkin + '">');
   </script>
+  <noscript>
+    <link id="main-stylesheet" rel="stylesheet" href="{{ '/assets/css/dark.css' | relative_url }}">
+  </noscript>
 
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}

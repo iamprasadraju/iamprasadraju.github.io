@@ -34,7 +34,7 @@
   }
 
   function changeSkin() {
-    _ssName = event.target.value;
+    var _ssName = skinSwitcher.value;
     metaTag.href = SSHref.replace(SSName, _ssName);
     localStorage.setItem("minima-ss", _ssName);
     document.documentElement.setAttribute('data-theme', _ssName.replace('.css', ''));
