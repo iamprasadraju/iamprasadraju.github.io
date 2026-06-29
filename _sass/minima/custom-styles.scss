@@ -273,7 +273,7 @@ h1 + hr, h2 + hr, h3 + hr, h4 + hr, h5 + hr, h6 + hr {
   }
   @media (max-width: 600px) {
     .hero-header { 
-      gap: 20px;
+      gap: 50px;
       flex-wrap: wrap; /* Allow wrapping on mobile */
     }
     .popout-avatar {
@@ -288,7 +288,7 @@ h1 + hr, h2 + hr, h3 + hr, h4 + hr, h5 + hr, h6 + hr {
     }
     .actively-building {
       flex-basis: 100%; /* Forces this specific line to drop to a new row under the PFP */
-      margin-top: -15px; /* Pull it up to counteract the flex gap */
+      margin-top: -25px; /* Pull it up to counteract the flex gap */
     }
     .hero-links {
       flex-direction: column; 
