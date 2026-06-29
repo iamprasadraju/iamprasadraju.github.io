@@ -19,25 +19,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css">
 
-  <!-- Theme stylesheet (non-blocking swap) -->
-  <style id="fouc-blocker">html { opacity: 0; transition: opacity 0.2s ease; }</style>
+  <!-- Theme stylesheet (non-blocking swap with flash prevention) -->
   <script>
     var prevSkin = localStorage.getItem("minima-ss") || "dark.css";
+    var bgColor = "#181818"; // default dark theme
+    if (prevSkin === "style.css") bgColor = "#ffffff";
+    else if (prevSkin.indexOf("solarized-light") > -1 || prevSkin === "solarized.css") bgColor = "#fdf6e3";
+    else if (prevSkin.indexOf("solarized-dark") > -1) bgColor = "#002b36";
+    
+    var style = document.createElement("style");
+    style.id = "fouc-blocker";
+    style.innerHTML = "html { background-color: " + bgColor + " !important; } body { opacity: 0; transition: opacity 0.2s ease; }";
+    document.head.appendChild(style);
+
     var link = document.createElement("link");
     link.id = "main-stylesheet";
     link.rel = "stylesheet";
     link.href = "{{ '/assets/css/' | relative_url }}" + prevSkin;
     link.onload = function() {
-      document.getElementById("fouc-blocker").innerHTML = "html { opacity: 1; transition: opacity 0.2s ease; }";
+      var blocker = document.getElementById("fouc-blocker");
+      if (blocker) {
+        blocker.innerHTML = "html { background-color: " + bgColor + " !important; } body { opacity: 1; transition: opacity 0.2s ease; }";
+        setTimeout(function() { blocker.remove(); }, 250);
+      }
     };
     link.onerror = function() {
-      document.getElementById("fouc-blocker").innerHTML = "html { opacity: 1; }";
+      var blocker = document.getElementById("fouc-blocker");
+      if (blocker) blocker.remove();
     };
     document.head.appendChild(link);
   </script>
   <noscript>
     <link id="main-stylesheet" rel="stylesheet" href="{{ '/assets/css/dark.css' | relative_url }}">
-    <style>html { opacity: 1; }</style>
   </noscript>
 
   {%- feed_meta -%}
