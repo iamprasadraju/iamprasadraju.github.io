@@ -6,6 +6,8 @@ author:
 description: >
   Independent AI Researcher & Systems Engineer focusing on ML/DL algorithms, Python, PyTorch, and building systems engineering projects on GitHub.
 
+google_analytics: G-B8D3WLT8D4
+
 minima:
   date_format: "%b %-d, %Y"
   social_links:
