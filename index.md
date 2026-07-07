@@ -293,6 +293,10 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       
       const weeks = [];
       let currentWeek = [];
+      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const monthLabels = [];
+      let lastMonth = -1;
+
       data.contributions.forEach(d => {
         const date = new Date(d.date);
         const day = date.getDay(); // 0 is Sunday
@@ -305,11 +309,40 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       });
       if (currentWeek.length > 0) weeks.push(currentWeek);
 
-      const svgWidth = weeks.length * 15;
-      let svg = `<svg viewBox="0 0 ${svgWidth} 105" preserveAspectRatio="xMinYMin meet" style="width: 100%; max-width: ${svgWidth}px; display: block;" xmlns="http://www.w3.org/2000/svg">`;
-      
       weeks.forEach((week, i) => {
-        svg += `<g transform="translate(${i * 15}, 0)">`;
+        if (week.length > 0) {
+          const date = new Date(week[0].date);
+          const month = date.getMonth();
+          if (month !== lastMonth) {
+            if (i > 0 || date.getDate() <= 14) {
+              monthLabels.push({ text: monthNames[month], x: i * 15 });
+            }
+            lastMonth = month;
+          }
+        }
+      });
+
+      const offsetX = 30;
+      const offsetY = 20;
+      const svgWidth = weeks.length * 15 + offsetX;
+      const svgHeight = 7 * 15 + offsetY;
+      
+      let svg = `<svg viewBox="0 0 ${svgWidth} ${svgHeight}" preserveAspectRatio="xMinYMin meet" style="width: 100%; max-width: ${svgWidth}px; display: block; font-size: 10px;" xmlns="http://www.w3.org/2000/svg">`;
+      
+      // Labels Group
+      svg += `<g class="gh-labels" fill="#767676">`;
+      svg += `<text x="0" y="${offsetY + 1 * 15 + 10}">Mon</text>`;
+      svg += `<text x="0" y="${offsetY + 3 * 15 + 10}">Wed</text>`;
+      svg += `<text x="0" y="${offsetY + 5 * 15 + 10}">Fri</text>`;
+      
+      monthLabels.forEach(m => {
+        svg += `<text x="${offsetX + m.x}" y="10">${m.text}</text>`;
+      });
+      svg += `</g>`;
+      
+      // Grid Group
+      weeks.forEach((week, i) => {
+        svg += `<g transform="translate(${offsetX + i * 15}, ${offsetY})">`;
         week.forEach(day => {
           const title = `${day.count} contributions on ${day.date}`;
           svg += `<rect x="0" y="${day.day * 15}" width="11" height="11" rx="2" ry="2" class="contrib-level-${day.level}"><title>${title}</title></rect>`;
