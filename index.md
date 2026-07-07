@@ -514,7 +514,7 @@ html[data-theme='solarized-dark'] #gh-activity-chart {
   <a href="https://en.wikipedia.org/wiki/George_Hotz" target="_blank" rel="noopener noreferrer" class="thanks-badge">George Hotz</a>
   <a href="https://en.wikipedia.org/wiki/Gilbert_Strang" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. Gilbert Strang</a>
   <a href="https://en.wikipedia.org/wiki/Geoffrey_Hinton" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. Geoffrey Hinton</a>
-  <a href="https://physics.mit.edu/faculty/allan-adams/" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. Allan Adams</a>
+  <a href="https://www.mit.edu/~awa/Allan_Adams/Home.html" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. Allan Adams</a>
   <a href="https://en.wikipedia.org/wiki/3Blue1Brown" target="_blank" rel="noopener noreferrer" class="thanks-badge">Grant Sanderson</a>
   <a href="https://en.wikipedia.org/wiki/Andrej_Karpathy" target="_blank" rel="noopener noreferrer" class="thanks-badge">Andrej Karpathy</a>
   <a href="https://en.wikipedia.org/wiki/Gary_Gensler" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. Gary Gensler</a>
