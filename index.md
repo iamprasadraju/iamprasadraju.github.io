@@ -280,7 +280,50 @@ When I’m not writing code, you’ll find me reading research papers, exploring
 
 
 <h3 class="home-heading" style="margin-top: 24px;">Contribution Activity</h3>
-<img src="https://ghchart.rshah.org/iamprasadraju" alt="iamprasadraju's Github chart" width="700" height="110" style="margin-top: 16px; margin-bottom: 24px; width: 100%; height: auto; display: block;" />
+<div id="gh-activity-chart-container" style="margin-top: 16px; margin-bottom: 24px; width: 100%; overflow-x: auto; min-height: 110px;">
+  <img id="gh-activity-chart" src="https://ghchart.rshah.org/iamprasadraju" alt="iamprasadraju's Github chart" width="700" height="110" style="width: 100%; height: auto; display: block; transition: filter 0.3s ease;" />
+</div>
+
+<script>
+  (async function renderGitHubGrid() {
+    try {
+      const r = await fetch('https://github-contributions-api.jogruber.de/v4/iamprasadraju?y=last');
+      if (!r.ok) return;
+      const data = await r.json();
+      
+      const weeks = [];
+      let currentWeek = [];
+      data.contributions.forEach(d => {
+        const date = new Date(d.date);
+        const day = date.getDay(); // 0 is Sunday
+        
+        if (day === 0 && currentWeek.length > 0) {
+          weeks.push(currentWeek);
+          currentWeek = [];
+        }
+        currentWeek.push({ ...d, day });
+      });
+      if (currentWeek.length > 0) weeks.push(currentWeek);
+
+      const svgWidth = weeks.length * 15;
+      let svg = `<svg viewBox="0 0 ${svgWidth} 105" preserveAspectRatio="xMinYMin meet" style="width: 100%; max-width: ${svgWidth}px; display: block;" xmlns="http://www.w3.org/2000/svg">`;
+      
+      weeks.forEach((week, i) => {
+        svg += `<g transform="translate(${i * 15}, 0)">`;
+        week.forEach(day => {
+          const title = `${day.count} contributions on ${day.date}`;
+          svg += `<rect x="0" y="${day.day * 15}" width="11" height="11" rx="2" ry="2" class="contrib-level-${day.level}"><title>${title}</title></rect>`;
+        });
+        svg += `</g>`;
+      });
+      svg += `</svg>`;
+      
+      document.getElementById('gh-activity-chart-container').innerHTML = svg;
+    } catch (e) {
+      console.warn('Failed to load GitHub activity grid', e);
+    }
+  })();
+</script>
 
 <div id="github-activity">
   <p style="color: #828282; font-size: 14px;">Loading actual GitHub activity...</p>
@@ -435,6 +478,30 @@ html[data-theme='solarized-dark'] .thanks-badge:hover {
   background: #4f9cf9;
   color: #0d1117 !important;
   box-shadow: 0 6px 12px rgba(79, 156, 249, 0.25);
+}
+
+/* Exact GitHub Contribution Grid Colors */
+.contrib-level-0 { fill: #ebedf0; shape-rendering: crispEdges; transition: fill 0.3s ease; }
+.contrib-level-1 { fill: #9be9a8; shape-rendering: crispEdges; transition: fill 0.3s ease; }
+.contrib-level-2 { fill: #40c463; shape-rendering: crispEdges; transition: fill 0.3s ease; }
+.contrib-level-3 { fill: #30a14e; shape-rendering: crispEdges; transition: fill 0.3s ease; }
+.contrib-level-4 { fill: #216e39; shape-rendering: crispEdges; transition: fill 0.3s ease; }
+
+html[data-theme='dark'] .contrib-level-0,
+html[data-theme='solarized-dark'] .contrib-level-0 { fill: #161b22; }
+html[data-theme='dark'] .contrib-level-1,
+html[data-theme='solarized-dark'] .contrib-level-1 { fill: #0e4429; }
+html[data-theme='dark'] .contrib-level-2,
+html[data-theme='solarized-dark'] .contrib-level-2 { fill: #006d32; }
+html[data-theme='dark'] .contrib-level-3,
+html[data-theme='solarized-dark'] .contrib-level-3 { fill: #26a641; }
+html[data-theme='dark'] .contrib-level-4,
+html[data-theme='solarized-dark'] .contrib-level-4 { fill: #39d353; }
+
+/* Keep image fallback dark mode */
+html[data-theme='dark'] #gh-activity-chart,
+html[data-theme='solarized-dark'] #gh-activity-chart {
+  filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(1.1);
 }
 
 
