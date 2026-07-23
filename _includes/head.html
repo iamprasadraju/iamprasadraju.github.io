@@ -1,129 +1,52 @@
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {%- seo -%}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="{{ site.description }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} posts" />
 
-  <!-- Preconnect to critical CDNs -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://api.github.com" crossorigin>
+    <!-- Theme: FOUC-blocking + load correct skin -->
+    <script>
+      (function() {
+        var skin = localStorage.getItem("portfolio-skin") || "classic";
+        document.documentElement.setAttribute("data-theme", skin);
 
-  <!-- Preload LCP image on homepage -->
-  {% if page.url == '/' %}
-  <link rel="preload" href="{{ '/assets/profile.webp' | relative_url }}" as="image" type="image/webp">
-  {% endif %}
+        var bgColor = "#fdfdfd";
+        if (skin === "dark") bgColor = "#181818";
+        else if (skin.indexOf("solarized-dark") > -1) bgColor = "#002b36";
+        else if (skin.indexOf("solarized-light") > -1) bgColor = "#fdf6e3";
 
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css">
+        var blocker = document.createElement("style");
+        blocker.id = "fouc-blocker";
+        blocker.innerHTML = "html { background-color: " + bgColor + " !important; } body { opacity: 0; transition: opacity 0.2s ease; }";
+        document.head.appendChild(blocker);
+      })();
+    </script>
 
-  <!-- Theme stylesheet (non-blocking swap with flash prevention) -->
-  <script>
-    var prevSkin = localStorage.getItem("minima-ss") || "dark.css";
-    var bgColor = "#181818"; // default dark theme
-    if (prevSkin === "style.css") bgColor = "#ffffff";
-    else if (prevSkin.indexOf("solarized-light") > -1 || prevSkin === "solarized.css") bgColor = "#fdf6e3";
-    else if (prevSkin.indexOf("solarized-dark") > -1) bgColor = "#002b36";
-    
-    var style = document.createElement("style");
-    style.id = "fouc-blocker";
-    style.innerHTML = "html { background-color: " + bgColor + " !important; } body { opacity: 0; transition: opacity 0.2s ease; }";
-    document.head.appendChild(style);
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 
-    var link = document.createElement("link");
-    link.id = "main-stylesheet";
-    link.rel = "stylesheet";
-    link.href = "{{ '/assets/css/' | relative_url }}" + prevSkin;
-    link.onload = function() {
-      var blocker = document.getElementById("fouc-blocker");
-      if (blocker) {
-        blocker.innerHTML = "html { background-color: " + bgColor + " !important; } body { opacity: 1; transition: opacity 0.2s ease; }";
-        setTimeout(function() { blocker.remove(); }, 250);
-      }
-    };
-    link.onerror = function() {
-      var blocker = document.getElementById("fouc-blocker");
-      if (blocker) blocker.remove();
-    };
-    document.head.appendChild(link);
-  </script>
-  <noscript>
-    <link id="main-stylesheet" rel="stylesheet" href="{{ '/assets/css/dark.css' | relative_url }}">
-  </noscript>
-
-  {%- feed_meta -%}
-  {%- if jekyll.environment == 'production' and site.google_analytics -%}
-    {%- include google-analytics.html -%}
-  {%- endif -%}
-
-  <!-- External links: open in new tab -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var links = document.querySelectorAll("a[href]");
-      links.forEach(function (link) {
-        var href = link.getAttribute("href");
-        if (
-          href &&
-          /^https?:\/\//i.test(href) &&
-          !href.startsWith(window.location.origin)
-        ) {
-          link.setAttribute("target", "_blank");
-          link.setAttribute("rel", "noopener noreferrer");
+    <!-- Unfade after CSS loads -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var blocker = document.getElementById("fouc-blocker");
+        if (blocker) {
+          blocker.innerHTML = "body { opacity: 1; transition: opacity 0.2s ease; }";
+          setTimeout(function() { blocker.remove(); }, 300);
         }
       });
-    });
-  </script>
+    </script>
 
-  <!-- KaTeX: only load on pages with math content -->
-  {% assign page_content = page.content | default: content %}
-  {% if page.math or page_content contains '$$' %}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"></noscript>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      if (typeof renderMathInElement === 'function') {
-        renderMathInElement(document.body, {
-          delimiters: [
-            {left: "$$", right: "$$", display: true},
-            {left: "$", right: "$", display: false}
-          ],
-          throwOnError: false
-        });
-      }
-    });
-  </script>
-  {% endif %}
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-3698471-23', 'auto');
+      ga('send', 'pageview');
+    </script>
 
-  <!-- Mermaid: only load on pages with mermaid diagrams -->
-  {% if page_content contains 'mermaid' %}
-  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      if (typeof mermaid === 'undefined') return;
-      mermaid.initialize({ startOnLoad: false, theme: "neutral" });
-
-      var mermaidBlocks = document.querySelectorAll(
-        "pre code.language-mermaid, div.highlight-mermaid pre code, div.language-mermaid pre"
-      );
-
-      mermaidBlocks.forEach(function(block) {
-        var pre = block.closest("pre");
-        if (!pre) return;
-
-        var text = block.textContent || pre.textContent;
-        var graphDiv = document.createElement("div");
-        graphDiv.className = "mermaid";
-        graphDiv.textContent = text.trim();
-        pre.parentNode.replaceChild(graphDiv, pre);
-      });
-      mermaid.run();
-    });
-  </script>
-  {% endif %}
-
-  {%- include custom-head.html -%}
 </head>

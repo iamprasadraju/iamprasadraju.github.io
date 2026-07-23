@@ -1,52 +1,40 @@
 <div class="sub-footer">
-  <span id="sf-toggle" onclick="toggleSubFooter()">
+  <div class="sf-toggle" onclick="toggleSubFooter()">
     <span class="sf-toggle-icon"></span>
-  </span>
-  <div id="skin-switch-container">
-    Page rendered with the <select id="skin-switch" aria-label="Theme Selector" onchange="changeSkin()">
-      {%- for skin in page.available_skins %}
-      {%- if skin == 'solarized' %}{% continue %}{% endif -%}
-      {% if skin == 'classic' -%}
-      <option value="style.css">classic</option>
-      {%- else -%}
-      <option value="{{ skin }}.css">{{ skin }}</option>
-      {%- endif %}
-      {%- endfor %}
-    </select> skin of Minima theme.
-    <div><small>Theme-switcher is not a part of Minima</small></div>
+  </div>
+  <div class="sf-body">
+    <span>Theme:</span>
+    <select id="skin-switch" aria-label="Theme Selector" onchange="changeSkin()">
+      <option value="classic">classic</option>
+      <option value="dark">dark</option>
+      <option value="auto">auto</option>
+      <option value="solarized-light">solarized light</option>
+      <option value="solarized-dark">solarized dark</option>
+    </select>
   </div>
 </div>
 
 <script>
-  document.getElementById("skin-switch-container").style.display = "block";
-  var metaTag = document.getElementById("main-stylesheet");
-  var skinSwitcher = document.getElementById("skin-switch");
-  var SSHref = metaTag.href;
-  var SSName = SSHref.substring(SSHref.lastIndexOf('/') + 1);
-  var prevSkin = localStorage.getItem("minima-ss");
+  (function() {
+    var select = document.getElementById("skin-switch");
+    var current = localStorage.getItem("portfolio-skin") || "classic";
+    select.value = current;
 
-  if (prevSkin) {
-    skinSwitcher.value = prevSkin;
-    document.documentElement.setAttribute('data-theme', prevSkin.replace('.css', ''));
-  } else {
-    skinSwitcher.value = SSName;
-    document.documentElement.setAttribute('data-theme', SSName.replace('.css', ''));
-  }
+    window.changeSkin = function() {
+      var skin = select.value;
+      document.documentElement.setAttribute("data-theme", skin);
+      localStorage.setItem("portfolio-skin", skin);
+    };
+  })();
 
-  function changeSkin() {
-    var _ssName = skinSwitcher.value;
-    metaTag.href = SSHref.replace(SSName, _ssName);
-    localStorage.setItem("minima-ss", _ssName);
-    document.documentElement.setAttribute('data-theme', _ssName.replace('.css', ''));
-  }
-
-  var siteFooter = document.querySelector(".site-footer");
-  if (localStorage.getItem("sf-hidden") === "true") {
-    siteFooter.classList.add("sub-footer-hidden");
-  }
-
-  function toggleSubFooter() {
-    siteFooter.classList.toggle("sub-footer-hidden");
-    localStorage.setItem("sf-hidden", siteFooter.classList.contains("sub-footer-hidden"));
-  }
+  (function() {
+    var subFooter = document.querySelector(".sub-footer");
+    if (localStorage.getItem("portfolio-sf-hidden") === "true") {
+      subFooter.classList.add("sub-footer-hidden");
+    }
+    window.toggleSubFooter = function() {
+      subFooter.classList.toggle("sub-footer-hidden");
+      localStorage.setItem("portfolio-sf-hidden", subFooter.classList.contains("sub-footer-hidden"));
+    };
+  })();
 </script>

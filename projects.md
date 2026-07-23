@@ -10,7 +10,6 @@ description: "Open-source projects by Prasad Raju G — machine learning framewo
 {% assign regular = sorted_projects | where_exp: "item", "item.pinned != true" %}
 
 <style>
-/* ── Bento Grid Layout ── */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -18,7 +17,6 @@ description: "Open-source projects by Prasad Raju G — machine learning framewo
   margin-top: 32px;
 }
 
-/* Pinned card spans full width */
 .bento-card.pinned {
   grid-column: 1 / -1;
   display: grid;
@@ -45,7 +43,6 @@ description: "Open-source projects by Prasad Raju G — machine learning framewo
   color: inherit;
 }
 
-/* ── Card Content ── */
 .bento-body {
   padding: 28px;
   display: flex;
@@ -102,7 +99,6 @@ description: "Open-source projects by Prasad Raju G — machine learning framewo
   letter-spacing: 0.3px;
 }
 
-/* ── Pinned Card Code Preview ── */
 .bento-code-panel {
   background: rgba(0, 0, 0, 0.25);
   padding: 36px;
@@ -129,7 +125,6 @@ description: "Open-source projects by Prasad Raju G — machine learning framewo
 .bento-code-panel .cm { color: #484f58; }
 .bento-code-panel .op { color: #c9d1d9; }
 
-/* ── Arrow indicator ── */
 .bento-arrow {
   position: absolute;
   top: 24px;
@@ -145,7 +140,6 @@ description: "Open-source projects by Prasad Raju G — machine learning framewo
   transform: translate(0, 0);
 }
 
-/* ── Light Theme Adjustments ── */
 html[data-theme='classic'] .bento-code-panel {
   background: rgba(0, 0, 0, 0.04);
 }
@@ -168,7 +162,6 @@ html[data-theme='classic'] .bento-code-panel .st { color: #0a3069; }
 html[data-theme='classic'] .bento-code-panel .cm { color: #8c959f; }
 html[data-theme='classic'] .bento-code-panel .op { color: #24292f; }
 
-/* ── Responsive ── */
 @media (max-width: 700px) {
   .bento-grid {
     grid-template-columns: 1fr;
@@ -176,18 +169,16 @@ html[data-theme='classic'] .bento-code-panel .op { color: #24292f; }
     margin-top: 20px;
   }
 
-  /* Pinned cards become single-column */
   .bento-card.pinned {
     grid-template-columns: 1fr;
     min-height: auto;
   }
   
-  /* Make code panel compact instead of hiding it */
   .bento-code-panel {
     border-left: none;
     border-top: 1px solid rgba(128, 128, 128, 0.1);
     padding: 16px;
-    overflow-x: auto; /* Allow code to scroll horizontally if needed */
+    overflow-x: auto;
   }
   
   .bento-code-panel pre {
@@ -195,7 +186,6 @@ html[data-theme='classic'] .bento-code-panel .op { color: #24292f; }
     line-height: 1.5;
   }
 
-  /* Compact padding */
   .bento-body {
     padding: 18px;
   }
@@ -203,7 +193,6 @@ html[data-theme='classic'] .bento-code-panel .op { color: #24292f; }
     padding: 20px;
   }
 
-  /* Smaller typography */
   .bento-title {
     font-size: 17px;
     margin-bottom: 6px;
@@ -225,7 +214,6 @@ html[data-theme='classic'] .bento-code-panel .op { color: #24292f; }
     margin-bottom: 8px;
   }
 
-  /* Compact tags */
   .bento-tags {
     gap: 4px;
   }
@@ -234,7 +222,6 @@ html[data-theme='classic'] .bento-code-panel .op { color: #24292f; }
     padding: 2px 8px;
   }
 
-  /* Arrow always visible on touch */
   .bento-arrow {
     opacity: 0.35;
     transform: translate(0, 0);

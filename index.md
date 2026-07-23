@@ -7,9 +7,9 @@ layout: page
 <div class="hero-header">
   <div class="popout-avatar">
     <div class="popout-circle">
-      <img src="{{ '/assets/profile.webp' | relative_url }}" alt="Prasad Raju G" width="180" height="180">
+      <img src="{{ site.baseurl }}/assets/profile.webp" alt="Prasad Raju G" width="180" height="180">
     </div>
-    <img src="{{ '/assets/profile.webp' | relative_url }}" alt="" class="popout-top" width="180" height="180">
+    <img src="{{ site.baseurl }}/assets/profile.webp" alt="" class="popout-top" width="180" height="180">
   </div>
   
   <div class="hero-text-block">
@@ -447,99 +447,6 @@ When I’m not writing code, you’ll find me reading research papers, exploring
 </script>
 
 <h3 class="home-heading">Special Thanks</h3>
-
-<style>
-.thanks-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 16px;
-  margin-bottom: 32px;
-}
-.thanks-badge {
-  display: inline-block;
-  padding: 8px 16px;
-  background: rgba(42, 122, 226, 0.1);
-  color: #2a7ae2 !important;
-  border: 1px solid rgba(42, 122, 226, 0.2);
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
-  animation: floatIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: transform, opacity;
-  opacity: 0;
-  transform: translateY(15px);
-}
-.thanks-badge:hover {
-  background: #2a7ae2;
-  color: #fff !important;
-  text-decoration: none;
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 6px 12px rgba(42, 122, 226, 0.25);
-}
-
-/* Staggered load animation */
-.thanks-badge:nth-child(1) { animation-delay: 0.1s; }
-.thanks-badge:nth-child(2) { animation-delay: 0.2s; }
-.thanks-badge:nth-child(3) { animation-delay: 0.3s; }
-.thanks-badge:nth-child(4) { animation-delay: 0.4s; }
-.thanks-badge:nth-child(5) { animation-delay: 0.5s; }
-.thanks-badge:nth-child(6) { animation-delay: 0.6s; }
-.thanks-badge:nth-child(7) { animation-delay: 0.7s; }
-.thanks-badge:nth-child(8) { animation-delay: 0.8s; }
-.thanks-badge:nth-child(9) { animation-delay: 0.9s; }
-.thanks-badge:nth-child(10) { animation-delay: 1.0s; }
-
-@keyframes floatIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Dark Theme Sync */
-html[data-theme='dark'] .thanks-badge,
-html[data-theme='solarized-dark'] .thanks-badge {
-  background: rgba(79, 156, 249, 0.1);
-  color: #4f9cf9 !important;
-  border-color: rgba(79, 156, 249, 0.2);
-}
-html[data-theme='dark'] .thanks-badge:hover,
-html[data-theme='solarized-dark'] .thanks-badge:hover {
-  background: #4f9cf9;
-  color: #0d1117 !important;
-  box-shadow: 0 6px 12px rgba(79, 156, 249, 0.25);
-}
-
-/* Exact GitHub Contribution Grid Colors */
-.contrib-level-0 { fill: #ebedf0; shape-rendering: crispEdges; transition: fill 0.3s ease; }
-.contrib-level-1 { fill: #9be9a8; shape-rendering: crispEdges; transition: fill 0.3s ease; }
-.contrib-level-2 { fill: #40c463; shape-rendering: crispEdges; transition: fill 0.3s ease; }
-.contrib-level-3 { fill: #30a14e; shape-rendering: crispEdges; transition: fill 0.3s ease; }
-.contrib-level-4 { fill: #216e39; shape-rendering: crispEdges; transition: fill 0.3s ease; }
-
-html[data-theme='dark'] .contrib-level-0,
-html[data-theme='solarized-dark'] .contrib-level-0 { fill: #161b22; }
-html[data-theme='dark'] .contrib-level-1,
-html[data-theme='solarized-dark'] .contrib-level-1 { fill: #0e4429; }
-html[data-theme='dark'] .contrib-level-2,
-html[data-theme='solarized-dark'] .contrib-level-2 { fill: #006d32; }
-html[data-theme='dark'] .contrib-level-3,
-html[data-theme='solarized-dark'] .contrib-level-3 { fill: #26a641; }
-html[data-theme='dark'] .contrib-level-4,
-html[data-theme='solarized-dark'] .contrib-level-4 { fill: #39d353; }
-
-/* Keep image fallback dark mode */
-html[data-theme='dark'] #gh-activity-chart,
-html[data-theme='solarized-dark'] #gh-activity-chart {
-  filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(1.1);
-}
-
-
-
-</style>
 
 <div class="thanks-grid">
   <a href="https://en.wikipedia.org/wiki/David_J._Malan" target="_blank" rel="noopener noreferrer" class="thanks-badge">Prof. David J. Malan</a>
