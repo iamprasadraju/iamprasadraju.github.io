@@ -517,10 +517,10 @@
 html, body { height: 100%; }
 
 body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 300;
   background-color: var(--bg-body);
   color: var(--text-body);
   display: flex;
@@ -530,7 +530,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 500; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; }
 
 a { color: var(--link-color); text-decoration: none; }
 a:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 3px; }
@@ -575,6 +575,8 @@ img { max-width: 100%; vertical-align: middle; }
   line-height: 56px;
   position: relative;
   z-index: 1;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
 
 .site-nav {
@@ -976,7 +978,7 @@ img { max-width: 100%; vertical-align: middle; }
 
 @media screen and (max-width: 600px) {
 
-  .wrap { padding: 0 18px; }
+  .wrap { padding: 0 12px; }
 
   .site-nav {
     position: absolute;
@@ -1560,6 +1562,7 @@ html[data-theme='solarized-dark'] .cwo-diff-del-text {
   font-weight: 500;
   line-height: 1.4;
   color: #8b949e;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif;
 }
 .spotlight-quote-author {
   display: inline;
