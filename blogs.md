@@ -104,8 +104,8 @@ permalink: /blogs/
     <a href="{{ post.url | relative_url }}" class="blog-item-link">
       <div class="blog-item-date">{{ post.date | date: "%b %-d, %Y" }}</div>
       <h3 class="blog-item-title">{{ post.title | escape }}</h3>
-      {% if post.description %}
-      <p class="blog-item-excerpt">{{ post.description }}</p>
+      {% if post.excerpt %}
+      <p class="blog-item-excerpt">{{ post.excerpt }}</p>
       {% endif %}
       {% if post.tags.size > 0 %}
       <div class="blog-item-tags">
