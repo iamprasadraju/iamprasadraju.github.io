@@ -19,9 +19,9 @@ Artificial Intelligence, Game Theory, Quantum Physics, Neuroscience, Bioinformat
 - [{{ project.title }}]({{ project.url | absolute_url }}): {{ project.description | default: "Project details and overview." | strip_html | strip_newlines }}
 {%- endfor %}
 
-## Notes & Articles
-{% for note in site.notes %}
-- [{{ note.title }}]({{ note.url | absolute_url }}): {{ note.description | default: "Detailed technical note." | strip_html | strip_newlines }}
+## Blog Posts
+{% for post in site.blogs %}
+- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description | default: "Blog post." | strip_html | strip_newlines }}
 {%- endfor %}
 
 ## Links & Entities
@@ -37,5 +37,5 @@ Artificial Intelligence, Game Theory, Quantum Physics, Neuroscience, Bioinformat
 
 ## RSS Feeds
 - [Master Timeline]({{ '/feed.xml' | absolute_url }})
-- [Notes]({{ '/feed/notes.xml' | absolute_url }})
+- [Blog Feed]({{ '/feed/blogs.xml' | absolute_url }})
 - [Projects]({{ '/feed/projects.xml' | absolute_url }})

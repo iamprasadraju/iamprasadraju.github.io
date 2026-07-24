@@ -20,9 +20,9 @@ This `README.md` serves as the master documentation for the architecture, conten
 
 ---
 
-## 📝 Writing Content (Projects, Notes, Research)
+## 📝 Writing Content (Projects, Blog, Research)
 
-Content is divided into dedicated Jekyll collections (`_projects`, `_notes`, and `_research`). Every markdown file you create **must** begin with a YAML front matter block to ensure it renders correctly and is accurately indexed by search engines.
+Content is divided into dedicated Jekyll collections (`_projects`, `_blogs`, and `_research`). Every markdown file you create **must** begin with a YAML front matter block to ensure it renders correctly and is accurately indexed by search engines.
 
 ### The Required YAML Template
 
@@ -82,7 +82,7 @@ This is where you update your primary site metadata.
 - Contains the strict sitemap hierarchy (`changefreq` and `priority` for search engines).
 
 ### 2. `llms.txt` (Agentic Web)
-An emerging standard for AI crawlers. It uses Liquid templating to automatically recompile a machine-readable summary of your entire portfolio every time you publish a new project or note.
+An emerging standard for AI crawlers. It uses Liquid templating to automatically recompile a machine-readable summary of your entire portfolio every time you publish a new project or blog post.
 
 ### 3. `_includes/head.html` & `custom-head.html`
 - **SEO Schemas:** Automatically injects Schema.org JSON-LD structured data (`Person`, `WebSite`, `ProfilePage`) proving your identity to Google.

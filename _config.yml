@@ -24,7 +24,7 @@ url: "https://iamprasadraju.github.io"
 theme: minima
 
 collections:
-  notes:
+  blogs:
     output: true
   projects:
     output: true
@@ -39,7 +39,7 @@ feed:
   path: feed/posts.xml
   collections:
     - posts
-    - notes
+    - blogs
     - projects
     - research
 
@@ -71,7 +71,7 @@ defaults:
         priority: 0.9
   - scope:
       path: ""
-      type: "notes"
+      type: "blogs"
     values:
       sitemap:
         changefreq: monthly

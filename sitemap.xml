@@ -31,7 +31,7 @@ layout: null
     </url>
   {% endfor %}
 
-  {% for post in site.notes %}
+  {% for post in site.blogs %}
     <url>
       <loc>{{ post.url | absolute_url }}</loc>
       <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
