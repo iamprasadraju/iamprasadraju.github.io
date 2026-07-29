@@ -420,7 +420,9 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       datasets: [
         { type: 'bar', label: 'Additions', data: monthAdd, backgroundColor: green, borderRadius: 4, order: 2 },
         { type: 'bar', label: 'Deletions', data: monthDel, backgroundColor: red, borderRadius: 4, order: 2 },
-        { type: 'line', label: 'Trend', data: monthAdd, borderColor: isDark ? '#8b949e' : '#57606a',
+        { type: 'line', label: 'Add Trend', data: monthAdd, borderColor: green,
+          borderWidth: 2, pointRadius: 3, pointHoverRadius: 5, tension: 0.35, fill: false, order: 1 },
+        { type: 'line', label: 'Del Trend', data: monthDel, borderColor: red,
           borderWidth: 2, pointRadius: 3, pointHoverRadius: 5, tension: 0.35, fill: false, order: 1 },
       ],
     },
