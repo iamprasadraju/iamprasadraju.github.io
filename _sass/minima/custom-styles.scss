@@ -766,22 +766,54 @@ h1 + hr, h2 + hr, h3 + hr, h4 + hr, h5 + hr, h6 + hr {
     margin-bottom: 32px;
   }
   .chart-box {
-    border: 1px solid rgba(128, 128, 128, 0.2);
-    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 12px;
     padding: 16px;
-    height: 220px;
+    height: 280px;
     position: relative;
+    background: radial-gradient(ellipse at 50% 0%, rgba(128,128,128,0.04) 0%, transparent 70%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    will-change: transform, box-shadow;
+  }
+  .chart-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-color: rgba(128, 128, 128, 0.3);
   }
   .chart-box-equal {
     flex: 1;
     min-width: 280px;
   }
+  .chart-stat {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #8b949e;
+    margin-bottom: 6px;
+    line-height: 1;
+  }
   html[data-theme='dark'] .chart-box,
   html[data-theme='solarized-dark'] .chart-box {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.08);
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 70%);
+  }
+  html[data-theme='dark'] .chart-box:hover,
+  html[data-theme='solarized-dark'] .chart-box:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  html[data-theme='dark'] .chart-stat,
+  html[data-theme='solarized-dark'] .chart-stat {
+    color: #8b949e;
   }
   @media (prefers-color-scheme: dark) {
     html[data-theme='auto'] .chart-box {
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.08);
+      background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 70%);
+    }
+    html[data-theme='auto'] .chart-box:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      border-color: rgba(255, 255, 255, 0.2);
     }
   }

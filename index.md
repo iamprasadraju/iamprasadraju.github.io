@@ -362,9 +362,11 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   <h3 class="home-heading">Code Velocity</h3>
   <div class="chart-row">
     <div class="chart-box chart-box-equal">
+      <div class="chart-stat" id="statMonthly">--</div>
       <canvas id="chartMonthlyNet"></canvas>
     </div>
     <div class="chart-box chart-box-equal">
+      <div class="chart-stat" id="statWeekly">--</div>
       <canvas id="chartWeekdayDual"></canvas>
     </div>
   </div>
@@ -383,108 +385,162 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   const isDark = document.documentElement.getAttribute('data-theme')?.includes('dark');
   const textColor = isDark ? '#8b949e' : '#57606a';
   const gridColor = isDark ? '#21262d' : '#ebedf0';
+  const tooltipBg = isDark ? '#161b22' : '#ffffff';
+  const tooltipBorder = isDark ? '#30363d' : '#d0d7de';
   const green = '#40c463';
   const red = '#f85149';
-  const gray = '#8b949e';
 
-  const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const font = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
+  Chart.defaults.font.family = font;
+
+  function makeTooltip(label, color) {
+    return {
+      backgroundColor: tooltipBg,
+      titleColor: isDark ? '#c9d1d9' : '#24292f',
+      bodyColor: textColor,
+      borderColor: color,
+      borderWidth: 1,
+      padding: 10,
+      cornerRadius: 8,
+      callbacks: {
+        label: function(ctx) {
+          var val = ctx.parsed.y;
+          return (val >= 0 ? '+' : '') + val.toLocaleString();
+        },
+      },
+    };
+  }
+
+  function makeGrid(color) {
+    return { color: color, drawTicks: false, tickColor: 'transparent', border: { dash: [3, 4] } };
+  }
+
+  var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
   // ── Chart 1: Monthly Code Velocity ──
-  const monthMap = {};
-  data.forEach(d => {
-    const key = d.date.slice(0, 7);
+  var monthMap = {};
+  data.forEach(function(d) {
+    var key = d.date.slice(0, 7);
     if (!monthMap[key]) monthMap[key] = { add: 0, del: 0 };
     monthMap[key].add += d.additions;
     monthMap[key].del += d.deletions;
   });
-  const sortedMonths = Object.keys(monthMap).sort();
-  const monthLabels = sortedMonths.map(m => {
-    const [, mo] = m.split('-').map(Number);
-    return monthNames[mo - 1];
+  var sortedMonths = Object.keys(monthMap).sort();
+  var monthLabels = sortedMonths.map(function(m) {
+    var parts = m.split('-');
+    return monthNames[parseInt(parts[1]) - 1];
   });
-  const monthAdd = sortedMonths.map(m => {
-    const v = monthMap[m];
-    const [y, mo] = m.split('-').map(Number);
-    return Math.round(v.add / new Date(y, mo, 0).getDate());
+  var monthAdd = sortedMonths.map(function(m) {
+    var v = monthMap[m];
+    var parts = m.split('-');
+    return Math.round(v.add / new Date(parseInt(parts[0]), parseInt(parts[1]), 0).getDate());
   });
-  const monthDel = sortedMonths.map(m => {
-    const v = monthMap[m];
-    const [y, mo] = m.split('-').map(Number);
-    return -Math.round(v.del / new Date(y, mo, 0).getDate());
+  var monthDel = sortedMonths.map(function(m) {
+    var v = monthMap[m];
+    var parts = m.split('-');
+    return -Math.round(v.del / new Date(parseInt(parts[0]), parseInt(parts[1]), 0).getDate());
   });
+
+  var addTotal = monthAdd.reduce(function(a, b) { return a + b; }, 0);
+  var delTotal = monthDel.reduce(function(a, b) { return a + Math.abs(b); }, 0);
+  document.getElementById('statMonthly').textContent = '+' + Math.round(addTotal / monthAdd.length) + ' / -' + Math.round(delTotal / monthDel.length) + ' LOC/day';
 
   new Chart(document.getElementById('chartMonthlyNet'), {
     type: 'bar',
     data: {
       labels: monthLabels,
       datasets: [
-        { type: 'bar', label: 'Additions', data: monthAdd, backgroundColor: green, borderRadius: 4, order: 2 },
-        { type: 'bar', label: 'Deletions', data: monthDel, backgroundColor: red, borderRadius: 4, order: 2 },
-        { type: 'line', label: 'Add Trend', data: monthAdd, borderColor: green,
-          borderWidth: 2, pointRadius: 3, pointHoverRadius: 5, tension: 0.35, fill: false, order: 1 },
-        { type: 'line', label: 'Del Trend', data: monthDel, borderColor: red,
-          borderWidth: 2, pointRadius: 3, pointHoverRadius: 5, tension: 0.35, fill: false, order: 1 },
+        { type: 'bar', label: 'Additions', data: monthAdd, backgroundColor: green,
+          borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 0, bottomRight: 0 } },
+        { type: 'bar', label: 'Deletions', data: monthDel, backgroundColor: red,
+          borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 0, bottomRight: 0 } },
       ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      animation: { duration: 800, easing: 'easeOutQuart' },
+      interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 } } },
-        title: { display: true, text: 'Monthly Code Velocity', color: textColor, font: { size: 12 } },
+        legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 }, usePointStyle: true } },
+        tooltip: makeTooltip('Monthly', green),
       },
       scales: {
         x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
         y: {
-          grid: { color: gridColor },
-          ticks: { color: textColor, font: { size: 10 } },
+          grid: makeGrid(gridColor),
+          ticks: { color: textColor, font: { size: 10 }, callback: function(v) { return v >= 0 ? '+' + v : v; } },
         },
       },
     },
   });
 
   // ── Chart 2: Weekly Code Velocity ──
-  const wk = { 0: { add: [], del: [] }, 1: { add: [], del: [] }, 2: { add: [], del: [] },
-               3: { add: [], del: [] }, 4: { add: [], del: [] }, 5: { add: [], del: [] },
-               6: { add: [], del: [] } };
-  data.forEach(d => {
-    const dow = new Date(d.date).getDay();
+  var wk = { 0: { add: [], del: [] }, 1: { add: [], del: [] }, 2: { add: [], del: [] },
+             3: { add: [], del: [] }, 4: { add: [], del: [] }, 5: { add: [], del: [] },
+             6: { add: [], del: [] } };
+  data.forEach(function(d) {
+    var dow = new Date(d.date).getDay();
     wk[dow].add.push(d.additions);
     wk[dow].del.push(d.deletions);
   });
-  const wkLabels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const wkAdd = wkLabels.map((_, i) => {
-    const v = wk[i].add;
-    return v.length ? Math.round(v.reduce((a, b) => a + b, 0) / v.length) : 0;
+  var wkLabels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var wkAdd = wkLabels.map(function(_, i) {
+    var v = wk[i].add;
+    return v.length ? Math.round(v.reduce(function(a, b) { return a + b; }, 0) / v.length) : 0;
   });
-  const wkDel = wkLabels.map((_, i) => {
-    const v = wk[i].del;
-    return v.length ? -Math.round(v.reduce((a, b) => a + b, 0) / v.length) : 0;
+  var wkDel = wkLabels.map(function(_, i) {
+    var v = wk[i].del;
+    return v.length ? -Math.round(v.reduce(function(a, b) { return a + b; }, 0) / v.length) : 0;
   });
+
+  var wAddTotal = wkAdd.reduce(function(a, b) { return a + b; }, 0);
+  var wDelTotal = wkDel.reduce(function(a, b) { return a + Math.abs(b); }, 0);
+  document.getElementById('statWeekly').textContent = '+' + Math.round(wAddTotal / wkAdd.length) + ' / -' + Math.round(wDelTotal / wkDel.length) + ' LOC/day';
+
+  function makeGradient(ctx, chartArea, color, side) {
+    var grad = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+    if (side === 'up') {
+      grad.addColorStop(0, color + '30');
+      grad.addColorStop(1, color + '05');
+    } else {
+      grad.addColorStop(0, color + '05');
+      grad.addColorStop(1, color + '30');
+    }
+    return grad;
+  }
 
   new Chart(document.getElementById('chartWeekdayDual'), {
     type: 'line',
     data: {
       labels: wkLabels,
       datasets: [
-        { label: 'Additions', data: wkAdd, borderColor: green, backgroundColor: green,
-          pointRadius: 3, pointHoverRadius: 5, tension: 0.3, fill: false },
-        { label: 'Deletions', data: wkDel, borderColor: red, backgroundColor: red,
-          pointRadius: 3, pointHoverRadius: 5, tension: 0.3, fill: false },
+        { label: 'Additions', data: wkAdd, borderColor: green, backgroundColor: function(ctx) {
+            if (!ctx.chart.chartArea) return 'transparent';
+            return makeGradient(ctx.chart.ctx, ctx.chart.chartArea, green, 'up');
+          }, pointRadius: 3, pointHoverRadius: 6, pointBackgroundColor: green,
+          pointBorderColor: tooltipBg, pointBorderWidth: 2, tension: 0.35, fill: true },
+        { label: 'Deletions', data: wkDel, borderColor: red, backgroundColor: function(ctx) {
+            if (!ctx.chart.chartArea) return 'transparent';
+            return makeGradient(ctx.chart.ctx, ctx.chart.chartArea, red, 'down');
+          }, pointRadius: 3, pointHoverRadius: 6, pointBackgroundColor: red,
+          pointBorderColor: tooltipBg, pointBorderWidth: 2, tension: 0.35, fill: true },
       ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      animation: { duration: 800, easing: 'easeOutQuart' },
+      interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 } } },
-        title: { display: true, text: 'Weekly Code Velocity', color: textColor, font: { size: 12 } },
+        legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 }, usePointStyle: true } },
+        tooltip: makeTooltip('Weekly', textColor),
       },
       scales: {
         x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
         y: {
-          grid: { color: gridColor },
-          ticks: { color: textColor, font: { size: 10 } },
+          grid: makeGrid(gridColor),
+          ticks: { color: textColor, font: { size: 10 }, callback: function(v) { return v >= 0 ? '+' + v : v; } },
         },
       },
     },
