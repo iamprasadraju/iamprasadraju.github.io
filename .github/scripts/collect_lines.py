@@ -20,19 +20,19 @@ REPOS = [
     "TrueML", "algoX", "notes", "kaggle-competitions", "vari-mitra",
     "tic-tac-toe", "math-notebooks", "gen-cli", "cs-fun", "ipython-books",
     "jekyll-obsidian-theme", "ml-notebooks", "MLmath-notebooks", "ESP-Alert",
-    "ipythonfun", "ai-notebooks", "Trigger",     "configuration",
+    "ipythonfun", "ai-notebooks",     "Trigger", "configuration",
     "iamprasadraju",
 ]
 
 
 def load_existing():
     if not os.path.exists(DATA_PATH):
-        return defaultdict(int), None
+        return defaultdict(lambda: {"additions": 0, "deletions": 0}), None
     with open(DATA_PATH) as f:
         entries = json.load(f)
-    daily = defaultdict(int)
+    daily = defaultdict(lambda: {"additions": 0, "deletions": 0})
     for e in entries:
-        daily[e["date"]] = e["additions"]
+        daily[e["date"]] = {"additions": e["additions"], "deletions": e.get("deletions", 0)}
     last = max(daily) if daily else None
     return daily, last
 
@@ -83,11 +83,11 @@ def get_commit_stats(repo, sha):
         if resp.status_code == 200:
             data = resp.json()
             date = data["commit"]["author"]["date"][:10]
-            additions = data["stats"]["additions"]
-            return date, additions
+            stats = data["stats"]
+            return date, stats["additions"], stats["deletions"]
     except requests.RequestException:
         pass
-    return None, 0
+    return None, 0, 0
 
 
 def main():
@@ -107,7 +107,8 @@ def main():
     if not all_commits:
         print("No new commits found")
         output = sorted(
-            [{"date": d, "additions": v} for d, v in daily.items()],
+            [{"date": d, "additions": v["additions"], "deletions": v["deletions"]}
+             for d, v in daily.items()],
             key=lambda x: x["date"],
         )
         os.makedirs(os.path.dirname(DATA_PATH), exist_ok=True)
@@ -121,12 +122,14 @@ def main():
             ex.submit(get_commit_stats, repo, sha) for repo, sha in all_commits
         ]
         for f in as_completed(futures):
-            date, additions = f.result()
+            date, additions, deletions = f.result()
             if date:
-                daily[date] += additions
+                daily[date]["additions"] += additions
+                daily[date]["deletions"] += deletions
 
     output = sorted(
-        [{"date": d, "additions": v} for d, v in daily.items()],
+        [{"date": d, "additions": v["additions"], "deletions": v["deletions"]}
+         for d, v in daily.items()],
         key=lambda x: x["date"],
     )
 

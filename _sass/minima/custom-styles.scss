@@ -772,13 +772,9 @@ h1 + hr, h2 + hr, h3 + hr, h4 + hr, h5 + hr, h6 + hr {
     height: 220px;
     position: relative;
   }
-  .chart-box-wide {
-    flex: 2;
-    min-width: 300px;
-  }
-  .chart-box-narrow {
+  .chart-box-equal {
     flex: 1;
-    min-width: 200px;
+    min-width: 280px;
   }
   html[data-theme='dark'] .chart-box,
   html[data-theme='solarized-dark'] .chart-box {

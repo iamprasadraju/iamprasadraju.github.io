@@ -359,13 +359,13 @@ When I’m not writing code, you’ll find me reading research papers, exploring
 </script>
 
 <div class="lines-section">
-  <h3 class="home-heading">Daily Lines Added</h3>
+  <h3 class="home-heading">Code Velocity</h3>
   <div class="chart-row">
-    <div class="chart-box chart-box-wide">
-      <canvas id="linesYearChart"></canvas>
+    <div class="chart-box chart-box-equal">
+      <canvas id="chartMonthlyNet"></canvas>
     </div>
-    <div class="chart-box chart-box-narrow">
-      <canvas id="linesWeekdayChart"></canvas>
+    <div class="chart-box chart-box-equal">
+      <canvas id="chartWeekdayDual"></canvas>
     </div>
   </div>
 </div>
@@ -383,111 +383,99 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   const isDark = document.documentElement.getAttribute('data-theme')?.includes('dark');
   const textColor = isDark ? '#8b949e' : '#57606a';
   const gridColor = isDark ? '#21262d' : '#ebedf0';
-
   const green = '#40c463';
-  const blue = isDark ? '#58a6ff' : '#0969da';
+  const red = '#f85149';
   const gray = '#8b949e';
 
-  function rollingAvg(arr, window) {
-    return arr.map((_, i) => {
-      if (i < window - 1) return null;
-      let sum = 0;
-      for (let j = i - window + 1; j <= i; j++) sum += arr[j];
-      return Math.round(sum / window);
-    });
-  }
+  const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-  new Chart(document.getElementById('linesYearChart'), {
+  // ── Chart 1: Monthly Avg Daily Net LOC ──
+  const monthMap = {};
+  data.forEach(d => {
+    const key = d.date.slice(0, 7);
+    if (!monthMap[key]) monthMap[key] = { add: 0, del: 0 };
+    monthMap[key].add += d.additions;
+    monthMap[key].del += d.deletions;
+  });
+  const sortedMonths = Object.keys(monthMap).sort();
+  const monthLabels = sortedMonths.map(m => {
+    const [, mo] = m.split('-').map(Number);
+    return monthNames[mo - 1];
+  });
+  const monthNet = sortedMonths.map(m => {
+    const v = monthMap[m];
+    const [y, mo] = m.split('-').map(Number);
+    const days = new Date(y, mo, 0).getDate();
+    return Math.round((v.add - v.del) / days);
+  });
+
+  new Chart(document.getElementById('chartMonthlyNet'), {
+    type: 'bar',
+    data: {
+      labels: monthLabels,
+      datasets: [{
+        data: monthNet,
+        backgroundColor: monthNet.map(v => v >= 0 ? green : red),
+        borderRadius: 4,
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        title: { display: true, text: 'Avg Daily Net LOC / Month', color: textColor, font: { size: 12 } },
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
+        y: {
+          grid: { color: gridColor },
+          ticks: { color: textColor, font: { size: 10 } },
+        },
+      },
+    },
+  });
+
+  // ── Chart 2: Weekday Additions vs Deletions ──
+  const wk = { 0: { add: [], del: [] }, 1: { add: [], del: [] }, 2: { add: [], del: [] },
+               3: { add: [], del: [] }, 4: { add: [], del: [] }, 5: { add: [], del: [] },
+               6: { add: [], del: [] } };
+  data.forEach(d => {
+    const dow = new Date(d.date).getDay();
+    wk[dow].add.push(d.additions);
+    wk[dow].del.push(d.deletions);
+  });
+  const wkLabels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const wkAdd = wkLabels.map((_, i) => {
+    const v = wk[i].add;
+    return v.length ? Math.round(v.reduce((a, b) => a + b, 0) / v.length) : 0;
+  });
+  const wkDel = wkLabels.map((_, i) => {
+    const v = wk[i].del;
+    return v.length ? -Math.round(v.reduce((a, b) => a + b, 0) / v.length) : 0;
+  });
+
+  new Chart(document.getElementById('chartWeekdayDual'), {
     type: 'line',
     data: {
-      labels: data.map(d => {
-        const dt = new Date(d.date);
-        return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      }),
+      labels: wkLabels,
       datasets: [
-        {
-          label: 'Lines Added',
-          data: data.map(d => d.additions),
-          borderColor: green,
-          backgroundColor: isDark ? 'rgba(64,196,99,0.08)' : 'rgba(64,196,99,0.12)',
-          fill: true,
-          tension: 0.1,
-          pointRadius: 0,
-          borderWidth: 1.5,
-          order: 2,
-        },
-        {
-          label: '7-day Avg',
-          data: rollingAvg(data.map(d => d.additions), 7),
-          borderColor: blue,
-          borderWidth: 2,
-          pointRadius: 0,
-          fill: false,
-          tension: 0.4,
-          order: 1,
-        },
+        { label: 'Additions', data: wkAdd, borderColor: green, backgroundColor: green,
+          pointRadius: 3, pointHoverRadius: 5, tension: 0.3, fill: false },
+        { label: 'Deletions', data: wkDel, borderColor: red, backgroundColor: red,
+          pointRadius: 3, pointHoverRadius: 5, tension: 0.3, fill: false },
       ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: {
-          display: true,
-          position: 'top',
-          labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 } },
-        },
+        legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 } } },
+        title: { display: true, text: 'Avg Lines / Weekday', color: textColor, font: { size: 12 } },
       },
       scales: {
-        x: {
-          grid: { display: false },
-          ticks: { maxTicksLimit: 12, color: textColor, font: { size: 10 } },
-        },
+        x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
         y: {
-          beginAtZero: true,
-          grid: { color: gridColor },
-          ticks: { color: textColor, font: { size: 10 } },
-        },
-      },
-      interaction: { intersect: false, mode: 'index' },
-    },
-  });
-
-  const weekdayBuckets = { 0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
-  data.forEach(d => {
-    weekdayBuckets[new Date(d.date).getDay()].push(d.additions);
-  });
-  const weekdayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const weekdayAvgs = weekdayLabels.map((_, i) => {
-    const vals = weekdayBuckets[i];
-    return vals.length ? Math.round(vals.reduce((a, b) => a + b, 0) / vals.length) : 0;
-  });
-
-  new Chart(document.getElementById('linesWeekdayChart'), {
-    type: 'bar',
-    data: {
-      labels: weekdayLabels,
-      datasets: [
-        {
-          data: weekdayAvgs,
-          backgroundColor: weekdayLabels.map((_, i) =>
-            i === 0 || i === 6 ? gray : green
-          ),
-          borderRadius: 4,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: {
-          grid: { display: false },
-          ticks: { color: textColor, font: { size: 10 } },
-        },
-        y: {
-          beginAtZero: true,
           grid: { color: gridColor },
           ticks: { color: textColor, font: { size: 10 } },
         },
