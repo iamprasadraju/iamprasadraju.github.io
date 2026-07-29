@@ -70,7 +70,7 @@ session.headers.update(HEADERS)
 def get_repo_commits(repo, since):
     shas = []
     url = f"https://api.github.com/repos/{OWNER}/{repo}/commits"
-    params = {"since": f"{since}T00:00:00Z", "per_page": 100}
+    params = {"since": f"{since}T00:00:00Z", "per_page": 100, "author": OWNER}
     while url:
         try:
             resp = session.get(url, params=params)
