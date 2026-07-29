@@ -428,16 +428,8 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     var parts = m.split('-');
     return monthNames[parseInt(parts[1]) - 1];
   });
-  var monthAdd = sortedMonths.map(function(m) {
-    var v = monthMap[m];
-    var parts = m.split('-');
-    return Math.round(v.add / new Date(parseInt(parts[0]), parseInt(parts[1]), 0).getDate());
-  });
-  var monthDel = sortedMonths.map(function(m) {
-    var v = monthMap[m];
-    var parts = m.split('-');
-    return -Math.round(v.del / new Date(parseInt(parts[0]), parseInt(parts[1]), 0).getDate());
-  });
+  var monthAdd = sortedMonths.map(function(m) { return monthMap[m].add; });
+  var monthDel = sortedMonths.map(function(m) { return -monthMap[m].del; });
 
   new Chart(document.getElementById('chartMonthlyNet'), {
     type: 'bar',
@@ -470,24 +462,27 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     },
   });
 
-  // ── Chart 2: Weekly Code Velocity ──
-  var wk = { 0: { add: [], del: [] }, 1: { add: [], del: [] }, 2: { add: [], del: [] },
-             3: { add: [], del: [] }, 4: { add: [], del: [] }, 5: { add: [], del: [] },
-             6: { add: [], del: [] } };
-  data.forEach(function(d) {
-    var dow = new Date(d.date).getDay();
-    wk[dow].add.push(d.additions);
-    wk[dow].del.push(d.deletions);
-  });
-  var wkLabels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  var wkAdd = wkLabels.map(function(_, i) {
-    var v = wk[i].add;
-    return v.length ? Math.round(v.reduce(function(a, b) { return a + b; }, 0) / v.length) : 0;
-  });
-  var wkDel = wkLabels.map(function(_, i) {
-    var v = wk[i].del;
-    return v.length ? -Math.round(v.reduce(function(a, b) { return a + b; }, 0) / v.length) : 0;
-  });
+  // ── Chart 2: This Week ──
+  var today = new Date();
+  var dayOfWeek = today.getDay();
+  var monday = new Date(today);
+  monday.setDate(today.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
+
+  var wkLabels = [], wkAdd = [], wkDel = [];
+  var weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  for (var i = 0; i < 7; i++) {
+    var dt = new Date(monday);
+    dt.setDate(monday.getDate() + i);
+    if (dt > today) break;
+    var key = dt.toISOString().slice(0, 10);
+    wkLabels.push(weekdayNames[dt.getDay()]);
+    var entry = null;
+    for (var j = 0; j < data.length; j++) {
+      if (data[j].date === key) { entry = data[j]; break; }
+    }
+    wkAdd.push(entry ? entry.additions : 0);
+    wkDel.push(entry ? -entry.deletions : 0);
+  }
 
   function makeGradient(ctx, chartArea, color, side) {
     var grad = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
@@ -525,7 +520,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 }, usePointStyle: true } },
-        title: { display: true, text: 'Weekly Code Velocity', color: textColor, font: { size: 11 }, padding: { bottom: 4 } },
+        title: { display: true, text: 'This Week', color: textColor, font: { size: 11 }, padding: { bottom: 4 } },
         tooltip: makeTooltip('Weekly', textColor),
       },
       scales: {
