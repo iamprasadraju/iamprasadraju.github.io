@@ -456,7 +456,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
         x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
         y: {
           grid: makeGrid(gridColor),
-          ticks: { color: textColor, font: { size: 10 }, callback: function(v) { return v >= 0 ? '+' + v : v; } },
+          ticks: { color: textColor, font: { size: 10 }, callback: function(v) { return v > 0 ? '+' + v : '-' + Math.abs(v); } },
         },
       },
     },
@@ -473,7 +473,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   for (var i = 0; i < 7; i++) {
     var dt = new Date(monday);
     dt.setDate(monday.getDate() + i);
-    if (dt > today) break;
+    if (dt >= today) break;
     var key = dt.toISOString().slice(0, 10);
     wkLabels.push(weekdayNames[dt.getDay()]);
     var entry = null;
@@ -527,7 +527,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
         x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
         y: {
           grid: makeGrid(gridColor),
-          ticks: { color: textColor, font: { size: 10 }, callback: function(v) { return v >= 0 ? '+' + v : v; } },
+          ticks: { color: textColor, font: { size: 10 }, callback: function(v) { return v > 0 ? '+' + v : '-' + Math.abs(v); } },
         },
       },
     },
