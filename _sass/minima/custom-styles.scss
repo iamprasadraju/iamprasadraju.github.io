@@ -756,25 +756,25 @@ h1 + hr, h2 + hr, h3 + hr, h4 + hr, h5 + hr, h6 + hr {
 
   /* ── Lines Chart Section ── */
   .lines-section {
-    margin-top: 24px;
+    margin-top: 32px;
   }
   .chart-row {
     display: flex;
-    gap: 16px;
+    gap: 24px;
     flex-wrap: wrap;
-    margin-top: 8px;
-    margin-bottom: 24px;
+    margin-top: 16px;
+    margin-bottom: 32px;
   }
   .chart-box {
     border: 1px solid rgba(128, 128, 128, 0.15);
-    border-radius: 8px;
-    padding: 10px 12px;
-    height: 200px;
+    border-radius: 12px;
+    padding: 16px;
+    height: 280px;
     position: relative;
   }
   .chart-box-equal {
     flex: 1;
-    min-width: 240px;
+    min-width: 280px;
   }
   html[data-theme='dark'] .chart-box,
   html[data-theme='solarized-dark'] .chart-box {

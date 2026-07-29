@@ -439,38 +439,32 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     return -Math.round(v.del / new Date(parseInt(parts[0]), parseInt(parts[1]), 0).getDate());
   });
 
-  function fmt(v) {
-    var abs = Math.abs(v);
-    var s = abs >= 1000 ? (abs / 1000).toFixed(1) + 'k' : abs;
-    return v >= 0 ? '+' + s : '-' + s;
-  }
-
   new Chart(document.getElementById('chartMonthlyNet'), {
     type: 'bar',
     data: {
       labels: monthLabels,
       datasets: [
         { type: 'bar', label: 'Additions', data: monthAdd, backgroundColor: green,
-          borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 0, bottomRight: 0 } },
+          borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 0, bottomRight: 0 } },
         { type: 'bar', label: 'Deletions', data: monthDel, backgroundColor: red,
-          borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 0, bottomRight: 0 } },
+          borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 0, bottomRight: 0 } },
       ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      animation: { duration: 600, easing: 'easeOutQuart' },
+      animation: { duration: 800, easing: 'easeOutQuart' },
       interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { position: 'top', labels: { color: textColor, boxWidth: 10, padding: 6, font: { size: 9 }, usePointStyle: true } },
-        title: { display: true, text: 'Monthly Code Velocity', color: textColor, font: { size: 9 }, padding: { bottom: 4 } },
+        legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 }, usePointStyle: true } },
+        title: { display: true, text: 'Monthly Code Velocity', color: textColor, font: { size: 11 }, padding: { bottom: 4 } },
         tooltip: makeTooltip('Monthly', green),
       },
       scales: {
-        x: { grid: { display: false }, ticks: { color: textColor, font: { size: 9 } } },
+        x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
         y: {
           grid: makeGrid(gridColor),
-          ticks: { color: textColor, font: { size: 9 }, maxTicksLimit: 4, callback: function(v) { return fmt(v); } },
+          ticks: { color: textColor, font: { size: 10 }, callback: function(v) { return v >= 0 ? '+' + v : v; } },
         },
       },
     },
@@ -498,11 +492,11 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   function makeGradient(ctx, chartArea, color, side) {
     var grad = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
     if (side === 'up') {
-      grad.addColorStop(0, color + '25');
-      grad.addColorStop(1, color + '02');
+      grad.addColorStop(0, color + '30');
+      grad.addColorStop(1, color + '05');
     } else {
-      grad.addColorStop(0, color + '02');
-      grad.addColorStop(1, color + '25');
+      grad.addColorStop(0, color + '05');
+      grad.addColorStop(1, color + '30');
     }
     return grad;
   }
@@ -515,30 +509,30 @@ When I’m not writing code, you’ll find me reading research papers, exploring
         { label: 'Additions', data: wkAdd, borderColor: green, backgroundColor: function(ctx) {
             if (!ctx.chart.chartArea) return 'transparent';
             return makeGradient(ctx.chart.ctx, ctx.chart.chartArea, green, 'up');
-          }, pointRadius: 2, pointHoverRadius: 4, pointBackgroundColor: green,
-          pointBorderColor: tooltipBg, pointBorderWidth: 1.5, tension: 0.35, fill: true, borderWidth: 2 },
+          }, pointRadius: 3, pointHoverRadius: 6, pointBackgroundColor: green,
+          pointBorderColor: tooltipBg, pointBorderWidth: 2, tension: 0.35, fill: true },
         { label: 'Deletions', data: wkDel, borderColor: red, backgroundColor: function(ctx) {
             if (!ctx.chart.chartArea) return 'transparent';
             return makeGradient(ctx.chart.ctx, ctx.chart.chartArea, red, 'down');
-          }, pointRadius: 2, pointHoverRadius: 4, pointBackgroundColor: red,
-          pointBorderColor: tooltipBg, pointBorderWidth: 1.5, tension: 0.35, fill: true, borderWidth: 2 },
+          }, pointRadius: 3, pointHoverRadius: 6, pointBackgroundColor: red,
+          pointBorderColor: tooltipBg, pointBorderWidth: 2, tension: 0.35, fill: true },
       ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      animation: { duration: 600, easing: 'easeOutQuart' },
+      animation: { duration: 800, easing: 'easeOutQuart' },
       interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { position: 'top', labels: { color: textColor, boxWidth: 10, padding: 6, font: { size: 9 }, usePointStyle: true } },
-        title: { display: true, text: 'Weekly Code Velocity', color: textColor, font: { size: 9 }, padding: { bottom: 4 } },
+        legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 }, usePointStyle: true } },
+        title: { display: true, text: 'Weekly Code Velocity', color: textColor, font: { size: 11 }, padding: { bottom: 4 } },
         tooltip: makeTooltip('Weekly', textColor),
       },
       scales: {
-        x: { grid: { display: false }, ticks: { color: textColor, font: { size: 9 } } },
+        x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
         y: {
           grid: makeGrid(gridColor),
-          ticks: { color: textColor, font: { size: 9 }, maxTicksLimit: 4, callback: function(v) { return fmt(v); } },
+          ticks: { color: textColor, font: { size: 10 }, callback: function(v) { return v >= 0 ? '+' + v : v; } },
         },
       },
     },
