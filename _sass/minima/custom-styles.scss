@@ -753,3 +753,39 @@ h1 + hr, h2 + hr, h3 + hr, h4 + hr, h5 + hr, h6 + hr {
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
   }
+
+  /* ── Lines Chart Section ── */
+  .lines-section {
+    margin-top: 32px;
+  }
+  .chart-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+  .chart-box {
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 8px;
+    padding: 16px;
+    height: 220px;
+    position: relative;
+  }
+  .chart-box-wide {
+    flex: 2;
+    min-width: 300px;
+  }
+  .chart-box-narrow {
+    flex: 1;
+    min-width: 200px;
+  }
+  html[data-theme='dark'] .chart-box,
+  html[data-theme='solarized-dark'] .chart-box {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  @media (prefers-color-scheme: dark) {
+    html[data-theme='auto'] .chart-box {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }

@@ -358,92 +358,143 @@ When I’m not writing code, you’ll find me reading research papers, exploring
   })();
 </script>
 
-<div id="github-activity">
-  <p style="color: #828282; font-size: 14px;">Loading actual GitHub activity...</p>
+<div class="lines-section">
+  <h3 class="home-heading">Daily Lines Added</h3>
+  <div class="chart-row">
+    <div class="chart-box chart-box-wide">
+      <canvas id="linesYearChart"></canvas>
+    </div>
+    <div class="chart-box chart-box-narrow">
+      <canvas id="linesWeekdayChart"></canvas>
+    </div>
+  </div>
 </div>
 
 <script>
-  (async function fetchGitHubActivity() {
-    try {
-      const urls = [
-        'https://api.github.com/users/iamprasadraju/events/public?per_page=100&page=1',
-        'https://api.github.com/users/iamprasadraju/events/public?per_page=100&page=2',
-        'https://api.github.com/users/iamprasadraju/events/public?per_page=100&page=3'
-      ];
-      
-      const responses = await Promise.all(urls.map(url => fetch(url).catch(() => null)));
-      
-      let events = [];
-      for (const res of responses) {
-        if (res && res.ok) {
-          const data = await res.json();
-          events = events.concat(data);
-        }
-      }
-      
-      if (events.length === 0) throw new Error('API Rate Limit or Error');
-      
-      const today = new Date();
-      const currentDayHeader = today.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' });
-      const commitCounts = {};
-      
-      events.forEach(event => {
-        if (event.type === 'PushEvent') {
-          const eventDate = new Date(event.created_at);
-          if (eventDate.toDateString() === today.toDateString()) {
-            const repoName = event.repo.name;
-            const commitCount = event.payload.size ? event.payload.size : (event.payload.commits ? event.payload.commits.length : 1);
-            if (commitCount > 0) {
-              commitCounts[repoName] = (commitCounts[repoName] || 0) + commitCount;
-            }
-          }
-        }
-      });
+(async function() {
+  const resp = await fetch('/assets/data/daily-lines.json');
+  if (!resp.ok) {
+    document.querySelector('.lines-section').innerHTML +=
+      '<p style="color: #828282; font-size: 14px; margin-top: 12px;">Data not yet available — the collection workflow runs daily at 6 AM UTC.</p>';
+    return;
+  }
+  const data = await resp.json();
 
-      const container = document.getElementById('github-activity');
-      container.innerHTML = `<h4 style="margin-bottom: 15px; color: #828282; font-size: 16px; font-weight: normal; border-bottom: 1px solid #eee; padding-bottom: 8px;">${currentDayHeader}</h4>`;
-      
-      if (Object.keys(commitCounts).length === 0) {
-        container.innerHTML += '<p style="color: #828282; font-size: 14px;">No public commits found today.</p>';
-        return;
-      }
+  const isDark = document.documentElement.getAttribute('data-theme')?.includes('dark');
+  const textColor = isDark ? '#8b949e' : '#57606a';
+  const gridColor = isDark ? '#21262d' : '#ebedf0';
 
-      const ul = document.createElement('ul');
-      ul.className = 'post-list';
-      ul.style.listStyle = 'none';
-      ul.style.marginLeft = '0';
-      ul.style.paddingLeft = '0';
+  const green = '#40c463';
+  const blue = isDark ? '#58a6ff' : '#0969da';
+  const gray = '#8b949e';
 
-      const totalCommits = Object.values(commitCounts).reduce((a, b) => a + b, 0);
+  function rollingAvg(arr, window) {
+    return arr.map((_, i) => {
+      if (i < window - 1) return null;
+      let sum = 0;
+      for (let j = i - window + 1; j <= i; j++) sum += arr[j];
+      return Math.round(sum / window);
+    });
+  }
 
-      for (const [repo, count] of Object.entries(commitCounts).sort((a,b) => b[1] - a[1])) {
-        const li = document.createElement('li');
-        li.style.marginBottom = '16px';
-        const commitText = count === 1 ? '1 commit' : `${count} commits`;
-        const percentage = Math.round((count / totalCommits) * 100);
-        
-        li.innerHTML = `
-          <div class="commit-row">
-            <h4 style="margin: 0; font-size: 16px; font-weight: 600; min-width: 0; overflow-wrap: break-word;">
-              <a href="https://github.com/${repo}" target="_blank" style="text-decoration: none; color: #2a7ae2;">${repo}</a>
-            </h4>
-            <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
-              <span style="color: #828282; font-size: 14px; white-space: nowrap;">${commitText}</span>
-              <div style="width: 60px; height: 8px; background-color: #ebedf0; border-radius: 4px; overflow: hidden;">
-                <div style="height: 100%; background-color: #40c463; width: ${percentage}%;"></div>
-              </div>
-            </div>
-          </div>
-        `;
-        ul.appendChild(li);
-      }
-      
-      container.appendChild(ul);
-    } catch (error) {
-      document.getElementById('github-activity').innerHTML = '<p style="color: #828282; font-size: 14px;">Unable to load GitHub activity at this time.</p>';
-      console.error('GitHub Activity Error:', error);
-    }
-  })();
+  new Chart(document.getElementById('linesYearChart'), {
+    type: 'line',
+    data: {
+      labels: data.map(d => {
+        const dt = new Date(d.date);
+        return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      }),
+      datasets: [
+        {
+          label: 'Lines Added',
+          data: data.map(d => d.additions),
+          borderColor: green,
+          backgroundColor: isDark ? 'rgba(64,196,99,0.08)' : 'rgba(64,196,99,0.12)',
+          fill: true,
+          tension: 0.1,
+          pointRadius: 0,
+          borderWidth: 1.5,
+          order: 2,
+        },
+        {
+          label: '7-day Avg',
+          data: rollingAvg(data.map(d => d.additions), 7),
+          borderColor: blue,
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false,
+          tension: 0.4,
+          order: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+          labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 } },
+        },
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { maxTicksLimit: 12, color: textColor, font: { size: 10 } },
+        },
+        y: {
+          beginAtZero: true,
+          grid: { color: gridColor },
+          ticks: { color: textColor, font: { size: 10 } },
+        },
+      },
+      interaction: { intersect: false, mode: 'index' },
+    },
+  });
+
+  const weekdayBuckets = { 0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
+  data.forEach(d => {
+    weekdayBuckets[new Date(d.date).getDay()].push(d.additions);
+  });
+  const weekdayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const weekdayAvgs = weekdayLabels.map((_, i) => {
+    const vals = weekdayBuckets[i];
+    return vals.length ? Math.round(vals.reduce((a, b) => a + b, 0) / vals.length) : 0;
+  });
+
+  new Chart(document.getElementById('linesWeekdayChart'), {
+    type: 'bar',
+    data: {
+      labels: weekdayLabels,
+      datasets: [
+        {
+          data: weekdayAvgs,
+          backgroundColor: weekdayLabels.map((_, i) =>
+            i === 0 || i === 6 ? gray : green
+          ),
+          borderRadius: 4,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { color: textColor, font: { size: 10 } },
+        },
+        y: {
+          beginAtZero: true,
+          grid: { color: gridColor },
+          ticks: { color: textColor, font: { size: 10 } },
+        },
+      },
+    },
+  });
+})();
 </script>
 
 <h3 class="home-heading">Special Thanks</h3>

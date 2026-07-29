@@ -1,0 +1,40 @@
+name: Collect Daily Lines
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      full:
+        description: Full re-collection from START_DATE
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: portfolio
+
+      - name: Collect line stats
+        run: |
+          pip install requests -q
+          python .github/scripts/collect_lines.py
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          START_DATE: "2026-01-01"
+          FULL: ${{ inputs.full || false }}
+
+      - name: Commit and push
+        run: |
+          cd portfolio
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/daily-lines.json
+          git diff --staged --quiet || git commit -m "update daily lines data"
+          git push
