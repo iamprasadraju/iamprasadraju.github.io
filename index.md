@@ -389,7 +389,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
 
   const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-  // ── Chart 1: Monthly Avg Daily Net LOC ──
+  // ── Chart 1: Monthly Code Velocity ──
   const monthMap = {};
   data.forEach(d => {
     const key = d.date.slice(0, 7);
@@ -402,29 +402,34 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     const [, mo] = m.split('-').map(Number);
     return monthNames[mo - 1];
   });
-  const monthNet = sortedMonths.map(m => {
+  const monthAdd = sortedMonths.map(m => {
     const v = monthMap[m];
     const [y, mo] = m.split('-').map(Number);
-    const days = new Date(y, mo, 0).getDate();
-    return Math.round((v.add - v.del) / days);
+    return Math.round(v.add / new Date(y, mo, 0).getDate());
+  });
+  const monthDel = sortedMonths.map(m => {
+    const v = monthMap[m];
+    const [y, mo] = m.split('-').map(Number);
+    return -Math.round(v.del / new Date(y, mo, 0).getDate());
   });
 
   new Chart(document.getElementById('chartMonthlyNet'), {
     type: 'bar',
     data: {
       labels: monthLabels,
-      datasets: [{
-        data: monthNet,
-        backgroundColor: monthNet.map(v => v >= 0 ? green : red),
-        borderRadius: 4,
-      }],
+      datasets: [
+        { type: 'bar', label: 'Additions', data: monthAdd, backgroundColor: green, borderRadius: 4, order: 2 },
+        { type: 'bar', label: 'Deletions', data: monthDel, backgroundColor: red, borderRadius: 4, order: 2 },
+        { type: 'line', label: 'Trend', data: monthAdd, borderColor: isDark ? '#8b949e' : '#57606a',
+          borderWidth: 2, pointRadius: 3, pointHoverRadius: 5, tension: 0.35, fill: false, order: 1 },
+      ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { display: false },
-        title: { display: true, text: 'Avg Daily Net LOC / Month', color: textColor, font: { size: 12 } },
+        legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 } } },
+        title: { display: true, text: 'Monthly Code Velocity', color: textColor, font: { size: 12 } },
       },
       scales: {
         x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
@@ -436,7 +441,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     },
   });
 
-  // ── Chart 2: Weekday Additions vs Deletions ──
+  // ── Chart 2: Weekly Code Velocity ──
   const wk = { 0: { add: [], del: [] }, 1: { add: [], del: [] }, 2: { add: [], del: [] },
                3: { add: [], del: [] }, 4: { add: [], del: [] }, 5: { add: [], del: [] },
                6: { add: [], del: [] } };
@@ -471,7 +476,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       maintainAspectRatio: false,
       plugins: {
         legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 } } },
-        title: { display: true, text: 'Avg Lines / Weekday', color: textColor, font: { size: 12 } },
+        title: { display: true, text: 'Weekly Code Velocity', color: textColor, font: { size: 12 } },
       },
       scales: {
         x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
