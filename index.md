@@ -474,7 +474,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     var dt = new Date(monday);
     dt.setDate(monday.getDate() + i);
     if (dt >= today) break;
-    var key = dt.toISOString().slice(0, 10);
+    var key = dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0') + '-' + String(dt.getDate()).padStart(2, '0');
     wkLabels.push(weekdayNames[dt.getDay()]);
     var entry = null;
     for (var j = 0; j < data.length; j++) {
