@@ -437,9 +437,9 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       labels: monthLabels,
       datasets: [
         { type: 'bar', label: 'Additions', data: monthAdd, backgroundColor: green,
-          borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 0, bottomRight: 0 } },
+          borderRadius: 0 },
         { type: 'bar', label: 'Deletions', data: monthDel, backgroundColor: red,
-          borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 0, bottomRight: 0 } },
+          borderRadius: 0 },
       ],
     },
     options: {
