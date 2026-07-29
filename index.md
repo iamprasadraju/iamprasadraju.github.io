@@ -463,6 +463,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { position: 'top', labels: { color: textColor, boxWidth: 10, padding: 6, font: { size: 9 }, usePointStyle: true } },
+        title: { display: true, text: 'Monthly Code Velocity', color: textColor, font: { size: 9 }, padding: { bottom: 4 } },
         tooltip: makeTooltip('Monthly', green),
       },
       scales: {
@@ -530,6 +531,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { position: 'top', labels: { color: textColor, boxWidth: 10, padding: 6, font: { size: 9 }, usePointStyle: true } },
+        title: { display: true, text: 'Weekly Code Velocity', color: textColor, font: { size: 9 }, padding: { bottom: 4 } },
         tooltip: makeTooltip('Weekly', textColor),
       },
       scales: {
