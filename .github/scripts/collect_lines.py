@@ -70,7 +70,7 @@ session.headers.update(HEADERS)
 def get_repo_commits(repo, since):
     shas = []
     url = f"https://api.github.com/repos/{OWNER}/{repo}/commits"
-    params = {"since": f"{since}T00:00:00Z", "per_page": 100, "author": OWNER}
+    params = {"since": f"{since}T00:00:00Z", "per_page": 100}
     while url:
         try:
             resp = session.get(url, params=params)
@@ -96,9 +96,10 @@ def get_commit_stats(repo, sha):
         )
         if resp.status_code == 200:
             data = resp.json()
-            date = data["commit"]["author"]["date"][:10]
-            stats = data["stats"]
-            return date, stats["additions"], stats["deletions"]
+            if data.get("author") and data["author"].get("login") == OWNER:
+                date = data["commit"]["author"]["date"][:10]
+                stats = data["stats"]
+                return date, stats["additions"], stats["deletions"]
     except requests.RequestException:
         pass
     return None, 0, 0
