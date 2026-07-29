@@ -16,6 +16,8 @@ HEADERS = {
     "Accept": "application/vnd.github.v3+json",
 }
 
+EXCLUDED = set()
+
 def get_public_repos():
     repos = []
     url = f"https://api.github.com/users/{OWNER}/repos"
@@ -26,7 +28,7 @@ def get_public_repos():
             if resp.status_code != 200:
                 break
             for r in resp.json():
-                if not r["fork"]:
+                if not r["fork"] and r["name"] not in EXCLUDED:
                     repos.append(r["name"])
             url = None
             params = None
@@ -131,14 +133,24 @@ def main():
         return
 
     with ThreadPoolExecutor(max_workers=10) as ex:
-        futures = [
-            ex.submit(get_commit_stats, repo, sha) for repo, sha in all_commits
-        ]
-        for f in as_completed(futures):
-            date, additions, deletions = f.result()
+        future_to_repo = {
+            ex.submit(get_commit_stats, repo, sha): (repo, sha)
+            for repo, sha in all_commits
+        }
+        repo_stats = defaultdict(lambda: {"additions": 0, "deletions": 0})
+        for future in as_completed(future_to_repo):
+            repo, sha = future_to_repo[future]
+            date, additions, deletions = future.result()
             if date:
                 daily[date]["additions"] += additions
                 daily[date]["deletions"] += deletions
+                repo_stats[repo]["additions"] += additions
+                repo_stats[repo]["deletions"] += deletions
+
+    print("\nPer-repo stats (this run):")
+    for repo in sorted(repo_stats):
+        s = repo_stats[repo]
+        print(f"  {repo}: +{s['additions']} -{s['deletions']}")
 
     output = sorted(
         [{"date": d, "additions": v["additions"], "deletions": v["deletions"]}
