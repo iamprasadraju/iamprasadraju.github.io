@@ -448,7 +448,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       animation: { duration: 800, easing: 'easeOutQuart' },
       interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 }, usePointStyle: true } },
+        legend: { position: 'top', labels: { color: textColor, boxWidth: 8, padding: 6, font: { size: 10 }, usePointStyle: false } },
         title: { display: true, text: 'Monthly Code Velocity', color: textColor, font: { size: 11 }, padding: { bottom: 4 } },
         tooltip: makeTooltip('Monthly', green),
       },
@@ -504,12 +504,12 @@ When I’m not writing code, you’ll find me reading research papers, exploring
         { label: 'Additions', data: wkAdd, borderColor: green, backgroundColor: function(ctx) {
             if (!ctx.chart.chartArea) return 'transparent';
             return makeGradient(ctx.chart.ctx, ctx.chart.chartArea, green, 'up');
-          }, pointRadius: 3, pointHoverRadius: 6, pointBackgroundColor: green,
+          }, pointRadius: 2, pointHoverRadius: 4, pointBackgroundColor: green,
           pointBorderColor: tooltipBg, pointBorderWidth: 2, tension: 0.35, fill: true },
         { label: 'Deletions', data: wkDel, borderColor: red, backgroundColor: function(ctx) {
             if (!ctx.chart.chartArea) return 'transparent';
             return makeGradient(ctx.chart.ctx, ctx.chart.chartArea, red, 'down');
-          }, pointRadius: 3, pointHoverRadius: 6, pointBackgroundColor: red,
+          }, pointRadius: 2, pointHoverRadius: 4, pointBackgroundColor: red,
           pointBorderColor: tooltipBg, pointBorderWidth: 2, tension: 0.35, fill: true },
       ],
     },
@@ -519,7 +519,7 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       animation: { duration: 800, easing: 'easeOutQuart' },
       interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { position: 'top', labels: { color: textColor, boxWidth: 12, padding: 8, font: { size: 11 }, usePointStyle: true } },
+        legend: { position: 'top', labels: { color: textColor, boxWidth: 8, padding: 6, font: { size: 10 }, usePointStyle: true } },
         title: { display: true, text: 'This Week', color: textColor, font: { size: 11 }, padding: { bottom: 4 } },
         tooltip: makeTooltip('Weekly', textColor),
       },
