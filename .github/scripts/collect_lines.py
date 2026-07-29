@@ -7,9 +7,9 @@ import requests
 
 OWNER = "iamprasadraju"
 TOKEN = os.environ["GH_PAT"]
-DATA_PATH = "portfolio/assets/data/daily-lines.json"
-START_DATE = os.environ.get("START_DATE", "2026-01-01")
+DATA_PATH = "assets/data/daily-lines.json"
 FULL = os.environ.get("FULL", "false").lower() == "true"
+START_DATE = f"{datetime.now(timezone.utc).year}-01-01"
 
 HEADERS = {
     "Authorization": f"Bearer {TOKEN}",
@@ -20,7 +20,8 @@ REPOS = [
     "TrueML", "algoX", "notes", "kaggle-competitions", "vari-mitra",
     "tic-tac-toe", "math-notebooks", "gen-cli", "cs-fun", "ipython-books",
     "jekyll-obsidian-theme", "ml-notebooks", "MLmath-notebooks", "ESP-Alert",
-    "ipythonfun", "ai-notebooks", "Trigger", "configuration",
+    "ipythonfun", "ai-notebooks", "Trigger",     "configuration",
+    "iamprasadraju",
 ]
 
 

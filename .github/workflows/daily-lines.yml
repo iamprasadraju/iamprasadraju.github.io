@@ -22,12 +22,12 @@ jobs:
           path: portfolio
 
       - name: Collect line stats
+        working-directory: portfolio
         run: |
           pip install requests -q
           python .github/scripts/collect_lines.py
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
-          START_DATE: "2026-01-01"
           FULL: ${{ inputs.full || false }}
 
       - name: Commit and push
