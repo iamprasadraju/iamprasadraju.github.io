@@ -99,7 +99,6 @@ def get_commit_stats(repo, sha):
             author_login = data.get("author") and data["author"].get("login")
             date = data["commit"]["author"]["date"][:10]
             s = data["stats"]
-            print(f"  DEBUG: {repo:30s} {sha[:8]} date={date} author={str(author_login):20s} +{s['additions']:>6d} -{s['deletions']:<6d}")
             if author_login == OWNER:
                 return date, s["additions"], s["deletions"]
     except requests.RequestException:
@@ -110,6 +109,8 @@ def get_commit_stats(repo, sha):
 def main():
     daily, last_date = load_existing()
     since = compute_since(daily, last_date)
+    if FULL:
+        daily = defaultdict(lambda: {"additions": 0, "deletions": 0})
 
     repos = get_public_repos()
     print(f"Found {len(repos)} public repos")
