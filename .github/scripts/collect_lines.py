@@ -16,13 +16,25 @@ HEADERS = {
     "Accept": "application/vnd.github.v3+json",
 }
 
-REPOS = [
-    "TrueML", "algoX", "notes", "kaggle-competitions", "vari-mitra",
-    "tic-tac-toe", "math-notebooks", "gen-cli", "cs-fun", "ipython-books",
-    "jekyll-obsidian-theme", "ml-notebooks", "MLmath-notebooks", "ESP-Alert",
-    "ipythonfun", "ai-notebooks",     "Trigger", "configuration",
-    "iamprasadraju",
-]
+def get_public_repos():
+    repos = []
+    url = f"https://api.github.com/users/{OWNER}/repos"
+    params = {"per_page": 100, "sort": "pushed", "type": "public"}
+    while url:
+        try:
+            resp = session.get(url, params=params)
+            if resp.status_code != 200:
+                break
+            for r in resp.json():
+                if not r["fork"]:
+                    repos.append(r["name"])
+            url = None
+            params = None
+            if "next" in resp.links:
+                url = resp.links["next"]["url"]
+        except requests.RequestException:
+            break
+    return repos
 
 
 def load_existing():
@@ -94,10 +106,11 @@ def main():
     daily, last_date = load_existing()
     since = compute_since(daily, last_date)
 
-    print(f"Fetching commits since {since} across {len(REPOS)} repos")
+    repos = get_public_repos()
+    print(f"Found {len(repos)} public repos")
 
     all_commits = []
-    for repo in REPOS:
+    for repo in repos:
         commits = get_repo_commits(repo, since)
         all_commits.extend(commits)
         print(f"  {repo}: {len(commits)} commits")
