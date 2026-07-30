@@ -53,7 +53,7 @@ layout: page
   </div>
   
   <div class="actively-building">
-    Actively Building <a href="https://github.com/iamprasadraju/TrueML" target="_blank" rel="noopener noreferrer" class="brand-repo-link">TrueML</a> & <a href="https://github.com/iamprasadraju/AlgoX" target="_blank" rel="noopener noreferrer" class="brand-repo-link">AlgoX</a>
+    Actively Building <a href="https://github.com/iamprasadraju/TrueML" target="_blank" rel="noopener noreferrer" class="brand-repo-link">TrueML</a>
   </div>
 </div>
 </div>
