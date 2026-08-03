@@ -1,5 +1,5 @@
 import json, os, sys
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -54,13 +54,11 @@ def load_existing():
 def compute_since(daily, last_date):
     if FULL or last_date is None:
         return START_DATE
-    dt = datetime.strptime(last_date, "%Y-%m-%d") + timedelta(days=1)
-    since = dt.strftime("%Y-%m-%d")
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    if since >= today:
-        print(f"Already up to date (since={since})")
+    if last_date > today:
+        print(f"Already up to date (last={last_date})")
         sys.exit(0)
-    return since
+    return last_date
 
 
 session = requests.Session()
@@ -111,6 +109,8 @@ def main():
     since = compute_since(daily, last_date)
     if FULL:
         daily = defaultdict(lambda: {"additions": 0, "deletions": 0})
+    else:
+        daily.pop(since, None)
 
     repos = get_public_repos()
     print(f"Found {len(repos)} public repos")

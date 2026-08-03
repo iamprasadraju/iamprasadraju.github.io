@@ -462,18 +462,13 @@ When I’m not writing code, you’ll find me reading research papers, exploring
     },
   });
 
-  // ── Chart 2: This Week ──
+  // ── Chart 2: Last 7 Days ──
   var today = new Date();
-  var dayOfWeek = today.getDay();
-  var monday = new Date(today);
-  monday.setDate(today.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
-
   var wkLabels = [], wkAdd = [], wkDel = [];
   var weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  for (var i = 0; i < 7; i++) {
-    var dt = new Date(monday);
-    dt.setDate(monday.getDate() + i);
-    if (dt >= today) break;
+  for (var i = 7; i >= 1; i--) {
+    var dt = new Date(today);
+    dt.setDate(today.getDate() - i);
     var key = dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0') + '-' + String(dt.getDate()).padStart(2, '0');
     wkLabels.push(weekdayNames[dt.getDay()]);
     var entry = null;
@@ -520,8 +515,8 @@ When I’m not writing code, you’ll find me reading research papers, exploring
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { position: 'top', labels: { color: textColor, boxWidth: 8, padding: 6, font: { size: 10 }, usePointStyle: true } },
-        title: { display: true, text: 'This Week', color: textColor, font: { size: 11 }, padding: { bottom: 4 } },
-        tooltip: makeTooltip('Weekly', textColor),
+        title: { display: true, text: 'Last 7 Days', color: textColor, font: { size: 11 }, padding: { bottom: 4 } },
+        tooltip: makeTooltip('Last 7 Days', textColor),
       },
       scales: {
         x: { grid: { display: false }, ticks: { color: textColor, font: { size: 10 } } },
