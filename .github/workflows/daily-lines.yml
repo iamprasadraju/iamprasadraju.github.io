@@ -20,6 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: portfolio
+          persist-credentials: false
 
       - name: Collect line stats
         working-directory: portfolio
@@ -39,3 +40,8 @@ jobs:
           git add assets/data/daily-lines.json
           git diff --staged --quiet || git commit -m "update daily lines data"
           git push
+
+      - name: Trigger deploy
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: gh workflow run "Deploy Jekyll site to Pages" --repo ${{ github.repository }}
