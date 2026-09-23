@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="author" content="Prasad Raju G">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="{{ '/style.css' | relative_url }}" rel="stylesheet">
+  {% feed_meta %}
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="fullBody">
+  <div class="container" id="inner">
+
+    <p class="siteSections"><a href="{{ '/' | relative_url }}">Home</a> <a href="{{ '/blogs/' | relative_url }}">Blogs</a> <a href="{{ '/research/' | relative_url }}">Research</a></p>
+
+    {{ content }}
+
+    <hr/>
+    <div class="row siteFooter">
+      <div class="col-xs-12 text-center">
+        &copy; Created by Prasad Raju G. Updated in 2026. Contact: <a href="mailto:gls.prasadraju@gmail.com">gls.prasadraju@gmail.com</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var toggle = document.getElementById('paperFilterToggle');
+  var panel = document.getElementById('paperFilterPanel');
+  var badge = document.getElementById('paperFilterBadge');
+  var clearBtn = document.getElementById('paperFilterClear');
+  var checkboxes = Array.prototype.slice.call(document.querySelectorAll('.paperFilterCheckbox'));
+  var awardCheckbox = document.getElementById('paperFilterAwardCheckbox');
+
+  if (toggle && panel) {
+    toggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isHidden = panel.hasAttribute('hidden');
+      if (isHidden) { panel.removeAttribute('hidden'); toggle.classList.add('active'); toggle.setAttribute('aria-expanded', 'true'); }
+      else { panel.setAttribute('hidden', ''); toggle.classList.remove('active'); toggle.setAttribute('aria-expanded', 'false'); }
+    });
+    document.addEventListener('click', function(e) {
+      if (!panel.hasAttribute('hidden') && !panel.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+        panel.setAttribute('hidden', '');
+        toggle.classList.remove('active');
+      }
+    });
+  }
+
+  function applyFilter() {
+    var activeTags = checkboxes.filter(function(c){ return c.checked; }).map(function(c){ return c.dataset.tag; });
+    var awardOnly = awardCheckbox && awardCheckbox.checked;
+    var cards = document.querySelectorAll('.paperCard');
+    var visible = 0;
+    cards.forEach(function(card) {
+      var tags = (card.getAttribute('data-tags') || '').split(' ');
+      var award = card.getAttribute('data-award') === '1';
+      var tagMatch = activeTags.length === 0 || activeTags.every(function(t){ return tags.indexOf(t) !== -1; });
+      var awardMatch = !awardOnly || award;
+      var show = tagMatch && awardMatch;
+      card.classList.toggle('paperCard-hidden', !show);
+      if (show) visible++;
+    });
+    var empty = document.getElementById('paperEmptyState');
+    if (empty) empty.style.display = visible === 0 ? 'block' : 'none';
+    var count = activeTags.length + (awardOnly ? 1 : 0);
+    if (badge) {
+      badge.textContent = count;
+      badge.style.display = count > 0 ? 'inline-flex' : 'none';
+    }
+  }
+
+  checkboxes.forEach(function(c){ c.addEventListener('change', applyFilter); });
+  if (awardCheckbox) awardCheckbox.addEventListener('change', applyFilter);
+  if (clearBtn) clearBtn.addEventListener('click', function() {
+    checkboxes.forEach(function(c){ c.checked = false; });
+    if (awardCheckbox) awardCheckbox.checked = false;
+    applyFilter();
+  });
+
+  document.querySelectorAll('.citeBtn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var bib = btn.getAttribute('data-bibtex') || '';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(bib).then(function(){ btn.style.color = '#222'; setTimeout(function(){ btn.style.color=''; }, 800); });
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

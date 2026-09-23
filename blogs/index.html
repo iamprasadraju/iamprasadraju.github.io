@@ -1,0 +1,20 @@
+---
+layout: default
+title: Blogs
+description: Notes on Mac setup, Python, CLI tools and machine learning.
+---
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Blogs</h1>
+        <hr />
+        <ul class="postList">
+          {% for post in site.posts %}
+          <li>
+            <h4 class="media-heading" style="margin-bottom:0px;"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
+            <p class="postMeta">{{ post.date | date: "%b %-d, %Y" }}{% if post.description %} &middot; {{ post.description }}{% endif %}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>

@@ -1,0 +1,51 @@
+- title: "TrueML: Machine Learning Without Hidden Abstractions"
+  url: "https://github.com/iamprasadraju/TrueML"
+  venue: 'a hackable machine learning library without "model.fit()". Built from first principles. 2026'
+  tags: "ml python"
+  award: true
+  award_text: "Featured Build"
+  image: "images/papers/trueml.svg"
+  image_class: "logoLight"
+  alt: "TrueML"
+  cite: "https://github.com/iamprasadraju/TrueML"
+
+- title: "Boring Commit: Conventional Messages from Staged Diffs"
+  url: "https://github.com/iamprasadraju/Boring-Commit"
+  venue: 'Rust CLI generating conventional commits via local Ollama or hosted APIs. <a href="https://iamprasadraju.github.io/Boring-Commit/">Live</a>. 2026'
+  tags: "ml systems"
+  award: true
+  award_text: "Featured Build"
+  image: "images/papers/boring-commit.svg"
+  image_class: "logoLight"
+  alt: "Boring Commit"
+  cite: "https://github.com/iamprasadraju/Boring-Commit"
+
+- title: "Boring Font: Pixel Logos, Typed"
+  url: "https://iamprasadraju.github.io/Boring-Font/"
+  venue: "Type anything and get a pixel-block logo. Customize colors, copy or download the SVG. 2026"
+  tags: "systems"
+  award: false
+  image: "images/papers/boring-font.svg"
+  image_class: "logoBf"
+  alt: "Boring Font"
+  cite: "https://iamprasadraju.github.io/Boring-Font/"
+
+- title: "Tic Tac Toe: Pixel-Art Pygame, Hot-Seat Two-Player"
+  url: "https://github.com/iamprasadraju/tic-tac-toe"
+  venue: "Win and draw detection with confetti celebrations. AI opponent WIP. 2026"
+  tags: "python"
+  award: false
+  image: "images/papers/tictactoe.png"
+  image_class: ""
+  alt: "Tic Tac Toe"
+  cite: "https://github.com/iamprasadraju/tic-tac-toe"
+
+- title: "ResearchRack: Personal arXiv Paper and Book Tracker"
+  url: "https://iamprasadraju.github.io/ResearchRack/"
+  venue: "13 papers with reading status, categories and tags, plus books. 2026"
+  tags: "ml python"
+  award: false
+  image: "images/papers/researchrack.svg"
+  image_class: ""
+  alt: "ResearchRack"
+  cite: "https://iamprasadraju.github.io/ResearchRack/"

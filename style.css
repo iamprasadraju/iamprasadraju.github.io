@@ -1,0 +1,405 @@
+html, body {
+  height: 100%;
+  font-family: 'trebuchet ms', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+}
+
+#fullBody {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  background-color: white;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.newsTitle {
+  color: #007BE6;
+}
+
+.sidebaricon {
+  padding-right: 1px;
+}
+
+#inner {
+  max-width: 950px;
+}
+
+.siteSections {
+  margin-top: 10px;
+}
+
+.siteSections a {
+  margin-right: 14px;
+  font-size: 14px;
+}
+
+.postMeta {
+  color: #959595;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.postList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.postList li {
+  margin-bottom: 22px;
+}
+
+.profilePicture {
+  width: 216px;
+  margin-bottom: 0px !important;
+  margin-top: 20px;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.no-margin {
+  margin: 0px !important;
+}
+
+.media-heading {
+  font-size: 16px;
+}
+
+.conference {
+  font-size: 14px;
+  margin-bottom: 0px !important;
+}
+
+.graphThumb {
+  width: 150px;
+  height: 150px;
+  float: left;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.graphThumbImg {
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.paperWell {
+  min-height: 170px;
+}
+
+.hexagonContainer {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.hexagonImage.logoLight {
+  object-fit: contain;
+  padding: 12px;
+  background-color: #f4f4f4;
+}
+
+.hexagonImage.logoDark {
+  object-fit: contain;
+  padding: 12px;
+  background-color: #1c1c1c;
+}
+
+.hexagonImage.logoBf {
+  object-fit: contain;
+  padding: 12px;
+  background-color: #090A09;
+}
+
+.hexagonImage.logoRed {
+  object-fit: contain;
+  padding: 14px;
+  background-color: #b31b1b;
+}
+
+.hexagonImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.well {
+  background-color: white;
+}
+
+.course {
+  background-color: white;
+}
+
+.subtleHeading {
+  font-size: 12px;
+  font-weight: 700;
+  color: #959595;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mb-2 { margin-bottom: 10px !important; }
+.mb-3 { margin-bottom: 15px !important; }
+.mb-4 { margin-bottom: 20px !important; }
+.mb-5 { margin-bottom: 25px !important; }
+.mb-6 { margin-bottom: 30px !important; }
+
+.citeBtn {
+  margin-left: 8px;
+  color: #bbbbbb;
+  cursor: pointer;
+}
+
+.citeBtn:hover {
+  color: #555555;
+}
+
+/* ---- Paper filter ---- */
+.paperSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.paperSectionTitle {
+  margin: 0;
+}
+
+.paperFilterWrap {
+  position: relative;
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.paperFilterButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #222222;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.paperFilterButton:hover {
+  border-color: #b0b0b0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.paperFilterButton.active {
+  border-color: #222222;
+}
+
+.paperFilterButton .fa-filter {
+  font-size: 13px;
+}
+
+.paperFilterBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  background-color: #222222;
+  color: #ffffff;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0 5px;
+}
+
+.paperFilterPanel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 290px;
+  background-color: #ffffff;
+  border: 1px solid #ebebeb;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+  padding: 18px;
+  z-index: 60;
+}
+
+.paperFilterPanelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+  color: #222222;
+  margin-bottom: 10px;
+}
+
+.paperFilterClearBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #717171;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.paperFilterClearBtn:hover {
+  color: #222222;
+}
+
+.paperFilterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.paperFilterOption {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #222222;
+  margin-bottom: 0px;
+  transition: background-color 0.1s ease;
+}
+
+.paperFilterOption:hover {
+  background-color: #f7f7f7;
+}
+
+.paperFilterCheckbox {
+  width: 16px;
+  height: 16px;
+  accent-color: #222222;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.paperFilterOptionIcon {
+  width: 18px;
+  text-align: center;
+  color: #717171;
+  font-size: 13px;
+  flex: 0 0 auto;
+}
+
+.paperFilterOptionLabel {
+  flex: 1 1 auto;
+}
+
+.paperFilterOptionCount {
+  color: #a3a3a3;
+  font-size: 12px;
+  flex: 0 0 auto;
+}
+
+.paperFilterDivider {
+  border: none;
+  border-top: 1px solid #ebebeb;
+  margin: 10px 0px;
+}
+
+.paperCard {
+  animation: paperFadeIn 0.35s ease both;
+}
+
+.paperCard-hidden {
+  display: none !important;
+}
+
+@keyframes paperFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.paperEmptyState {
+  padding: 30px 0px;
+  text-align: center;
+}
+
+/* footer */
+.siteFooter {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #777;
+  font-size: 13px;
+}
+
+/* ---- Responsive ---- */
+.profilePicture {
+  max-width: 100%;
+}
+
+.paperFilterPanel {
+  max-width: calc(100vw - 30px);
+}
+
+/* Mobile: center profile photo, let cards breathe */
+@media (max-width: 767px) {
+  .profilePictureCol {
+    text-align: center;
+  }
+
+  #inner h1 {
+    text-align: center;
+  }
+
+  .profilePicture {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .paperBody {
+    height: auto !important;
+  }
+
+  .hexagonContainer {
+    width: 80px;
+    height: 80px;
+    margin-right: 14px;
+  }
+
+  .media-heading {
+    font-size: 15px;
+  }
+}
+
+/* Very small screens: fit gallery thumbs two per row */
+@media (max-width: 480px) {
+  .graphThumb {
+    width: 130px;
+    height: 130px;
+  }
+
+  .hexagonContainer {
+    width: 64px;
+    height: 64px;
+    margin-right: 12px;
+  }
+}
