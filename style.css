@@ -48,6 +48,33 @@ html, body {
   font-size: 14px;
 }
 
+/* ---- Focus rings (site-wide) ---- */
+/* No outline box when clicking links/buttons with mouse or touch
+   (includes the mobile tap highlight). Keyboard users still get a
+   subtle indicator via :focus-visible. */
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus,
+a:active,
+button:focus,
+button:active,
+summary:focus,
+summary:active,
+input:focus,
+input:active {
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible {
+  outline: 2px solid #999;
+  outline-offset: 2px;
+}
+
 /* Fixed post navbar: links left, width toggle right. Posts only. */
 .postNavbar {
   position: fixed;
