@@ -26,6 +26,19 @@ html, body {
   max-width: 950px;
 }
 
+/* Wide override for blog posts only. Must sit here, right after #inner,
+   and use #inner.postWide (ID+class) so it beats the #inner ID above.
+   A plain .container.postWide class selector loses to it. */
+#inner.postWide {
+  width: auto;
+  max-width: 1360px;
+  padding-left: 24px;
+  padding-right: 24px;
+  /* Reserve room for the fixed navbar so flow content never starts
+     underneath it. */
+  padding-top: 58px;
+}
+
 .siteSections {
   margin-top: 10px;
 }
@@ -33,6 +46,128 @@ html, body {
 .siteSections a {
   margin-right: 14px;
   font-size: 14px;
+}
+
+/* Fixed post navbar: links left, width toggle right. Posts only. */
+.postNavbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 130;
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.postNavbarInner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.postNavbarLinks a {
+  margin-right: 14px;
+  font-size: 14px;
+}
+
+.postNavbarLinks a:last-child {
+  margin-right: 0;
+}
+
+/* Full-width toggle: right side of the navbar. */
+.panelsToggle {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.panelsToggle:hover {
+  border-color: #999;
+  color: #222;
+}
+
+#inner.panelsHidden .postGrid {
+  grid-template-columns: minmax(0, 780px);
+  justify-content: center;
+}
+
+#inner.panelsHidden .postToc {
+  display: none;
+}
+
+#inner.panelsHidden .postBody {
+  border-left: none;
+  border-right: none;
+  padding: 0;
+  max-width: 780px;
+}
+
+#inner.panelsHidden .postTocMobile {
+  display: block;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Wikipedia-style footnote popup (mini card near the marker). */
+.fnPopup {
+  position: fixed;
+  z-index: 200;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.fnPopupBody ol,
+.fnPopupBody ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.fnPopupBody p {
+  margin: 0 0 6px 0;
+}
+
+.fnPopupBody p:last-child {
+  margin-bottom: 0;
+}
+
+.fnPopupClose {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+  line-height: 1;
+  color: #777;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.fnPopupClose:hover {
+  color: #222;
 }
 
 .postMeta {
@@ -174,6 +309,12 @@ html, body {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 20px;
+}
+
+/* Blogs list: match the Research page gap between the nav row and the
+   heading (plain h1 gets 20px top margin from Bootstrap). */
+.blogSectionHeader {
+  margin-top: 20px;
 }
 
 .paperSectionTitle {
@@ -340,6 +481,151 @@ html, body {
 .paperEmptyState {
   padding: 30px 0px;
   text-align: center;
+}
+
+/* ---- Blog post 3-column reading layout ---- */
+/* (Container width override lives next to #inner at the top of this file.) */
+
+.postGrid {
+  display: grid;
+  /* TOC rail left, article center, right track left empty so the
+     article stays centered with symmetric gutters. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 780px) minmax(0, 1fr);
+  gap: 0 32px;
+  align-items: stretch;
+}
+
+.postBody {
+  min-width: 0;
+  max-width: 780px;
+  justify-self: center;
+  width: 100%;
+  border-left: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
+  padding: 0 36px;
+}
+
+.postArticle {
+  min-width: 0;
+}
+
+.postToc {
+  position: sticky;
+  top: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.5;
+  width: 100%;
+  min-width: 0;
+  justify-self: end;
+  max-width: 230px;
+  /* Line the rail label up with the article title: Bootstrap gives the
+     article h1 a 20px top margin, so offset the rail by the same. */
+  padding-top: 20px;
+}
+
+/* Bottom footnote list (the only footnote panel now). */
+.postArticle .footnotes {
+  font-size: 13px;
+  color: #555;
+  margin-top: 32px;
+  border-top: 1px solid #e8e8e8;
+  padding-top: 12px;
+}
+
+.postTocUl {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.postTocUl li {
+  margin-bottom: 6px;
+}
+
+.postTocUl a {
+  color: #777;
+  text-decoration: none;
+}
+
+.postTocUl a:hover {
+  color: #222;
+  text-decoration: underline;
+}
+
+.postTocUl a.active {
+  color: #222;
+  font-weight: 700;
+}
+
+.postTocUl a:focus,
+.postTocUl a:active {
+  outline: none;
+}
+
+.postToc-h1 {
+  padding-left: 0;
+}
+
+.postToc-h2 {
+  padding-left: 0;
+}
+
+.postToc-h3 {
+  padding-left: 14px;
+  font-size: 12px;
+}
+
+.postTocEmpty {
+  color: #a3a3a3;
+  font-size: 12px;
+  margin: 0;
+}
+
+.postTocMobile {
+  display: none;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  background: #fafafa;
+}
+
+.postTocMobile summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+@media (max-width: 1150px) {
+  .postGrid {
+    gap: 0 24px;
+  }
+}
+
+@media (max-width: 991px) {
+  #inner.postWide {
+    max-width: 950px;
+  }
+  .panelsToggle {
+    display: none;
+  }
+  .postGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .postBody {
+    max-width: 100%;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+  }
+  .postToc {
+    display: none;
+  }
+  .postTocMobile {
+    display: block;
+  }
 }
 
 /* footer */

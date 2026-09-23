@@ -3,6 +3,8 @@ description: Prasad Raju G, Independent AI Researcher and Systems Engineer focus
 url: https://iamprasadraju.github.io
 baseurl: ""
 markdown: kramdown
+kramdown:
+  math_engine: mathjax
 plugins:
   - jekyll-feed
 feed:

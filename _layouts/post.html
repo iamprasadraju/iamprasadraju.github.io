@@ -11,19 +11,44 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <link href="{{ '/style.css' | relative_url }}" rel="stylesheet">
   {% feed_meta %}
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
+<header class="postNavbar">
+  <div class="postNavbarInner">
+    <nav class="postNavbarLinks" aria-label="Site">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/blogs/' | relative_url }}">Blogs</a>
+      <a href="{{ '/research/' | relative_url }}">Research</a>
+    </nav>
+    <button type="button" id="panelsToggle" class="panelsToggle" aria-pressed="false" title="Toggle side panels"><i class="fa-solid fa-expand" aria-hidden="true"></i> <span>Full width</span></button>
+  </div>
+</header>
 <div id="fullBody">
-  <div class="container" id="inner">
+  <div class="container postWide" id="inner">
 
-    <p class="siteSections"><a href="{{ '/' | relative_url }}">Home</a> <a href="{{ '/blogs/' | relative_url }}">Blogs</a> <a href="{{ '/research/' | relative_url }}">Research</a></p>
+    <details class="postTocMobile">
+      <summary>On this page</summary>
+      <nav id="postTocMobileList" aria-label="Table of contents"></nav>
+    </details>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <h1>{{ page.title }}</h1>
-        <p class="postMeta">{{ page.date | date: "%b %-d, %Y" }}{% if page.description %} &middot; {{ page.description }}{% endif %}</p>
-        <hr />
+    <div class="postGrid">
+      <aside class="postToc" aria-label="Table of contents">
+        <div class="subtleHeading mb-3">On this page</div>
+        <nav id="postTocList"></nav>
+      </aside>
+      <div class="postBody">
+        <div class="postArticle">
         {{ content }}
+        </div>
         <p style="margin-top:24px;"><a href="{{ '/blogs/' | relative_url }}">&larr; All blogs</a></p>
       </div>
     </div>
@@ -37,5 +62,136 @@
 
   </div>
 </div>
+<div id="fnPopup" class="fnPopup" hidden role="dialog" aria-label="Footnote">
+  <button type="button" class="fnPopupClose" aria-label="Close footnote">&times;</button>
+  <div class="fnPopupBody"></div>
+</div>
+<script>
+(function() {
+  var shell = document.getElementById('inner');
+  var toggle = document.getElementById('panelsToggle');
+  function setPanelsHidden(hidden) {
+    if (!shell) return;
+    shell.classList.toggle('panelsHidden', hidden);
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', hidden ? 'true' : 'false');
+      toggle.querySelector('span').textContent = hidden ? 'Show panels' : 'Full width';
+    }
+    try { localStorage.setItem('postPanelsHidden', hidden ? '1' : '0'); } catch (e) {}
+  }
+  try {
+    if (shell && localStorage.getItem('postPanelsHidden') === '1') setPanelsHidden(true);
+  } catch (e) {}
+  if (toggle) toggle.addEventListener('click', function() {
+    if (!shell) return;
+    setPanelsHidden(!shell.classList.contains('panelsHidden'));
+    closeFnPopup();
+  });
+  function slugify(text) {
+    return text.toLowerCase().trim()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+  }
+  var article = document.querySelector('.postArticle');
+  if (!article) return;
+  var headings = Array.prototype.slice.call(article.querySelectorAll('h1, h2, h3'));
+  var used = {};
+  headings.forEach(function(h, idx) {
+    if (!h.id) {
+      var base = slugify(h.textContent) || ('section-' + idx);
+      var id = base, n = 2;
+      while (document.getElementById(id) || used[id]) { id = base + '-' + (n++); }
+      h.id = id;
+    }
+    used[h.id] = true;
+  });
+  function buildTOC(container) {
+    if (!container) return;
+    if (!headings.length) {
+      container.innerHTML = '<p class="postTocEmpty">No sections yet.</p>';
+      return;
+    }
+    var ul = document.createElement('ul');
+    ul.className = 'postTocUl';
+    headings.forEach(function(h) {
+      var li = document.createElement('li');
+      li.className = 'postToc-' + h.tagName.toLowerCase();
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      a.setAttribute('data-target', h.id);
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById(h.id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', '#' + h.id);
+      });
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    container.appendChild(ul);
+  }
+  buildTOC(document.getElementById('postTocList'));
+  buildTOC(document.getElementById('postTocMobileList'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('#postTocList a'));
+  if ('IntersectionObserver' in window && headings.length) {
+    var map = {};
+    links.forEach(function(a) { map[a.getAttribute('data-target')] = a; });
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(en) {
+        if (en.isIntersecting) {
+          links.forEach(function(a) { a.classList.remove('active'); });
+          var a = map[en.target.id];
+          if (a) a.classList.add('active');
+        }
+      });
+    }, { rootMargin: '0px 0px -70% 0px' });
+    headings.forEach(function(h) { obs.observe(h); });
+  }
+  /* Wikipedia-style footnote popup: tapping a marker shows the note
+     in a mini card instead of jumping down the page. */
+  var fnPopup = document.getElementById('fnPopup');
+  var fnPopupBody = fnPopup ? fnPopup.querySelector('.fnPopupBody') : null;
+  function closeFnPopup() {
+    if (fnPopup) fnPopup.hidden = true;
+  }
+  if (fnPopup && fnPopupBody && article) {
+    fnPopup.querySelector('.fnPopupClose').addEventListener('click', closeFnPopup);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeFnPopup();
+    });
+    document.addEventListener('click', function(e) {
+      if (e.target.closest && e.target.closest('a.footnote')) return;
+      if (!fnPopup.hidden && !fnPopup.contains(e.target)) closeFnPopup();
+    });
+    window.addEventListener('scroll', closeFnPopup, { passive: true });
+    article.addEventListener('click', function(e) {
+      var ref = e.target.closest ? e.target.closest('a.footnote') : null;
+      if (!ref) return;
+      var href = ref.getAttribute('href') || '';
+      if (href.charAt(0) !== '#') return;
+      var li = document.getElementById(href.slice(1));
+      if (!li) return;
+      e.preventDefault();
+      var clone = li.cloneNode(true);
+      var back = clone.querySelector('.reversefootnote');
+      if (back) back.remove();
+      fnPopupBody.innerHTML = clone.innerHTML;
+      fnPopup.hidden = false;
+      var r = ref.getBoundingClientRect();
+      var pw = Math.min(320, window.innerWidth - 24);
+      var left = Math.max(12, Math.min(r.left + r.width / 2 - pw / 2, window.innerWidth - pw - 12));
+      var top = r.bottom + 10;
+      if (top + 160 > window.innerHeight) top = Math.max(12, r.top - 170);
+      fnPopup.style.width = pw + 'px';
+      fnPopup.style.left = left + 'px';
+      fnPopup.style.top = top + 'px';
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([fnPopupBody]).catch(function() {});
+      }
+    });
+  }
+})();
+</script>
 </body>
 </html>
