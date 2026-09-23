@@ -11,6 +11,16 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <link href="{{ '/style.css' | relative_url }}" rel="stylesheet">
   {% feed_meta %}
+  <meta name="color-scheme" content="light dark">
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('siteTheme');
+        if (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark';
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -18,7 +28,7 @@
 <div id="fullBody">
   <div class="container" id="inner">
 
-    <p class="siteSections"><a href="{{ '/' | relative_url }}">Home</a> <a href="{{ '/blogs/' | relative_url }}">Blogs</a> <a href="{{ '/research/' | relative_url }}">Research</a></p>
+    <p class="siteSections"><a href="{{ '/' | relative_url }}">Home</a> <a href="{{ '/blogs/' | relative_url }}">Blogs</a> <a href="{{ '/research/' | relative_url }}">Research</a><button type="button" id="themeToggle" class="themeToggle themeToggleRight" aria-label="Switch to dark mode"><i class="fa-solid fa-moon" aria-hidden="true"></i></button></p>
 
     {{ content }}
 
@@ -92,10 +102,29 @@
       e.preventDefault();
       var bib = btn.getAttribute('data-bibtex') || '';
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(bib).then(function(){ btn.style.color = '#222'; setTimeout(function(){ btn.style.color=''; }, 800); });
+        navigator.clipboard.writeText(bib).then(function(){ btn.style.color = 'var(--text-strong)'; setTimeout(function(){ btn.style.color=''; }, 800); });
       }
     });
   });
+
+  function paintThemeToggle(btn) {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var icon = btn.querySelector('i');
+    if (icon) icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+
+  var themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    paintThemeToggle(themeToggle);
+    themeToggle.addEventListener('click', function() {
+      var dark = document.documentElement.getAttribute('data-theme') !== 'dark';
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+      try { localStorage.setItem('siteTheme', dark ? 'dark' : 'light'); } catch (e) {}
+      paintThemeToggle(themeToggle);
+    });
+  }
 })();
 </script>
 </body>

@@ -7,15 +7,70 @@ html, body {
   position: relative;
   width: 100%;
   min-height: 100%;
-  background-color: white;
+  background-color: var(--bg);
 }
+
+/* ---- Theme tokens ---- */
+:root {
+  color-scheme: light;
+  --bg: var(--surface);
+  --bg-soft: var(--bg-soft);
+  --surface: var(--surface);
+  --text: var(--text)333;
+  --text-strong: var(--text-strong);
+  --muted: var(--muted)777;
+  --faint: var(--faint);
+  --border: var(--border);
+  --border-strong: var(--border-strong);
+  --link: #337ab7;
+  --link-hover: #23527c;
+  --accent: #007be6;
+  --pill: var(--text-strong);
+  --pill-fg: var(--surface);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #141414;
+  --bg-soft: #1e1e1e;
+  --surface: #1c1c1c;
+  --text: #d8d8d8;
+  --text-strong: #f2f2f2;
+  --muted: #9d9d9d;
+  --faint: #7e7e7e;
+  --border: #2b2b2b;
+  --border-strong: #3d3d3d;
+  --link: #6cb2f5;
+  --link-hover: #9cc9f8;
+  --accent: #4da3f0;
+  --pill: #e6e6e6;
+  --pill-fg: #141414;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* ---- Dark mode: Bootstrap / base elements ---- */
+html[data-theme="dark"] a { color: var(--link); }
+html[data-theme="dark"] a:hover,
+html[data-theme="dark"] a:focus { color: var(--link-hover); }
+html[data-theme="dark"] hr { border-top-color: var(--border); }
+html[data-theme="dark"] .well { background-color: var(--surface); border-color: var(--border); }
+html[data-theme="dark"] .thumbnail { background-color: var(--surface); border-color: var(--border); }
+html[data-theme="dark"] pre { background-color: var(--bg-soft); border-color: var(--border); color: var(--text); }
+html[data-theme="dark"] code { background-color: rgba(255, 255, 255, 0.09); color: #f49aad; }
+html[data-theme="dark"] blockquote { border-left-color: var(--border-strong); }
+html[data-theme="dark"] blockquote footer,
+html[data-theme="dark"] blockquote small { color: var(--faint); }
 
 .mt-5 {
   margin-top: 5px;
 }
 
 .newsTitle {
-  color: #007BE6;
+  color: var(--accent);
 }
 
 .sidebaricon {
@@ -82,8 +137,8 @@ input:focus-visible {
   left: 0;
   right: 0;
   z-index: 130;
-  background: #ffffff;
-  border-bottom: 1px solid #eeeeee;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
 }
 
 .postNavbarInner {
@@ -106,20 +161,59 @@ input:focus-visible {
 
 /* Full-width toggle: right side of the navbar. */
 .panelsToggle {
-  background: #ffffff;
-  border: 1px solid #dddddd;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
   border-radius: 999px;
   padding: 3px 12px;
   font-size: 12px;
   font-weight: 600;
-  color: #555;
+  color: var(--text);
   cursor: pointer;
   white-space: nowrap;
 }
 
 .panelsToggle:hover {
-  border-color: #999;
-  color: #222;
+  border-color: var(--faint);
+  color: var(--text-strong);
+}
+
+/* ---- Theme toggle ---- */
+.postNavbarActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.themeToggle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.themeToggle:hover {
+  border-color: var(--faint);
+  color: var(--text-strong);
+}
+
+.themeToggleRight {
+  float: right;
+}
+
+.awardStar {
+  color: #1a5fb4;
+}
+
+html[data-theme="dark"] .awardStar {
+  color: #8ab4f8;
 }
 
 #inner.panelsHidden .postGrid {
@@ -149,14 +243,14 @@ input:focus-visible {
 .fnPopup {
   position: fixed;
   z-index: 200;
-  background: #ffffff;
-  border: 1px solid #dddddd;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
   border-radius: 10px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
   padding: 12px 14px;
   font-size: 13px;
   line-height: 1.5;
-  color: #333;
+  color: var(--text);
 }
 
 .fnPopupBody ol,
@@ -180,12 +274,12 @@ input:focus-visible {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid #dddddd;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   font-size: 14px;
   line-height: 1;
-  color: #777;
+  color: var(--muted);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -194,11 +288,11 @@ input:focus-visible {
 }
 
 .fnPopupClose:hover {
-  color: #222;
+  color: var(--text-strong);
 }
 
 .postMeta {
-  color: #959595;
+  color: var(--faint);
   font-size: 13px;
   margin-bottom: 16px;
 }
@@ -297,17 +391,17 @@ input:focus-visible {
 }
 
 .well {
-  background-color: white;
+  background-color: var(--bg);
 }
 
 .course {
-  background-color: white;
+  background-color: var(--bg);
 }
 
 .subtleHeading {
   font-size: 12px;
   font-weight: 700;
-  color: #959595;
+  color: var(--faint);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -320,12 +414,12 @@ input:focus-visible {
 
 .citeBtn {
   margin-left: 8px;
-  color: #bbbbbb;
+  color: var(--faint);
   cursor: pointer;
 }
 
 .citeBtn:hover {
-  color: #555555;
+  color: var(--text-strong);
 }
 
 /* ---- Paper filter ---- */
@@ -358,24 +452,24 @@ input:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
+  background-color: var(--surface);
+  border: 1px solid var(--border-strong);
   border-radius: 999px;
   padding: 9px 18px;
   font-size: 13px;
   font-weight: 600;
-  color: #222222;
+  color: var(--text-strong);
   cursor: pointer;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .paperFilterButton:hover {
-  border-color: #b0b0b0;
+  border-color: var(--faint);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .paperFilterButton.active {
-  border-color: #222222;
+  border-color: var(--text-strong);
 }
 
 .paperFilterButton .fa-filter {
@@ -388,8 +482,8 @@ input:focus-visible {
   justify-content: center;
   min-width: 18px;
   height: 18px;
-  background-color: #222222;
-  color: #ffffff;
+  background-color: var(--pill);
+  color: var(--pill-fg);
   border-radius: 999px;
   font-size: 11px;
   font-weight: 700;
@@ -401,8 +495,8 @@ input:focus-visible {
   top: calc(100% + 10px);
   right: 0;
   width: 290px;
-  background-color: #ffffff;
-  border: 1px solid #ebebeb;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
   padding: 18px;
@@ -415,7 +509,7 @@ input:focus-visible {
   justify-content: space-between;
   font-size: 14px;
   font-weight: 700;
-  color: #222222;
+  color: var(--text-strong);
   margin-bottom: 10px;
 }
 
@@ -425,13 +519,13 @@ input:focus-visible {
   padding: 0;
   font-size: 12px;
   font-weight: 600;
-  color: #717171;
+  color: var(--muted);
   text-decoration: underline;
   cursor: pointer;
 }
 
 .paperFilterClearBtn:hover {
-  color: #222222;
+  color: var(--text-strong);
 }
 
 .paperFilterOptions {
@@ -451,19 +545,19 @@ input:focus-visible {
   cursor: pointer;
   font-size: 13px;
   font-weight: 500;
-  color: #222222;
+  color: var(--text-strong);
   margin-bottom: 0px;
   transition: background-color 0.1s ease;
 }
 
 .paperFilterOption:hover {
-  background-color: #f7f7f7;
+  background-color: var(--bg-soft);
 }
 
 .paperFilterCheckbox {
   width: 16px;
   height: 16px;
-  accent-color: #222222;
+  accent-color: var(--pill);
   cursor: pointer;
   flex: 0 0 auto;
 }
@@ -471,7 +565,7 @@ input:focus-visible {
 .paperFilterOptionIcon {
   width: 18px;
   text-align: center;
-  color: #717171;
+  color: var(--muted);
   font-size: 13px;
   flex: 0 0 auto;
 }
@@ -481,14 +575,14 @@ input:focus-visible {
 }
 
 .paperFilterOptionCount {
-  color: #a3a3a3;
+  color: var(--faint);
   font-size: 12px;
   flex: 0 0 auto;
 }
 
 .paperFilterDivider {
   border: none;
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid var(--border);
   margin: 10px 0px;
 }
 
@@ -527,8 +621,8 @@ input:focus-visible {
   max-width: 780px;
   justify-self: center;
   width: 100%;
-  border-left: 1px solid #e8e8e8;
-  border-right: 1px solid #e8e8e8;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
   padding: 0 36px;
 }
 
@@ -555,9 +649,9 @@ input:focus-visible {
 /* Bottom footnote list (the only footnote panel now). */
 .postArticle .footnotes {
   font-size: 13px;
-  color: #555;
+  color: var(--text);
   margin-top: 32px;
-  border-top: 1px solid #e8e8e8;
+  border-top: 1px solid var(--border);
   padding-top: 12px;
 }
 
@@ -572,17 +666,17 @@ input:focus-visible {
 }
 
 .postTocUl a {
-  color: #777;
+  color: var(--muted);
   text-decoration: none;
 }
 
 .postTocUl a:hover {
-  color: #222;
+  color: var(--text-strong);
   text-decoration: underline;
 }
 
 .postTocUl a.active {
-  color: #222;
+  color: var(--text-strong);
   font-weight: 700;
 }
 
@@ -605,18 +699,18 @@ input:focus-visible {
 }
 
 .postTocEmpty {
-  color: #a3a3a3;
+  color: var(--faint);
   font-size: 12px;
   margin: 0;
 }
 
 .postTocMobile {
   display: none;
-  border: 1px solid #ebebeb;
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 10px 14px;
   margin-bottom: 18px;
-  background: #fafafa;
+  background: var(--bg-soft);
 }
 
 .postTocMobile summary {
@@ -659,7 +753,7 @@ input:focus-visible {
 .siteFooter {
   margin-top: 30px;
   margin-bottom: 30px;
-  color: #777;
+  color: var(--muted);
   font-size: 13px;
 }
 
