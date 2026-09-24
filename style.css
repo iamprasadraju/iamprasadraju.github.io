@@ -1,6 +1,15 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 html, body {
   height: 100%;
-  font-family: 'trebuchet ms', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  /* Previous site voice, kept verbatim where the fonts exist (Windows,
+     macOS, iOS). 'Open Sans' is a webfont fallback with the same
+     humanist-sans feel for devices without Trebuchet (e.g. Android),
+     so every screen renders the same style. */
+  font-family: 'Trebuchet MS', 'Open Sans', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
 }
 
 #fullBody {
