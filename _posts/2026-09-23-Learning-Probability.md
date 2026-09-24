@@ -5,6 +5,23 @@ date: 2026-09-23
 description: notes and experiments, while i am learning probability the right way.
 tags: [Math, Machine Learning, Probability]
 ---
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+th {
+  font-weight: 600;
+}
+</style>
+
 # Probability the right way
 
 ### Sample Space, S
@@ -50,10 +67,6 @@ $$P(\text{Event})
 
 **Axiom 3**: if $E$ and $F$ are mutually exclusive, then $P(E \text{ or } F) = P(E) + P(F)$ → The probability of "or" for mutually exclusive events
 
-
-[^sample-space]: Intuition — $S$ must be exhaustive and mutually exclusive. Example: $S = \\{x \mid x \in \mathbb{R}, 0 \leq x \leq 24\\}$ for hours in a day.
-[^event]: Any $E \subseteq S$ is an event, including the empty set and $S$ itself.
-
 These three axioms are formally called the [Kolmogorov axioms](https://en.wikipedia.org/wiki/Probability_axioms).
 
 ## Equally Likely Outcomes
@@ -89,3 +102,65 @@ Example for Not equally likely outcomes: A bag of balls, Biased coin
   - Heads → 70% chance
   - Tails → 30% chance
 They are not equally likely because:$P(H) \ne P(T)$
+
+---
+
+# Probability of or 
+
+source[^reference]
+
+Calculating the probability of either event $E$ or event $F$ happening, written $P(E \text{ or } F)$ or equivalently as $P(E \cup F)$.
+
+### Mutually exclusive events
+
+**Two events: $E$, $F$ are considered to be mutually exclusive (in set notation $E ∩ F = ∅$) if there are no outcomes that are in both events.**
+
+<div  align="center">
+    <img src="https://chrispiech.github.io/probabilityForComputerScientists/img/probOr/mutuallyExclusive.png" width="40%">
+</div>
+
+<br>
+
+**If two events: ,  are mutually exclusive then the probability of  or  occurring is:**
+
+$$ P(E \text{ or }  F) = P(E) + P(F)$$
+
+For n mutually exclusive events:
+
+$$ P(E_1 \text{ or } E_2 \text{ or } \dots \text{ or } E_n) = P(E_1) + P(E_2) + \dots + P(E_n) = \sum_{i=1}^n P(E_i)$$
+
+
+# Probability of and
+source[^source2]
+
+# Conditional Probability
+source[^source3]
+
+In English, a conditional probability states "what is the chance of an event $E$ happening given that I have already observed some other event $F$ ". It is a critical idea in machine learning and probability.
+
+<div  align="center">
+    <img src="https://chrispiech.github.io/probabilityForComputerScientists/img/chapters/conditionalProbability.png" width="40%">
+</div>
+<br>
+**The probability of E given that (aka conditioned on) event F already happened:**
+
+$$P(E |F) = \frac{P(E \text { and } F)}{P(F)}$$
+
+
+**Written as:** $P(E \mid F)$ \
+**Means:** "P(E, given F already observed)"
+
+<br>
+#### Notations
+
+| Meaning | Common notation | Also seen | Description |
+|:---|:---|:---|:---|
+| **AND** | $P(E \cap F)$ | $P(E,F)$, $P(EF)$, $P(E \text{ and } F)$ | Probability that **both** $E$ and $F$ occur |
+| **OR** | $P(E \cup F)$ | $P(E+F)$, $P(E \text{ or } F)$ | Probability that **at least one** of $E,F$ occurs |
+| **Condition** | $P(E \mid F)$ | $P(E\mid F)$, $P(E\text{ given }F)$ | Probability of $E$, **given that** $F$ occurred |
+
+[^sample-space]: Intuition — $S$ must be exhaustive and mutually exclusive. Example: $S = \\{x \mid x \in \mathbb{R}, 0 \leq x \leq 24\\}$ for hours in a day.
+[^event]: Any $E \subseteq S$ is an event, including the empty set and $S$ itself.
+[^reference]: [Probability of or](https://chrispiech.github.io/probabilityForComputerScientists/en/part1/prob_or/)
+[^source2]: [Probability of and](https://chrispiech.github.io/probabilityForComputerScientists/en/part1/prob_and/)
+[^source3]: [Conditional Probability](https://chrispiech.github.io/probabilityForComputerScientists/en/part1/cond_prob/)
