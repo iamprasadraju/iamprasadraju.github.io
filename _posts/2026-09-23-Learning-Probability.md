@@ -44,11 +44,11 @@ $$P(\text{Event})
 
 ### Axioms of Probability
 
-**Axiom 1**: $0 ≤ P(E) ≤ 1$        -> All probabilities are numbers between 0 and 1.
+**Axiom 1**: $0 ≤ P(E) ≤ 1$        → All probabilities are numbers between 0 and 1.
 
-**Axiom 2**: $P(S) = 1$            -> All outcomes must be from the [Sample Space](#sample-space-s).
+**Axiom 2**: $P(S) = 1$            → All outcomes must be from the [Sample Space](#sample-space-s).
 
-**Axiom 3**: if $E$ and $F$ are mutually exclusive, then $P(E \text{ or } F) = P(E) + P(F)$ -> The probability of "or" for mutually exclusive events
+**Axiom 3**: if $E$ and $F$ are mutually exclusive, then $P(E \text{ or } F) = P(E) + P(F)$ → The probability of "or" for mutually exclusive events
 
 
 [^sample-space]: Intuition — $S$ must be exhaustive and mutually exclusive. Example: $S = \\{x \mid x \in \mathbb{R}, 0 \leq x \leq 24\\}$ for hours in a day.
@@ -56,6 +56,36 @@ $$P(\text{Event})
 
 These three axioms are formally called the [Kolmogorov axioms](https://en.wikipedia.org/wiki/Probability_axioms).
 
-
 ## Equally Likely Outcomes
 
+**Equally likely outcomes are outcomes that have the same chance (probability) of happening. (In a sample space)**
+
+For example, when you toss a fair coin:
+- Head → probability = 1/2
+- Tail → probability = 1/2
+
+Since both have the same probability, Head and Tail are equally likely outcomes.
+
+**Definition:** Probability of Equally Likely Outcomes
+
+probability of the [sample space](#sample-space-s) must be 1.
+
+**If $S$ is a sample space with equally likely outcomes, for an event $E$ that is a subset of the outcomes in $S$:**
+
+$$ \begin{align}
+P(E) &= \frac{\text{number of outcomes in $E$}}{\text{number of outcomes in $S$}} 
+= \frac{|E|}{|S|}
+\end{align}$$
+
+Example for Not equally likely outcomes: A bag of balls, Biased coin
+
+- Suppose a bag contains:
+  - 8 red balls
+  - 2 blue balls
+
+ If you randomly pick one: $P(red) = 0.8$, $P(blue) = 0.2$
+
+- Biased coin: Suppose a coin is designed so that:
+  - Heads → 70% chance
+  - Tails → 30% chance
+They are not equally likely because:$P(H) \ne P(T)$
