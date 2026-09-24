@@ -133,6 +133,14 @@ $$ P(E_1 \text{ or } E_2 \text{ or } \dots \text{ or } E_n) = P(E_1) + P(E_2) + 
 # Probability of and
 source[^source2]
 
+Two events, say $E$ and $F$, written $P(E \text { and } F)$, is the probability of both events happening. You might see equivalent notations $P(E,F)$, $P(EF)$ and $P(E \cap F)$, to mean the probability of and.
+
+**Definition:** Probability of and for independent events.
+If two events: $E$, $F$ are independent then the probability of $E$ and $F$ occurring is:
+
+$$ P(E \text { and } F) = P(E) \cdot P(F) $$
+
+
 # Conditional Probability
 source[^source3]
 
@@ -158,6 +166,13 @@ $$P(E |F) = \frac{P(E \text { and } F)}{P(F)}$$
 | **AND** | $P(E \cap F)$ | $P(E,F)$, $P(EF)$, $P(E \text{ and } F)$ | Probability that **both** $E$ and $F$ occur |
 | **OR** | $P(E \cup F)$ | $P(E+F)$, $P(E \text{ or } F)$ | Probability that **at least one** of $E,F$ occurs |
 | **Condition** | $P(E \mid F)$ | $P(E\mid F)$, $P(E\text{ given }F)$ | Probability of $E$, **given that** $F$ occurred |
+
+---
+
+# Bayes Theorem
+
+Bayes' theorem provides a way to convert a conditional probability from one direction, say $P(E \mid F)$, $P(F \mid E)$ to the other direction.
+
 
 [^sample-space]: Intuition — $S$ must be exhaustive and mutually exclusive. Example: $S = \\{x \mid x \in \mathbb{R}, 0 \leq x \leq 24\\}$ for hours in a day.
 [^event]: Any $E \subseteq S$ is an event, including the empty set and $S$ itself.
