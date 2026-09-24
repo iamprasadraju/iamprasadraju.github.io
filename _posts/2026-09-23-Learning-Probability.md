@@ -42,9 +42,20 @@ $$P(\text{Event})
         {\text{count}(\text{Event})}
         {n}$$
 
+### Axioms of Probability
+
+**Axiom 1**: $0 ≤ P(E) ≤ 1$        -> All probabilities are numbers between 0 and 1.
+
+**Axiom 2**: $P(S) = 1$            -> All outcomes must be from the [Sample Space](#sample-space-s).
+
+**Axiom 3**: if $E$ and $F$ are mutually exclusive, then $P(E \text{ or } F) = P(E) + P(F)$ -> The probability of "or" for mutually exclusive events
+
+
 [^sample-space]: Intuition — $S$ must be exhaustive and mutually exclusive. Example: $S = \\{x \mid x \in \mathbb{R}, 0 \leq x \leq 24\\}$ for hours in a day.
 [^event]: Any $E \subseteq S$ is an event, including the empty set and $S$ itself.
 
+These three axioms are formally called the [Kolmogorov axioms](https://en.wikipedia.org/wiki/Probability_axioms).
 
 
+## Equally Likely Outcomes
 
