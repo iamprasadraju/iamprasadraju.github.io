@@ -22,20 +22,20 @@ html, body {
 /* ---- Theme tokens ---- */
 :root {
   color-scheme: light;
-  --bg: var(--surface);
-  --bg-soft: var(--bg-soft);
-  --surface: var(--surface);
-  --text: var(--text)333;
-  --text-strong: var(--text-strong);
-  --muted: var(--muted)777;
-  --faint: var(--faint);
-  --border: var(--border);
-  --border-strong: var(--border-strong);
+  --bg: #ffffff;
+  --bg-soft: #f7f7f7;
+  --surface: #ffffff;
+  --text: #333333;
+  --text-strong: #222222;
+  --muted: #777777;
+  --faint: #959595;
+  --border: #eeeeee;
+  --border-strong: #dddddd;
   --link: #337ab7;
   --link-hover: #23527c;
   --accent: #007be6;
-  --pill: var(--text-strong);
-  --pill-fg: var(--surface);
+  --pill: #222222;
+  --pill-fg: #ffffff;
 }
 
 html[data-theme="dark"] {
@@ -146,8 +146,9 @@ input:focus-visible {
   left: 0;
   right: 0;
   z-index: 130;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  background: var(--surface, #ffffff);
+  background-color: var(--surface, #ffffff);
+  border-bottom: 1px solid var(--border, #eeeeee);
 }
 
 .postNavbarInner {
@@ -622,7 +623,9 @@ html[data-theme="dark"] .awardStar {
      article stays centered with symmetric gutters. */
   grid-template-columns: minmax(0, 1fr) minmax(0, 780px) minmax(0, 1fr);
   gap: 0 32px;
-  align-items: stretch;
+  /* Must be start (not stretch): a stretched rail is as tall as the
+     article, leaving sticky with no range, so the TOC scrolls away. */
+  align-items: start;
 }
 
 .postBody {
@@ -650,9 +653,14 @@ html[data-theme="dark"] .awardStar {
 
 .postToc {
   position: sticky;
-  top: 20px;
-  max-height: 80vh;
+  /* Fixed navbar height + gap, so the rail pins below the navbar
+     instead of sliding underneath it while scrolling. */
+  top: 72px;
+  max-height: calc(100vh - 92px);
   overflow-y: auto;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+  align-self: start;
   font-size: 13px;
   line-height: 1.5;
   width: 100%;
@@ -684,6 +692,7 @@ html[data-theme="dark"] .awardStar {
 }
 
 .postTocUl a {
+  display: block;
   color: var(--muted);
   text-decoration: none;
 }
@@ -695,7 +704,8 @@ html[data-theme="dark"] .awardStar {
 
 .postTocUl a.active {
   color: var(--text-strong);
-  font-weight: 700;
+  /* No font-weight change here: bolding the active link alters its
+     width/wrapping, which shifts the whole rail while scrolling. */
 }
 
 .postTocUl a:focus,
