@@ -117,13 +117,13 @@ Richard S. Sutton is one of the foundational researchers in reinforcement learni
 
 What fascinates me about his work is the idea that intelligence can emerge from a simple process:
 
-> **An agent acts, receives feedback, and learns from the consequences.**
+> An agent acts, receives feedback, and learns from the consequences.
 
 His work helped establish reinforcement learning as a major area of AI, including fundamental ideas such as temporal-difference learning.
 
 What I find interesting is the simplicity of the question:
 
-> **Can an agent learn what to do simply by interacting with the world?**
+> Can an agent learn what to do simply by interacting with the world ?
 
 For me, Sutton represents the idea that sometimes intelligence doesn't need to be explicitly programmed. **It can emerge from learning through experience.**
 
@@ -165,11 +165,11 @@ LLVM in particular became more than just a compiler project. Its modular design 
 
 What I find interesting is the question behind it:
 
-> **Can we build abstractions that are both elegant for humans and efficient for machines?**
+> Can we build abstractions that are both elegant for humans and efficient for machines?
 
 For me, Lattner represents something I really like about systems programming:
 
-> **Good abstractions don't have to come at the cost of understanding the machine.**
+> Good abstractions don't have to come at the cost of understanding the machine.
 
 <br>
 
@@ -183,7 +183,7 @@ His work on games such as *Doom* and *Quake* helped advance real-time 3D graphic
 
 What fascinates me isn't just what he built, but how he approached problems.
 
-> **Understand the machine deeply, then make it do something that seemed impossible.**
+> Understand the machine deeply, then make it do something that seemed impossible.
 
 For me, Carmack represents the idea that **performance isn't magic. It comes from understanding the layers beneath the abstraction and removing unnecessary complexity.**
 
@@ -199,13 +199,13 @@ What fascinates me about Bellard is how often he takes problems that seem enormo
 
 His work makes me appreciate a different kind of engineering:
 
-> **How much can you build with very little?**
+> How much can you build with very little?
 
 For me, Bellard represents the beauty of understanding computers deeply enough to remove unnecessary complexity.
 
 Not just making something work, but asking:
 
-> **What is the smallest, fastest, simplest system that can do this?**
+> What is the smallest, fastest, simplest system that can do this ?
 
 <br>
 
@@ -221,14 +221,58 @@ It's the way he approaches problems.
 
 He seems to have a habit of taking complicated systems and asking:
 
-> **How does this actually work?**
+> How does this actually work?
 
 Then he goes down to the lowest level necessary to find out.
 
 For me, geohot represents something I really value in programming:
 
-> **Don't just use the abstraction. Understand what's underneath it.**
+> Don't just use the abstraction. Understand what's underneath it.
 
 That mindset - curiosity, independence, and a willingness to build things from first principles - is a big part of why I keep coming back to his work.
 
 [The light that found me in the night I was lost.](https://youtu.be/tvJ1RGlxe8Q?si=MbHnIvPn-j14CkzW)
+
+<br>
+
+# Algorithms and Systems Thinking
+---
+
+#### *Donald Knuth - Algorithms, Algorithms Analysis, Computer Science*
+
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Donald_Ervin_Knuth_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" alt="Donald Knuth">
+
+Donald Knuth is one of the people who made me appreciate algorithms as more than just tools for solving problems.
+
+His work on *The Art of Computer Programming* turned algorithms into something that could be studied deeply - their structure, efficiency, correctness, and mathematical properties.
+
+What fascinates me about Knuth is his obsession with understanding **why** an algorithm works, not just whether it works.
+
+> Can we understand computation deeply enough to explain it mathematically ?  
+
+For me, Knuth represents a way of thinking I really value:
+
+> Don't just make it work. Understand why it works.
+
+<br>
+
+#### *Leslie Lamport - Distributed Systems, Concurrency, Formal Methods*
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Leslie_Lamport.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled">
+
+Leslie Lamport is one of the foundational figures in distributed computing and formal methods.
+
+His work gave us ways to reason about systems where many computers operate independently and communicate with each other.
+
+What fascinates me is the problem itself:
+
+> How do you reason about a system when no single machine can see everything ?
+
+His work on logical clocks, distributed systems, and the Paxos consensus algorithm shaped how we understand ordering, agreement, and correctness in distributed systems.
+
+He also created **LaTeX**, which became one of the most widely used systems for writing technical and mathematical documents.
+
+For me, Lamport represents something I really like about computer science:
+
+> Don't just make a system work. Find a way to reason about why it works.
