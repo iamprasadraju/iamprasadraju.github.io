@@ -207,3 +207,28 @@ Not just making something work, but asking:
 
 > **What is the smallest, fastest, simplest system that can do this?**
 
+<br>
+
+#### *George Hotz (geohot) - Reverse Engineering, AI, Systems*
+
+<img src="https://pbs.twimg.com/profile_images/772342671721455616/FE79-7Ev_400x400.jpg" alt="George Hotz">
+
+George Hotz, better known as **geohot**, is a hacker, programmer, and AI researcher known for projects ranging from reverse engineering the iPhone and PlayStation 3 to building autonomous-driving and machine-learning systems.
+
+What interests me most isn't any single project.
+
+It's the way he approaches problems.
+
+He seems to have a habit of taking complicated systems and asking:
+
+> **How does this actually work?**
+
+Then he goes down to the lowest level necessary to find out.
+
+For me, geohot represents something I really value in programming:
+
+> **Don't just use the abstraction. Understand what's underneath it.**
+
+That mindset - curiosity, independence, and a willingness to build things from first principles - is a big part of why I keep coming back to his work.
+
+[The light that found me in the night I was lost.](https://youtu.be/tvJ1RGlxe8Q?si=MbHnIvPn-j14CkzW)
