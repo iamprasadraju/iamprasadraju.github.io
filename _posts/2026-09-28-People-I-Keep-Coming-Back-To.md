@@ -16,7 +16,7 @@ tags: [People, Engineering]
 
 # People I Keep Coming Back To
 
-#### These are the people whose work makes you stop and ask: How did they think of this?
+#### These are the people whose work makes me stop and ask: How did they think of this?
 
 <br>
 
@@ -40,6 +40,7 @@ For me, Turing represents something I really like about computer science: starti
 <br>
 
 #### *John McCarthy - Artificial Intelligence, Lisp, Common Sense Reasoning*
+
 
 <img src="https://media.wired.com/photos/59327c782a990b06268ab0b1/master/pass/john-mccarthy.png" alt="John McCarthy">
 
@@ -87,3 +88,122 @@ For me, Shannon represents something I really like about computer science:
 > Can we describe it mathematically ?
 
 <br>
+
+
+#### *Ilya Sutskever - Deep Learning, Neural Networks, Large Language Models*
+
+<img src="https://images.squarespace-cdn.com/content/v1/62ec2bc76a27db7b37a2b32f/d4469665-5235-4b17-862b-3f5304ea04a1/people-in-ai-ilya-sutskever-2500.jpg" alt="Ilya Sutskever">
+
+Ilya Sutskever is one of the researchers whose work helped shape the modern era of deep learning.
+
+As a PhD student under Geoffrey Hinton, he contributed to important work on neural networks and sequence modeling. In 2012, he was one of the authors of the AlexNet paper, which demonstrated the effectiveness of deep convolutional neural networks for large-scale image recognition.
+
+He later co-founded OpenAI, where he worked on large-scale deep learning and the development of increasingly capable AI systems.
+
+What I find interesting about Sutskever is his focus on:
+
+> Sometimes the breakthrough isn't a completely new idea. It's discovering how far an existing idea can be pushed. (How far can learning systems go if we keep scaling and improving them ?)
+
+For me, Sutskever represents the idea that **deep learning is not just about building a better model for one task. It can be a way of investigating intelligence itself.**
+
+<br>
+
+#### *Richard S. Sutton - Reinforcement Learning, Artificial Intelligence, Learning from Interaction*
+
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/SD_2025_-_Richard_Sutton_01_%28cropped%29.jpg/500px-SD_2025_-_Richard_Sutton_01_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" alt="Richard S. Sutton">
+
+
+Richard S. Sutton is one of the foundational researchers in reinforcement learning.
+
+What fascinates me about his work is the idea that intelligence can emerge from a simple process:
+
+> **An agent acts, receives feedback, and learns from the consequences.**
+
+His work helped establish reinforcement learning as a major area of AI, including fundamental ideas such as temporal-difference learning.
+
+What I find interesting is the simplicity of the question:
+
+> **Can an agent learn what to do simply by interacting with the world?**
+
+For me, Sutton represents the idea that sometimes intelligence doesn't need to be explicitly programmed. **It can emerge from learning through experience.**
+
+<br>
+
+# Open Source & Software engineering
+---
+
+#### *Linus Torvalds - Linux, Operating Systems, Open Source*
+
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/LinuxCon_Europe_Linus_Torvalds_03_%28cropped%29.jpg/500px-LinuxCon_Europe_Linus_Torvalds_03_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" alt="Linus Torvalds">
+
+
+Linus Torvalds created the [Linux kernel](https://en.wikipedia.org/wiki/Linux_kernel) in 1991 and went on to build one of the most influential pieces of software in computing.
+
+What fascinates me about Torvalds is not just Linux itself, but the engineering philosophy behind it:
+
+> Build something useful, keep improving it, and let the code speak for itself.
+
+Linux started as a personal project, but its development grew into a massive open-source collaboration.
+
+His work also shows me something I really like about systems programming:
+
+> Simple primitives can become incredibly powerful when the foundation is right.
+
+For me, Torvalds represents a different kind of innovation - not necessarily inventing a completely new abstraction, but **building a system that is fast, practical, and capable of lasting for decades.**
+
+<br>
+
+#### *Chris Lattner - Compilers, LLVM, Swift*
+
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Chris_Lattner_at_FOSDEM_2011_%28colorized%29.jpg/500px-Chris_Lattner_at_FOSDEM_2011_%28colorized%29.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail">
+
+Chris Lattner is a computer scientist known for creating **LLVM** and later **Swift**.
+
+What fascinates me about his work is the idea that programming languages and compilers don't have to hide how computers work. They can make powerful abstractions while still giving programmers control over performance and the underlying machine.
+
+LLVM in particular became more than just a compiler project. Its modular design turned it into infrastructure used by many languages and tools.
+
+What I find interesting is the question behind it:
+
+> **Can we build abstractions that are both elegant for humans and efficient for machines?**
+
+For me, Lattner represents something I really like about systems programming:
+
+> **Good abstractions don't have to come at the cost of understanding the machine.**
+
+<br>
+
+#### *John Carmack - Game Engines, Graphics, Systems Programming*
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/John_Carmack_2025.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="John Carmack">
+
+John Carmack is one of the programmers whose work makes me appreciate how far you can push a computer with a deep understanding of its fundamentals.
+
+His work on games such as *Doom* and *Quake* helped advance real-time 3D graphics, game engines, and systems programming.
+
+What fascinates me isn't just what he built, but how he approached problems.
+
+> **Understand the machine deeply, then make it do something that seemed impossible.**
+
+For me, Carmack represents the idea that **performance isn't magic. It comes from understanding the layers beneath the abstraction and removing unnecessary complexity.**
+
+<br>
+
+#### *Fabrice Bellard - Systems, Compilers, Computing*
+
+<img src="https://images.computerhistory.org/tdih/06january-2.jpg?w=600" alt="Fabrice Bellard">
+
+Fabrice Bellard is a programmer and computer scientist known for creating projects such as **FFmpeg, QEMU, Tiny C Compiler, and QuickJS**.
+
+What fascinates me about Bellard is how often he takes problems that seem enormous and reduces them to surprisingly small, efficient systems.
+
+His work makes me appreciate a different kind of engineering:
+
+> **How much can you build with very little?**
+
+For me, Bellard represents the beauty of understanding computers deeply enough to remove unnecessary complexity.
+
+Not just making something work, but asking:
+
+> **What is the smallest, fastest, simplest system that can do this?**
+
