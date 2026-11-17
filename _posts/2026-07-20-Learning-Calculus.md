@@ -4,9 +4,10 @@ title: Learning Calculus
 date: 2026-07-20
 description: notes and experiments, while i am learning calculus the right way.
 tags: [Math, Calculus, Machine Learning]
+math: true
 ---
 
-# Calculus the right way
+## Calculus the right way
 
 Calculus is the branch of mathematics that studies continuous change.
 

@@ -1,11 +1,85 @@
 title: Prasad Raju G
-description: Prasad Raju G, Independent AI Researcher and Systems Engineer focusing on ML/DL algorithms, Python, PyTorch.
-url: https://iamprasadraju.github.io
+author:
+  name: Email me at
+  email: gls.prasadraju@gmail.com
+
+description: >
+  Independent AI Researcher & Systems Engineer focusing on ML/DL algorithms, Python, PyTorch, and building systems engineering projects on GitHub.
+
+google_analytics: G-B8D3WLT8D4
+
+minima:
+  date_format: "%b %-d, %Y"
+  social_links:
+    - { icon: "github", title: "GitHub", url: "https://github.com/iamprasadraju" }
+    - { icon: "kaggle", title: "Kaggle", url: "https://www.kaggle.com/iamprasadraju" }
+    - { icon: "huggingface", title: "Hugging Face", url: "https://huggingface.co/iamprasadraju" }
+    - { icon: "google-scholar", title: "Google Scholar", url: "https://scholar.google.com/citations?hl=en&user=n_0swYgAAAAJ" }
+#   - { icon: "x-twitter", title: "X (formerly Twitter)", url: "https://x.com/irealprasadraju" }
+  show_excerpts: true
+
+# Build settings
 baseurl: ""
-markdown: kramdown
-kramdown:
-  math_engine: mathjax
+url: "https://iamprasadraju.github.io"
+theme: minima
+
+collections:
+  blogs:
+    output: true
+  projects:
+    output: true
+  research:
+    output: true
+
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+
 feed:
-  path: feed.xml
+  path: feed/posts.xml
+  collections:
+    - posts
+    - blogs
+    - projects
+    - research
+
+sass:
+  quiet_deps: true
+  silence_deprecations:
+    - "import"
+    - "global-builtin"
+
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      sitemap:
+        changefreq: weekly
+        priority: 1.0
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      sitemap:
+        changefreq: monthly
+        priority: 0.9
+  - scope:
+      path: ""
+      type: "blogs"
+    values:
+      sitemap:
+        changefreq: monthly
+        priority: 0.8
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      sitemap:
+        changefreq: monthly
+        priority: 0.7

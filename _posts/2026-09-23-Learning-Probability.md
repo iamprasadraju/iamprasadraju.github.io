@@ -4,6 +4,7 @@ title: Learning Probability
 date: 2026-09-23
 description: notes and experiments, while i am learning probability the right way.
 tags: [Math, Machine Learning, Probability]
+math: true
 ---
 <style>
 table {
@@ -22,7 +23,7 @@ th {
 }
 </style>
 
-# Probability the right way
+## Probability the right way
 
 ### Sample Space, S
 
@@ -105,7 +106,7 @@ They are not equally likely because:$P(H) \ne P(T)$
 
 ---
 
-# Probability of or 
+## Probability of or
 
 source[^reference]
 
@@ -130,7 +131,7 @@ For n mutually exclusive events:
 $$ P(E_1 \text{ or } E_2 \text{ or } \dots \text{ or } E_n) = P(E_1) + P(E_2) + \dots + P(E_n) = \sum_{i=1}^n P(E_i)$$
 
 
-# Probability of and
+## Probability of and
 source[^source2]
 
 Two events, say $E$ and $F$, written $P(E \text { and } F)$, is the probability of both events happening. You might see equivalent notations $P(E,F)$, $P(EF)$ and $P(E \cap F)$, to mean the probability of and.
@@ -141,7 +142,7 @@ If two events: $E$, $F$ are independent then the probability of $E$ and $F$ occu
 $$ P(E \text { and } F) = P(E) \cdot P(F) $$
 
 
-# Conditional Probability
+## Conditional Probability
 source[^source3]
 
 In English, a conditional probability states "what is the chance of an event $E$ happening given that I have already observed some other event $F$ ". It is a critical idea in machine learning and probability.
@@ -169,7 +170,7 @@ $$P(E |F) = \frac{P(E \text { and } F)}{P(F)}$$
 
 ---
 
-# Bayes Theorem
+## Bayes Theorem
 
 Bayes' theorem provides a way to convert a conditional probability from one direction, say $P(E \mid F)$, $P(F \mid E)$ to the other direction.
 

@@ -14,7 +14,7 @@ tags: [People, Engineering]
     }
 </style>
 
-# People I Keep Coming Back To
+## People I Keep Coming Back To
 
 #### These are the people whose work makes me stop and ask: How did they think of this?
 
@@ -129,7 +129,7 @@ For me, Sutton represents the idea that sometimes intelligence doesn't need to b
 
 <br>
 
-# Open Source & Software engineering
+## Open Source & Software engineering
 ---
 
 #### *Linus Torvalds - Linux, Operating Systems, Open Source*
@@ -235,7 +235,7 @@ That mindset - curiosity, independence, and a willingness to build things from f
 
 <br>
 
-# Algorithms and Systems Thinking
+## Algorithms and Systems Thinking
 ---
 
 #### *Donald Knuth - Algorithms, Algorithms Analysis, Computer Science*

@@ -6,7 +6,7 @@ description: QLang is a framework for learning programming languages by question
 tags: [Programming, Thinking]
 ---
 
-# QLang Framework V0.1
+## QLang Framework V0.1
 
 A good question should satisfy most of these:
 
