@@ -1,0 +1,27 @@
+---
+layout: base
+---
+<article class="post detail-page">
+  <a class="detail-back" href="{{ '/projects/' | relative_url }}">← All projects</a>
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+
+    {% if page.description %}
+    <p class="detail-lede">{{ page.description | escape }}</p>
+    {% endif %}
+
+    <div class="detail-meta">
+      {% if page.date %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %Y" }}</time>
+      {% endif %}
+      {% if page.repo %}
+      <a class="detail-link" href="{{ page.repo }}" target="_blank" rel="noopener noreferrer">Repository ↗</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>

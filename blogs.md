@@ -2,121 +2,90 @@
 layout: page
 title: Blogs
 permalink: /blogs/
+layout_class: index-page
+description: "Notes and experiments on mathematics, machine learning, and the craft of learning — written to think clearly."
 ---
 
-<style>
-.blog-list {
-  list-style: none;
-  margin: 32px 0 0 0;
-  padding: 0;
-}
-
-.blog-item {
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.12);
-}
-
-.blog-item:first-child {
-  padding-top: 0;
-}
-
-.blog-item:last-child {
-  border-bottom: none;
-}
-
-.blog-item-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.blog-item-link:hover {
-  text-decoration: none;
-  color: inherit;
-}
-
-.blog-item-date {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-color);
-  opacity: 0.5;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-
-.post-content .blog-item-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 6px 0;
-  line-height: 1.3;
-  letter-spacing: -0.4px;
-  color: var(--text-color);
-  transition: opacity 0.2s ease;
-}
-
-.blog-item-link:hover .blog-item-title {
-  opacity: 0.7;
-}
-
-.blog-item-excerpt {
-  font-size: 14px;
-  line-height: 1.6;
-  opacity: 0.7;
-  color: var(--text-color);
-  margin: 0 0 10px 0;
-}
-
-.blog-item-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.blog-item-tag {
-  font-size: 11px;
-  font-weight: 600;
-  color: inherit;
-  opacity: 0.7;
-  background: rgba(128, 128, 128, 0.12);
-  padding: 3px 10px;
-  border-radius: 12px;
-  white-space: nowrap;
-}
-
-.blog-empty {
-  margin-top: 48px;
-  text-align: center;
-  opacity: 0.5;
-  font-size: 14px;
-}
-</style>
-
 {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+{% assign latest = sorted_posts | first %}
+{% assign archive = sorted_posts | slice: 1, sorted_posts.size %}
+{% assign archive_by_year = archive | group_by_exp: "post", "post.date | date: '%Y'" %}
 
 {% if sorted_posts.size > 0 %}
-<ul class="blog-list">
-  {% for post in sorted_posts %}
-  <li class="blog-item">
-    <a href="{{ post.url | relative_url }}" class="blog-item-link">
-      <div class="blog-item-date">{{ post.date | date: "%b %-d, %Y" }}</div>
-      <h2 class="blog-item-title">{{ post.title | escape }}</h2>
-      {% if post.description %}
-      <p class="blog-item-excerpt">{{ post.description | escape }}</p>
-      {% elsif post.excerpt %}
-      <p class="blog-item-excerpt">{{ post.excerpt | strip_html | strip }}</p>
-      {% endif %}
-      {% if post.tags.size > 0 %}
-      <div class="blog-item-tags">
-        {% for tag in post.tags %}
-        <span class="blog-item-tag">{{ tag }}</span>
+<section class="index-section">
+  <div class="index-section-head">
+    <span class="index-eyebrow">Latest Writing</span>
+    <span class="index-rule"></span>
+    <span class="index-count">{{ sorted_posts.size }} {% if sorted_posts.size == 1 %}post{% else %}posts{% endif %}</span>
+  </div>
+
+  <a href="{{ latest.url | relative_url }}" class="index-card blog-feature">
+    <span class="blog-feature-ghost" aria-hidden="true">01</span>
+    <span class="blog-feature-kicker">{{ latest.date | date: "%B %-d, %Y" }}</span>
+    <h2 class="blog-feature-title">{{ latest.title | escape }}</h2>
+    {% if latest.description or latest.excerpt %}
+    <p class="blog-feature-desc">{{ latest.description | default: latest.excerpt | strip_html | strip }}</p>
+    {% endif %}
+    <div class="blog-feature-foot">
+      <span class="blog-readtime">{{ latest.content | strip_html | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+      {% if latest.tags.size > 0 %}
+      <div class="blog-entry-tags">
+        {% for tag in latest.tags %}
+        <span class="index-tag">{{ tag }}</span>
         {% endfor %}
       </div>
       {% endif %}
+      <span class="index-arrow" aria-hidden="true">↗</span>
+    </div>
+  </a>
+</section>
+
+{% if archive.size > 0 %}
+<section class="index-section">
+  <div class="index-section-head">
+    <span class="index-eyebrow">Archive</span>
+    <span class="index-rule"></span>
+    <span class="index-count">{{ archive.size }} {% if archive.size == 1 %}older post{% else %}older posts{% endif %}</span>
+  </div>
+
+  {% assign counter = 0 %}
+  {% for year in archive_by_year %}
+  <div class="blog-year">
+    <div class="blog-year-label">{{ year.name }}</div>
+
+    {% for post in year.items %}
+    {% assign counter = counter | plus: 1 %}
+    {% assign idx = counter | plus: 1 %}
+    <a href="{{ post.url | relative_url }}" class="index-card blog-entry">
+      <div class="blog-entry-date">
+        <span class="index-num">{% if idx < 10 %}0{% endif %}{{ idx }}</span>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
+      </div>
+
+      <div class="blog-entry-main">
+        <h3 class="blog-entry-title">{{ post.title | escape }}</h3>
+        {% if post.description %}
+        <p class="blog-entry-desc">{{ post.description | escape }}</p>
+        {% elsif post.excerpt %}
+        <p class="blog-entry-desc">{{ post.excerpt | strip_html | strip }}</p>
+        {% endif %}
+        {% if post.tags.size > 0 %}
+        <div class="blog-entry-tags">
+          {% for tag in post.tags %}
+          <span class="index-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <span class="index-arrow" aria-hidden="true">↗</span>
     </a>
-  </li>
+    {% endfor %}
+  </div>
   {% endfor %}
-</ul>
+</section>
+{% endif %}
+
 {% else %}
-<p class="blog-empty">No posts yet.</p>
+<p class="index-empty">No posts yet.</p>
 {% endif %}

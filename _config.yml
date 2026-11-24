@@ -66,6 +66,7 @@ defaults:
       path: ""
       type: "projects"
     values:
+      render_with_liquid: false
       sitemap:
         changefreq: monthly
         priority: 0.9

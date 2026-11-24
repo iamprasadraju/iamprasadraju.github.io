@@ -27,7 +27,7 @@
 {% unless site.minima.hide_site_feed_link %}
   {% assign feed_path = "feed.xml" %}
   {% if page.collection == "blogs" or page.url contains "/blogs/" %}
-    {% assign feed_path = "feed/blogs.xml" %}
+    {% assign feed_path = "feed/posts.xml" %}
   {% elsif page.collection == "projects" or page.url contains "/projects/" %}
     {% assign feed_path = "feed/projects.xml" %}
   {% elsif page.collection == "research" or page.url contains "/research/" %}
