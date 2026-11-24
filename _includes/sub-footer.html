@@ -7,7 +7,7 @@
       {%- for skin in page.available_skins %}
       {%- if skin == 'solarized' %}{% continue %}{% endif -%}
       {% if skin == 'classic' -%}
-      <option value="style.css">classic</option>
+      <option value="classic.css">classic</option>
       {%- else -%}
       <option value="{{ skin }}.css">{{ skin }}</option>
       {%- endif %}
@@ -25,19 +25,28 @@
   var SSName = SSHref.substring(SSHref.lastIndexOf('/') + 1);
   var prevSkin = localStorage.getItem("minima-ss");
 
+  function themeName(skin) {
+    var name = skin.replace(".css", "");
+    if (name === "style") return "classic";
+    if (name === "solarized") {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "solarized-dark" : "solarized-light";
+    }
+    return name;
+  }
+
   if (prevSkin) {
     skinSwitcher.value = prevSkin;
-    document.documentElement.setAttribute('data-theme', prevSkin.replace('.css', ''));
+    document.documentElement.setAttribute('data-theme', themeName(prevSkin));
   } else {
     skinSwitcher.value = SSName;
-    document.documentElement.setAttribute('data-theme', SSName.replace('.css', ''));
+    document.documentElement.setAttribute('data-theme', themeName(SSName));
   }
 
   function changeSkin() {
     var _ssName = skinSwitcher.value;
     metaTag.href = SSHref.replace(SSName, _ssName);
     localStorage.setItem("minima-ss", _ssName);
-    document.documentElement.setAttribute('data-theme', _ssName.replace('.css', ''));
+    document.documentElement.setAttribute('data-theme', themeName(_ssName));
   }
 
   var siteFooter = document.querySelector(".site-footer");

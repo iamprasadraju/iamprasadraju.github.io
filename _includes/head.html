@@ -21,11 +21,29 @@
 
   <!-- Theme stylesheet (non-blocking swap with flash prevention) -->
   <script>
-    var prevSkin = localStorage.getItem("minima-ss") || "dark.css";
+    var prevSkin = "dark.css";
+    try {
+      prevSkin = localStorage.getItem("minima-ss") || "dark.css";
+      if (prevSkin === "style.css") {
+        prevSkin = "classic.css";
+        localStorage.setItem("minima-ss", prevSkin);
+      }
+    } catch (e) {}
+
+    var theme = prevSkin.replace(/\.css$/, "");
+    if (theme === "style") theme = "classic";
+    if (theme === "solarized") {
+      theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "solarized-dark" : "solarized-light";
+    }
+    document.documentElement.setAttribute("data-theme", theme);
+
     var bgColor = "#181818"; // default dark theme
-    if (prevSkin === "style.css") bgColor = "#ffffff";
-    else if (prevSkin.indexOf("solarized-light") > -1 || prevSkin === "solarized.css") bgColor = "#fdf6e3";
+    if (prevSkin === "classic.css" || prevSkin === "style.css") bgColor = "#ffffff";
+    else if (prevSkin.indexOf("solarized-light") > -1) bgColor = "#fdf6e3";
     else if (prevSkin.indexOf("solarized-dark") > -1) bgColor = "#002b36";
+    else if (prevSkin === "solarized.css") {
+      bgColor = window.matchMedia("(prefers-color-scheme: dark)").matches ? "#002b36" : "#fdf6e3";
+    }
     
     var style = document.createElement("style");
     style.id = "fouc-blocker";
@@ -51,6 +69,10 @@
   </script>
   <noscript>
     <link id="main-stylesheet" rel="stylesheet" href="{{ '/assets/css/dark.css' | relative_url }}">
+    <style>
+      .index-page .project-logo.has-dark .logo-light { display: none; }
+      .index-page .project-logo.has-dark .logo-dark { display: block; }
+    </style>
   </noscript>
 
   {%- feed_meta -%}

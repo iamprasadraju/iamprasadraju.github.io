@@ -25,7 +25,7 @@ description: "Open-source projects by Prasad Raju G — machine learning framewo
       <div class="project-feature-body">
         <span class="project-feature-ghost" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
 
-        <div class="project-logo project-logo--feature">
+        <div class="project-logo project-logo--feature{% if project.logo_dark %} has-dark{% endif %}">
           {% if project.logo %}
           <img class="logo-light" src="{{ project.logo | relative_url }}" alt="{{ project.title | escape }}">
           {% if project.logo_dark %}
@@ -68,7 +68,7 @@ description: "Open-source projects by Prasad Raju G — machine learning framewo
       <span class="project-card-ghost" aria-hidden="true">{% if idx < 10 %}0{% endif %}{{ idx }}</span>
 
       <div class="project-card-head">
-        <div class="project-logo">
+        <div class="project-logo{% if project.logo_dark %} has-dark{% endif %}">
           {% if project.logo %}
           <img class="logo-light" src="{{ project.logo | relative_url }}" alt="{{ project.title | escape }}">
           {% if project.logo_dark %}
