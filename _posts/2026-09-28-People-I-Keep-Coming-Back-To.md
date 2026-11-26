@@ -307,3 +307,19 @@ He also created **LaTeX**, which became one of the most widely used systems for 
 For me, Lamport represents something I really like about computer science:
 
 > Don't just make a system work. Find a way to reason about why it works.
+
+<br>
+
+#### *Jim Keller - Computer Architecture, Processors, Systems Design*
+
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Jim_Keller_%28engineer%29.jpg/500px-Jim_Keller_%28engineer%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Jim Keller">
+
+Jim Keller is a microprocessor architect whose work has shaped several generations of processors. He helped design the AMD K7, led the K8 architecture, coauthored the x86-64 specification, worked on Apple's A4 and A5 chips, and later led the development of AMD Zen.
+
+What I find fascinating is not just the list of chips, but the pattern behind his career. He repeatedly enters a difficult architecture problem, questions inherited assumptions, and works from the physical constraints of the machine upward.
+
+His work makes me think about systems design in concrete terms:
+
+> How much of a system can you improve by redesigning its foundation instead of working around it ?
+
+For me, Keller represents the idea that **great systems come from understanding the hardware, the software, and the boundary between them at the same time.**
