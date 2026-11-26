@@ -129,6 +129,23 @@ For me, Sutton represents the idea that sometimes intelligence doesn't need to b
 
 <br>
 
+## Mathematics & Modeling
+---
+
+#### *Jim Simons - Mathematics, Quantitative Modeling, Pattern Finding*
+
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/James_Simons_2007.jpg/500px-James_Simons_2007.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Jim Simons">
+
+Jim Simons was a mathematician whose work spanned differential geometry, topology, and mathematical physics. His collaboration with Shiing-Shen Chern produced Chern–Simons invariants, ideas that later became important in geometry and theoretical physics.
+
+Later, he founded Renaissance Technologies, where mathematical and statistical models were used to search for structure in financial data. What interests me is the range of his thinking: from deeply abstract mathematics to systems that generate enormous amounts of noisy data.
+
+> Can careful mathematical thinking reveal patterns that are hidden inside complexity ?
+
+For me, Simons represents the idea that **the right mathematical lens can make structure visible, even when the problem looks random at first.**
+
+<br>
+
 ## Open Source & Software engineering
 ---
 
@@ -186,6 +203,20 @@ What fascinates me isn't just what he built, but how he approached problems.
 > Understand the machine deeply, then make it do something that seemed impossible.
 
 For me, Carmack represents the idea that **performance isn't magic. It comes from understanding the layers beneath the abstraction and removing unnecessary complexity.**
+
+<br>
+
+#### *Jonathan Blow - Game Design, Engines, Programming Languages*
+
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Jonathan_Blow_Gamelab_2018_crop_1.jpg/500px-Jonathan_Blow_Gamelab_2018_crop_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Jonathan Blow">
+
+Jonathan Blow is a game designer and programmer best known for *Braid* and *The Witness*. His games use their mechanics as part of the puzzle, so learning the rules of the world becomes the same act as learning the ideas behind it.
+
+What fascinates me is how much engineering sits behind that clarity. Blow has built custom engines for his games and began developing the **Jai** programming language because existing tools did not match the way he wanted to work.
+
+> Can a game feel handcrafted while being backed by deeply understood systems ?
+
+For me, Blow represents an approach I really value: **question the tools you are given, and build better ones when the abstractions get in the way.**
 
 <br>
 
